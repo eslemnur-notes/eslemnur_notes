@@ -469,6 +469,49 @@
             .nav-links { display: none; } /* Mobil menü basitleştirildi */
             .logo { font-size: 1.2rem; }
         }
+      /* Hamburger Butonu Ayarları */
+.hamburger {
+    display: none; /* Masaüstünde gizli */
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto; /* Sağ tarafa it */
+}
+
+/* Mobil Görünüm Ayarları */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block; /* Mobilde görünür */
+    }
+
+    .nav-links {
+        display: none; /* Mobilde başlangıçta gizli */
+        position: absolute;
+        top: 70px; /* Logonun altına denk gelir */
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex; /* Tıklandığında görünür */
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 15px;
+        font-size: 1.1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+  
     </style>
 </head>
 <body>
@@ -477,17 +520,24 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">
-                    <span>بسم الله</span>
-                    Eslem Nur Çetin
-                </a>
-                <div class="nav-links">
-                    <a href="#about">Hakkımda</a>
-                    <a href="#skills">Yetenekler</a>
-                    <a href="#projects">Projeler</a>
-                    <a href="#contact">İletişim</a>
-                </div>
-                        </nav>
+    <a href="#" class="logo">
+        <span>بسم الله</span>
+        Eslem Nur
+    </a>
+    
+    <!-- YENİ EKLENEN HAMBURGER BUTONU -->
+    <div class="hamburger" onclick="toggleMenu()">
+        ☰
+    </div>
+    
+    <!-- ESKİ LİNKLER HİÇ DEĞİŞMEDİ -->
+    <div class="nav-links">
+        <a href="#about">Hakkımda</a>
+        <a href="#skills">Yetenekler</a>
+        <a href="#projects">Projeler</a>
+        <a href="#contact">İletişim</a>
+    </div>
+</nav>
         </div>
     </header>
 
@@ -797,7 +847,12 @@ function copyEmail() {
             });
         </script>
     </footer>
-
+<script>
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+</script>
 </body>
 </html>
        
