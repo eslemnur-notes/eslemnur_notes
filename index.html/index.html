@@ -834,10 +834,24 @@ function copyEmail() {
         </script>
     </footer>
 <script>
+// Menü Aç/Kapa Fonksiyonu
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
 }
+
+// Tüm menü linklerini seç
+const menuLinks = document.querySelectorAll('.nav-links a');
+
+// Her linke tıklanınca menüyü kapat
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+});
 </script>
 </body>
 </html>
