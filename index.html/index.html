@@ -38,9 +38,6 @@
             color: var(--text-color);
             line-height: 1.7;
             overflow-x: hidden;
-            text-rendering: optimizeLegibility; 
-            -webkit-font-smoothing: antialiased; 
-            -moz-osx-font-smoothing: grayscale; 
         }
 
         a {
@@ -160,9 +157,9 @@
             font-size: 1.2rem;
             color: var(--text-light);
             margin-bottom: 30px;
-            font-family: 'Lato', sans-serif;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            font-family: 'Lato', sans-serif !important;
+            font-weight: 300 !important;
+            letter-spacing: 0.5px !important;
         }
 
         .hero-badges {
@@ -451,28 +448,33 @@
             opacity: 0.8;
         }
 
-        /* RESPONSIVE & MOBİL AYARLAR */
-@media (max-width: 768px) {
-    /* Genel ayarlar */
-    .hero h1 { font-size: 2.5rem; }
-    .about-grid { grid-template-columns: 1fr; }
-    .logo { font-size: 1.2rem; }
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Mobil menü basitleştirildi */
+            .logo { font-size: 1.2rem; }
+        }
+      /* Hamburger Butonu Ayarları */
+.hamburger {
+    display: none; /* Masaüstünde gizli */
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto; /* Sağ tarafa it */
+}
 
-    
+/* Mobil Görünüm Ayarları */
+@media (max-width: 768px) {
     .hamburger {
-        display: block; 
-        font-size: 1.8rem;
-        color: var(--primary-color);
-        cursor: pointer;
-        padding: 10px;
-        margin-left: auto; 
+        display: block; /* Mobilde görünür */
     }
 
-    
     .nav-links {
-        display: none;
+        display: none; /* Mobilde başlangıçta gizli */
         position: absolute;
-        top: 70px;
+        top: 70px; /* Logonun altına denk gelir */
         left: 0;
         width: 100%;
         background: #fff;
@@ -485,41 +487,22 @@
         z-index: 1000;
     }
 
-    
     .nav-links.active {
-        display: flex !important;
+        display: flex; /* Tıklandığında görünür */
     }
 
-    
-    .nav-links.active a {
-        font-family: 'Lato', sans-serif !important;
-        font-weight: 600 !important;
-        text-rendering: optimizeLegibility !important;
-        -webkit-font-smoothing: antialiased !important;
-        -moz-osx-font-smoothing: grayscale !important;
+    .nav-links a {
         display: block;
         padding: 15px;
         font-size: 1.1rem;
         border-bottom: 1px solid var(--border-color);
-        color: var(--text-color);
     }
-}
-
-
-.hamburger {
-    display: none; 
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    cursor: pointer;
-    padding: 10px;
-    margin-left: auto; 
-}
   
     </style>
 </head>
 <body>
 
-    
+    <!-- NAVIGASYON -->
     <header>
         <div class="container">
             <nav>
@@ -528,12 +511,12 @@
         Eslem Nur Çetin
     </a>
     
-    
+    <!-- YENİ EKLENEN HAMBURGER BUTONU -->
     <div class="hamburger" onclick="toggleMenu()">
         ☰
     </div>
     
-    
+    <!-- ESKİ LİNKLER HİÇ DEĞİŞMEDİ -->
     <div class="nav-links">
         <a href="#about">Hakkımda</a>
         <a href="#skills">Yetenekler</a>
