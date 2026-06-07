@@ -376,21 +376,34 @@
 
 <script>
     // Verileri Tarayıcıda Sakla
+    // Eğer veri yoksa boş dizi başlat
     let tasks = JSON.parse(localStorage.getItem('studentTasks')) || [];
 
+    // Verileri Kaydetme ve Arayüzü Güncelleme Fonksiyonu
     function saveData() {
-        localStorage.setItem('studentTasks', JSON.stringify(tasks));
-        renderTasks();
-        updateStats();
+        try {
+            localStorage.setItem('studentTasks', JSON.stringify(tasks));
+            renderTasks();
+            updateStats();
+        } catch (e) {
+            console.error("Veri kaydedilemedi:", e);
+            alert("Tarayıcı hafızası dolu olabilir veya izin vermiyor. Lütfen tarayıcı geçmişi temizlemeyi deneyin.");
+        }
     }
 
     function addTask() {
-        const type = document.getElementById('taskType').value;
+        const select = document.getElementById('taskType');
+        const type = select.value;
+        
+        // Seçili option'ın metnini al (eğer value ile aynı değilse)
+        const selectedOption = select.options[select.selectedIndex];
+        const name = selectedOption.text; // Gösterilen isim
+
         const points = getPoints(type);
         
         const newTask = {
             id: Date.now(),
-            name: type,
+            name: name,
             points: points,
             completed: false,
             date: new Date().toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -409,15 +422,23 @@
     }
 
     function toggleTask(id) {
-        const task = tasks.find(t => t.id === id);
-        task.completed = !task.completed;
-        saveData();
+        const index = tasks.findIndex(t => t.id === id);
+        if (index !== -1) {
+            tasks[index].completed = !tasks[index].completed;
+            saveData();
+        }
     }
 
     function deleteTask(id) {
-        if(confirm("Bu ameli silmek istediğinize emin misiniz?")) {
+        if(confirm("Bu ameli silmek istediğinize emin misiniz? (Bu işlem geri alınamaz)")) {
+            const initialLength = tasks.length;
             tasks = tasks.filter(t => t.id !== id);
-            saveData();
+            
+            if (tasks.length < initialLength) {
+                saveData();
+            } else {
+                alert("İşlem bulunamadı veya zaten silinmiş.");
+            }
         }
     }
 
@@ -434,12 +455,11 @@
         
         const pointsNeeded = (currentLevel * pointsPerLevel) - total;
         
-        // İslami Unvanlar (Sitemizin estetiğine uygun)
         const titles = [
             "Mümin Adayı", "Talebe", "Salih", "Mücahid", "Muhsin", 
             "Tevafuklu", "Sıddık", "Mü'min-i Kâmil", "Hâzık", "Rabbanî", 
             "Mücahid-i Ekber", "İlim Sahibi", "Hakikat Ehli", "Allâh'ın Kulu", 
-                        "Mücahid-i Rabbânî", "Hizmetkâr", "Mürşid-i Ahsen", "İlham Sahibi", 
+            "Mücahid-i Rabbânî", "Hizmetkâr", "Mürşid-i Ahsen", "İlham Sahibi", 
             "Sırat-ı Mustakîm", "Cennetlik"
         ];
 
@@ -459,7 +479,6 @@
         if (pointsNeeded <= 0 && total % pointsPerLevel === 0) {
              progressText = "Mertebe yükseldi! Allah kabul etsin. 🤲";
         } else {
-             // Eğer seviye çok yüksekse listedeki son ismi kullan
              let nextTitle = titles[Math.min(titleIndex + 1, titles.length - 1)];
              progressText = `${pointsNeeded} amel daha: ${nextTitle} mertebesine`;
         }
@@ -470,7 +489,6 @@
         const list = document.getElementById('taskList');
         list.innerHTML = '';
         
-        // Yeni eklenenler en üstte görünsün diye listeyi ters çeviriyoruz
         const reversedTasks = [...tasks].reverse();
 
         if (reversedTasks.length === 0) {
@@ -482,6 +500,8 @@
             const li = document.createElement('li');
             li.className = `task-item ${task.completed ? 'completed' : ''}`;
             
+            // Butonlara ID'yi string olarak geçiriyoruz, fonksiyon içinde sayıya çevirebiliriz
+            // Ancak en güvenlisi doğrudan ID'yi kullanmak.
             li.innerHTML = `
                 <div class="task-info">
                     <div class="task-name">${task.name}</div>
@@ -502,6 +522,11 @@
             list.appendChild(li);
         });
     }
+
+    // Fonksiyonları global alana (window) bağla ki HTML'den erişilebilsin
+    window.toggleTask = toggleTask;
+    window.deleteTask = deleteTask;
+    window.addTask = addTask;
 
     // İlk yükleme
     renderTasks();
