@@ -240,42 +240,63 @@
     width: 100%;
 }
         @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .logo { font-size: 1.2rem; }
+    .term-highlight { font-size: 2.2rem; }
+    
+    /* ÖNEMLİ: Grid'i tek sütun yap */
     .options-grid {
-        grid-template-columns: 1fr; /* Mobilde TEK sütun yap */
-        .option-btn {
-        font-size: 0.85rem; /* Mobilde fontu biraz küçült */
-        padding: 12px;
+        grid-template-columns: 1fr !important; /* Tek sütun */
+        gap: 12px;
     }
     
+    /* ÖNEMLİ: Butonları tam genişlik ve esnek yap */
     .option-btn {
-        width: 100% !important; /* Mobilde tam genişlik */
-        min-height: auto !important; /* Minimum yükseklik kaldır */
-        padding: 15px; /* İç boşluk biraz azaltılabilir */
+        width: 100% !important;
+        min-height: auto !important;
+        height: auto !important; /* Yüksekliği içeriğe göre ayarla */
+        padding: 15px 12px !important; /* Mobilde yeterli boşluk */
+        font-size: 0.85rem !important; /* Fontu biraz küçült */
+        white-space: normal !important;
+        line-height: 1.5 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        overflow: visible !important;
     }
+    
+    .game-container {
+        padding: 15px;
+    }
+}
+    
 
-        }
+        
 
         .option-btn {
     background: #f9f9f9;
     border: 2px solid var(--border-color);
-    padding: 18px 15px; /* Yan boşlukları biraz azalt ki metin sığsın */
+    padding: 12px 10px; /* Mobilde daha az boşluk */
     border-radius: 15px;
     cursor: pointer;
     font-family: 'Lato', sans-serif;
-    font-size: 0.95rem; /* Mobilde bu biraz büyük kalabilir, aşağıdaki media query ile küçültürüz */
+    font-size: 0.9rem;
     color: var(--text-color);
     transition: all 0.3s;
     /* height: 100%; SİLİNDİ */
-    min-height: auto; /* Otomatik yükseklik */
+    min-height: auto;
     display: flex;
-    flex-direction: column; /* İçeriği yukarıdan aşağıya dizer */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-weight: 400;
-    white-space: normal; /* Metnin satır atlamasına izin ver */
-    line-height: 1.5; /* Satır aralığını artır */
-    word-wrap: break-word; /* Çok uzun kelimeleri böler */
+    white-space: normal; /* Satır atlamaya izin ver */
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow: visible; /* Taşmaları göster */
 }
         .option-btn:hover:not(:disabled) {
             border-color: var(--primary-color);
@@ -628,9 +649,8 @@
             options.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
-                let shortDef = opt.definition;
-                if (shortDef.length > 35) shortDef = shortDef.substring(0, 35) + "...";
-                btn.innerText = shortDef;
+                btn.innerText = opt.definition; 
+                
                 btn.onclick = () => checkWordAnswer(opt, btn);
                 optionsContainer.appendChild(btn);
             });
