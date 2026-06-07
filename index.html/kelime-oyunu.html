@@ -433,22 +433,32 @@
 <body>
 
     <!-- NAVIGASYON -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">
-                    <span>بسم الله</span>
-                    Eslem Nur Çetin
-                </a>
-                <div class="nav-links">
-                    <a href="index.html#about">Hakkımda</a>
-                    <a href="index.html#skills">Yetenekler</a>
-                    <a href="index.html#projects">Projeler</a>
-                    <a href="index.html#contact">İletişim</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+    
+<header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">
+                <span>بسم الله</span>
+                Eslem Nur Çetin
+            </a>
+            
+            <!-- BURGER BUTONU (YENİ EKLENDİ) -->
+            <button id="burger-btn" class="burger-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- NAVİGASYON LİNKLERİ -->
+            <div class="nav-links" id="nav-links">
+                <a href="index.html#about" onclick="closeMenu()">Hakkımda</a>
+                <a href="index.html#skills" onclick="closeMenu()">Yetenekler</a>
+                <a href="index.html#projects" onclick="closeMenu()">Projeler</a>
+                <a href="index.html#contact" onclick="closeMenu()">İletişim</a>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <!-- OYUN ALANI -->
     <div class="game-wrapper">
