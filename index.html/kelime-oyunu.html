@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dini Literatür Kelime Avı | Eslem Nur</title>
     
-    <!-- Google Fonts (Ana site ile aynı) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -24,7 +24,7 @@
             --note-bg: #FFF0F5;
             --soft-shadow: 0 4px 15px rgba(183, 110, 121, 0.15);
             
-            /* Oyun Özel Renkler (Site tonlarına uyarlanmış) */
+            /* Oyun Özel Renkler */
             --success-bg: #E8F5E9;
             --success-text: #2E7D32;
             --error-bg: #FFEBEE;
@@ -54,7 +54,7 @@
             transition: all 0.3s ease;
         }
 
-        /* HEADER & NAV (Ana site ile aynı) */
+        /* HEADER & NAV */
         header {
             background: rgba(255, 249, 249, 0.95);
             backdrop-filter: blur(10px);
@@ -85,6 +85,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            z-index: 1002; /* Burger butonunun üstünde kalmasın */
         }
 
         .logo span {
@@ -118,6 +119,37 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* BURGER MENÜ STİLLERİ */
+        .burger-btn {
+            display: none; /* Masaüstünde gizli */
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .burger-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        .burger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
         }
 
         /* OYUN ALANI STİLLERİ */
@@ -232,72 +264,39 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
 
+        /* ŞIKLAR IZGARASI (GRID) */
         .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Masaüstünde 2 sütun */
-    gap: 15px;
-    margin-top: 20px;
-    width: 100%;
-}
-        @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .logo { font-size: 1.2rem; }
-    .term-highlight { font-size: 2.2rem; }
-    
-    /* ÖNEMLİ: Grid'i tek sütun yap */
-    .options-grid {
-        grid-template-columns: 1fr !important; /* Tek sütun */
-        gap: 12px;
-    }
-    
-    /* ÖNEMLİ: Butonları tam genişlik ve esnek yap */
-    .option-btn {
-        width: 100% !important;
-        min-height: auto !important;
-        height: auto !important; /* Yüksekliği içeriğe göre ayarla */
-        padding: 15px 12px !important; /* Mobilde yeterli boşluk */
-        font-size: 0.85rem !important; /* Fontu biraz küçült */
-        white-space: normal !important;
-        line-height: 1.5 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-        overflow: visible !important;
-    }
-    
-    .game-container {
-        padding: 15px;
-    }
-}
-    
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+        }
 
-        
-
+        /* ŞIK BUTONU STİLİ (DÜZELTİLDİ) */
         .option-btn {
-    background: #f9f9f9;
-    border: 2px solid var(--border-color);
-    padding: 12px 10px; /* Mobilde daha az boşluk */
-    border-radius: 15px;
-    cursor: pointer;
-    font-family: 'Lato', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text-color);
-    transition: all 0.3s;
-    /* height: 100%; SİLİNDİ */
-    min-height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-weight: 400;
-    white-space: normal; /* Satır atlamaya izin ver */
-    line-height: 1.4;
-    word-wrap: break-word;
-    overflow: visible; /* Taşmaları göster */
-}
+            background: #f9f9f9;
+            border: 2px solid var(--border-color);
+            padding: 18px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            transition: all 0.3s;
+            min-height: auto; /* Otomatik yükseklik */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: 400;
+            white-space: normal; /* Satır atlamaya izin ver */
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow: visible;
+        }
+
         .option-btn:hover:not(:disabled) {
             border-color: var(--primary-color);
             background: var(--note-bg);
@@ -378,7 +377,7 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
-            display: none; /* Başta gizli */
+            display: none;
         }
 
         .next-btn:hover {
@@ -394,7 +393,7 @@
             font-weight: 400;
         }
 
-        /* FOOTER (Basitleştirilmiş) */
+        /* FOOTER */
         footer {
             background: #fff;
             border-top: 1px solid var(--border-color);
@@ -420,45 +419,129 @@
             text-decoration: underline;
         }
 
-        /* RESPONSIVE */
+        /* --- MOBİL UYUMLULUK (768px ve altı) --- */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .logo { font-size: 1.2rem; }
-            .term-highlight { font-size: 2.2rem; }
-            .options-grid { grid-template-columns: 1fr; }
-            .game-container { padding: 20px; }
+            /* Burger butonunu göster */
+            .burger-btn {
+                display: flex;
+                margin-left: 15px;
+            }
+
+            /* Menü linklerini gizle */
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                border-bottom: 2px solid var(--border-color);
+                z-index: 1000;
+                animation: slideDown 0.3s ease;
+            }
+
+            /* Menü aktifken görünür yap */
+            .nav-links.active {
+                display: flex;
+            }
+
+            /* Menü linkleri stili */
+            .nav-links a {
+                display: block;
+                text-align: center;
+                padding: 12px 0;
+                font-size: 1rem;
+                color: var(--text-color);
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            /* Alt çizgi animasyonunu kaldır */
+            .nav-links a::after {
+                display: none;
+            }
+
+            /* Animasyon */
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            /* Şıklar için mobil ayarlar */
+            .options-grid {
+                grid-template-columns: 1fr !important; /* Tek sütun */
+                gap: 12px;
+            }
+
+                        .option-btn {
+                width: 100% !important;
+                min-height: auto !important;
+                height: auto !important;
+                padding: 15px 12px !important;
+                font-size: 0.85rem !important;
+                white-space: normal !important;
+                line-height: 1.5 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                text-align: center !important;
+                overflow: visible !important;
+            }
+
+            .game-container { padding: 15px; }
+        }
+
+        /* Masaüstü için düzeltme (burger gizle, menü göster) */
+        @media (min-width: 769px) {
+            .burger-btn { display: none; }
+            .nav-links {
+                display: flex !important;
+                position: static;
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+                width: auto;
+                flex-direction: row;
+            }
+            .nav-links a { border: none; }
         }
     </style>
 </head>
 <body>
 
     <!-- NAVIGASYON -->
-    
-<header>
-    <div class="container">
-        <nav>
-            <a href="index.html" class="logo">
-                <span>بسم الله</span>
-                Eslem Nur Çetin
-            </a>
-            
-            <!-- BURGER BUTONU (YENİ EKLENDİ) -->
-            <button id="burger-btn" class="burger-btn" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <span>بسم الله</span>
+                    Eslem Nur Çetin
+                </a>
+                
+                <!-- BURGER BUTONU (YENİ EKLENDİ) -->
+                <button id="burger-btn" class="burger-btn" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
 
-            <!-- NAVİGASYON LİNKLERİ -->
-            <div class="nav-links" id="nav-links">
-                <a href="index.html#about" onclick="closeMenu()">Hakkımda</a>
-                <a href="index.html#skills" onclick="closeMenu()">Yetenekler</a>
-                <a href="index.html#projects" onclick="closeMenu()">Projeler</a>
-                <a href="index.html#contact" onclick="closeMenu()">İletişim</a>
-            </div>
-        </nav>
-    </div>
-</header>
+                <!-- NAVİGASYON LİNKLERİ (MOBİLDE AÇILIR) -->
+                <div class="nav-links" id="nav-links">
+                    <a href="index.html#about" onclick="closeMenu()">Hakkımda</a>
+                    <a href="index.html#skills" onclick="closeMenu()">Yetenekler</a>
+                    <a href="index.html#projects" onclick="closeMenu()">Projeler</a>
+                    <a href="index.html#contact" onclick="closeMenu()">İletişim</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
     <!-- OYUN ALANI -->
     <div class="game-wrapper">
@@ -505,7 +588,7 @@
                 </div>
             </div>
 
-                       <!-- BÖLÜM 2: GÜNLÜK BİLGİ (QUIZ) -->
+            <!-- BÖLÜM 2: GÜNLÜK BİLGİ (QUIZ) -->
             <div id="quiz-section" class="game-section">
                 <div class="score-board">
                     <div class="score-item">Toplam Puan: <span id="quiz-score">0</span></div>
@@ -612,6 +695,23 @@
             event.target.classList.add('active');
         }
 
+        // --- BURGER MENÜ FONKSİYONLARI (YENİ EKLENDİ) ---
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            const burgerBtn = document.getElementById('burger-btn');
+            
+            navLinks.classList.toggle('active');
+            burgerBtn.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('nav-links');
+            const burgerBtn = document.getElementById('burger-btn');
+            
+            navLinks.classList.remove('active');
+            burgerBtn.classList.remove('active');
+        }
+
         // --- KELİME AVI (AKILLI TEKRAR) ---
         function nextWord() {
             document.getElementById('word-definition').style.display = 'none';
@@ -659,8 +759,8 @@
             options.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
+                // TAM METNİ KULLAN (Kesme işlemi kaldırıldı)
                 btn.innerText = opt.definition; 
-                
                 btn.onclick = () => checkWordAnswer(opt, btn);
                 optionsContainer.appendChild(btn);
             });
@@ -684,7 +784,7 @@
                 document.getElementById('word-feedback').innerHTML = '<span class="wrong-text">❌ Yanlış!</span> Doğru cevap: ' + currentWordItem.term;
                 
                 allBtns.forEach(btn => {
-                    if (btn.innerText === currentWordItem.definition.substring(0, 35) + (currentWordItem.definition.length > 35 ? '...' : '')) {
+                    if (btn.innerText === currentWordItem.definition) {
                         btn.classList.add('correct');
                     }
                 });
@@ -779,7 +879,7 @@
                 examScore += 30;
             } else {
                 btnElement.classList.add('wrong');
-                                allBtns[correctIndex].classList.add('correct');
+                allBtns[correctIndex].classList.add('correct');
                 document.getElementById('exam-feedback').innerHTML = '<span class="wrong-text">❌ Hata.</span> Doğru cevap: ' + currentItem.options[correctIndex];
             }
             document.getElementById('exam-score').innerText = examScore;
@@ -788,4 +888,3 @@
     </script>
 </body>
 </html>
-               
