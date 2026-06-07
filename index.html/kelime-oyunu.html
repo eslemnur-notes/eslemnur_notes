@@ -233,31 +233,49 @@
         }
 
         .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Masaüstünde 2 sütun */
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+}
+        @media (max-width: 768px) {
+    .options-grid {
+        grid-template-columns: 1fr; /* Mobilde TEK sütun yap */
+        .option-btn {
+        font-size: 0.85rem; /* Mobilde fontu biraz küçült */
+        padding: 12px;
+    }
+    
+    .option-btn {
+        width: 100% !important; /* Mobilde tam genişlik */
+        min-height: auto !important; /* Minimum yükseklik kaldır */
+        padding: 15px; /* İç boşluk biraz azaltılabilir */
+    }
+
         }
 
         .option-btn {
     background: #f9f9f9;
     border: 2px solid var(--border-color);
-    padding: 18px;
+    padding: 18px 15px; /* Yan boşlukları biraz azalt ki metin sığsın */
     border-radius: 15px;
     cursor: pointer;
     font-family: 'Lato', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.95rem; /* Mobilde bu biraz büyük kalabilir, aşağıdaki media query ile küçültürüz */
     color: var(--text-color);
     transition: all 0.3s;
-    
-    min-height: 80px; 
+    /* height: 100%; SİLİNDİ */
+    min-height: auto; /* Otomatik yükseklik */
     display: flex;
-    flex-direction: column; 
-    justify-content: center; 
+    flex-direction: column; /* İçeriği yukarıdan aşağıya dizer */
+    justify-content: center;
+    align-items: center;
     text-align: center;
     font-weight: 400;
-    white-space: normal; 
-    line-height: 1.4; 
+    white-space: normal; /* Metnin satır atlamasına izin ver */
+    line-height: 1.5; /* Satır aralığını artır */
+    word-wrap: break-word; /* Çok uzun kelimeleri böler */
 }
         .option-btn:hover:not(:disabled) {
             border-color: var(--primary-color);
