@@ -279,6 +279,63 @@
             .tabs { justify-content: center; }
             .backup-controls { justify-content: center; }
         }
+                /* HAMBURGER BUTONU AYARLARI */
+        .hamburger {
+            display: none; /* Masaüstünde gizli */
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+            margin-left: auto; /* Sağ tarafa it */
+            background: none;
+            border: none;
+        }
+
+        /* MOBİL GÖRÜNÜM AYARLARI */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block; /* Mobilde görünür */
+            }
+
+            .nav-links {
+                display: none; /* Mobilde başlangıçta gizli */
+                position: absolute;
+                top: 60px; /* Logonun altına denk gelir */
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex; /* Tıklandığında görünür */
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px;
+                font-size: 1.1rem;
+                border-bottom: 1px solid var(--border-color);
+                color: var(--text-color);
+                text-decoration: none;
+            }
+            
+            .nav-links a:hover {
+                background: var(--note-bg);
+                color: var(--primary-color);
+            }
+            
+            /* Header'ın mobilde yüksekliğini ayarla */
+            header {
+                padding: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -290,16 +347,20 @@
                 <a href="index.html" class="logo">
                     <span>بسم الله</span> Eslem Nur Çetin
                 </a>
-                <div style="display: flex; align-items: center;">
-                    <button class="theme-toggle" id="themeToggle" title="Koyu/Aydınlık Mod">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <div class="nav-links">
-                        <a href="index.html#about">Hakkımda</a>
-                        <a href="index.html#skills">Yetenekler</a>
-                        <a href="index.html#projects">Projeler</a>
-                        <a href="index.html#contact">İletişim</a>
-                    </div>
+                
+                <!-- YENİ EKLENEN HAMBURGER BUTONU -->
+                <button class="hamburger" onclick="toggleMenu()">
+                    ☰
+                </button>
+                
+                <!-- LINKLER (Mobilde gizlenip açılacak) -->
+                <div class="nav-links">
+                    <a href="index.html#about">Hakkımda</a>
+                    <a href="index.html#skills">Yetenekler</a>
+                    <a href="index.html#projects">Projeler</a>
+                    <a href="index.html#contact">İletişim</a>
+                    <!-- Planlayıcı kendi sayfasında olduğu için buraya "Ana Sayfa" ekle -->
+                    <a href="index.html" style="color: var(--primary-color); font-weight: bold;">Ana Sayfaya Dön</a>
                 </div>
             </nav>
         </div>
@@ -890,7 +951,24 @@ function renderMonthlyGoals() {
         container.appendChild(div);
     });
 }
+// --- MENÜ AÇ/KAPA FONKSİYONU ---
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
 
+// Tüm menü linklerini seç
+const menuLinks = document.querySelectorAll('.nav-links a');
+
+// Her linke tıklanınca menüyü kapat
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+});
         // --- BAŞLANGIÇ ---
         window.onload = () => {
             initTheme();
