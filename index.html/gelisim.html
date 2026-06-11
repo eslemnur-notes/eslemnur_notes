@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlim ve İbadet Takibi | Eslem Nur</title>
+    <title>İlim ve İbadet Takibi | Eslem Nur Çetin</title>
     
-    <!-- Google Fonts (Sitenizle Aynı) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* RENK PALETİ (Sitenizden Kopyalandı) */
+        /* RENK PALETİ (Light Mode Varsayılan) */
         :root {
             --primary-color: #B76E79;
             --secondary-color: #FDF5E6;
@@ -23,12 +23,33 @@
             --border-color: #F0E6E6;
             --note-bg: #FFF0F5;
             --soft-shadow: 0 4px 15px rgba(183, 110, 121, 0.15);
+            
+            /* İkon Stilleri */
+            --icon-color: #B76E79;
+        }
+
+        /* DARK MODE RENK PALETİ */
+        [data-theme="dark"] {
+            --primary-color: #E59CA8; /* Biraz daha açık pembe */
+            --secondary-color: #2D2424;
+            --button-bg: #C58F8F;
+            --button-hover: #B76E79;
+            --accent-color: #D4A5A5;
+            --bg-color: #1A1515; /* Koyu arka plan */
+            --card-bg: #251F1F; /* Kartlar */
+            --text-color: #E0D0CC; /* Açık metin */
+            --text-light: #A09088; /* Soluk metin */
+            --border-color: #3D3232;
+            --note-bg: #2F2525;
+            --soft-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            --icon-color: #E59CA8;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -53,10 +74,76 @@
             position: relative;
         }
 
+        /* --- AYARLAR BUTONU VE MENÜ --- */
+        .settings-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--note-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .settings-btn:hover {
+            transform: rotate(45deg);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .settings-menu {
+            position: absolute;
+            top: 75px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: var(--soft-shadow);
+            display: none; /* Başlangıçta gizli */
+            z-index: 99;
+            width: 200px;
+            text-align: center;
+        }
+
+        .settings-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--note-bg);
+        }
+
         /* Header & Başlıklar */
         .header-section {
             text-align: center;
             margin-bottom: 30px;
+            padding-top: 20px; /* Ayarlar butonuyla çakışmasın */
         }
 
         .basmala {
@@ -115,7 +202,7 @@
         .level-container {
             text-align: center;
             padding: 20px;
-            background: linear-gradient(135deg, var(--secondary-color) 0%, #FFF 100%);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--card-bg) 100%);
             border: 2px solid var(--button-bg);
             border-radius: 20px;
             margin-bottom: 30px;
@@ -323,16 +410,52 @@
         /* Responsive */
         @media (max-width: 600px) {
             .container { padding: 25px; }
+            .settings-btn { width: 40px; height: 40px; top: 15px; right: 15px; }
+            .settings-menu { top: 65px; right: 15px; width: 180px; }
             .input-group { flex-direction: column; }
             .add-btn { width: 100%; }
             h1 { font-size: 1.8rem; }
             .stats-panel { grid-template-columns: 1fr; gap: 15px; }
         }
+      
+      a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+      
+      .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+
+       .back-link:hover {
+            text-decoration: underline;
+      }
+      
+
     </style>
 </head>
 <body>
 
 <div class="container">
+    <a href="index.html#projects" class="back-link">← Ana Sayfaya Dön</a>
+    <!-- Ayarlar Butonu -->
+    <button class="settings-btn" onclick="toggleSettingsMenu()" title="Tema Ayarları">
+        ⚙️
+    </button>
+
+    <!-- Ayarlar Menüsü -->
+    <div class="settings-menu" id="settingsMenu">
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <span id="themeText">Koyu Mod</span>
+            <span id="themeIcon">🌙</span>
+        </div>
+    </div>
+
     <div class="header-section">
         <div class="basmala">بسم الله الرحمن الرحيم</div>
         <h1>İlim ve İbadet Takibi</h1>
@@ -351,7 +474,7 @@
     </div>
 
     <div class="level-container">
-        <div class="level-number" id="levelNumber">1</div>
+                <div class="level-number" id="levelNumber">1</div>
         <div class="level-title" id="levelTitle">Mümin Adayı</div>
         <div class="level-progress" id="nextLevelInfo">Sonraki mertebeye geçiş için 50 amel lazım</div>
     </div>
@@ -374,9 +497,56 @@
     </ul>
 </div>
 
+
 <script>
+    // --- TEMA YÖNETİMİ (Dark/Light Mode) ---
+    const settingsMenu = document.getElementById('settingsMenu');
+    const themeText = document.getElementById('themeText');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlElement = document.documentElement;
+
+    // Kayıtlı temayı kontrol et (Varsayılan 'light')
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    updateThemeUI(savedTheme);
+
+    // Ayarlar menüsünü aç/kapa
+    function toggleSettingsMenu() {
+        settingsMenu.classList.toggle('active');
+    }
+
+    // Temayı değiştir
+    function toggleTheme() {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeUI(newTheme);
+    }
+
+    // Menüdeki yazı ve ikonu güncelle
+    function updateThemeUI(theme) {
+        if (theme === 'dark') {
+            themeText.textContent = 'Aydınlık Mod';
+            themeIcon.textContent = '☀️';
+        } else {
+            themeText.textContent = 'Koyu Mod';
+            themeIcon.textContent = '🌙';
+        }
+    }
+
+    // Menü dışına tıklandığında menüyü kapat
+    document.addEventListener('click', function(event) {
+        const isClickInside = settingsMenu.contains(event.target) || event.target.classList.contains('settings-btn');
+        if (!isClickInside && settingsMenu.classList.contains('active')) {
+            settingsMenu.classList.remove('active');
+        }
+    });
+
+    // --- MEVCUT GÖREV MANTIĞI ---
+    
     // Verileri Tarayıcıda Sakla
-    // Eğer veri yoksa boş dizi başlat
     let tasks = JSON.parse(localStorage.getItem('studentTasks')) || [];
 
     // Verileri Kaydetme ve Arayüzü Güncelleme Fonksiyonu
@@ -395,9 +565,9 @@
         const select = document.getElementById('taskType');
         const type = select.value;
         
-        // Seçili option'ın metnini al (eğer value ile aynı değilse)
+        // Seçili option'ın metnini al
         const selectedOption = select.options[select.selectedIndex];
-        const name = selectedOption.text; // Gösterilen isim
+        const name = selectedOption.text; 
 
         const points = getPoints(type);
         
@@ -500,8 +670,6 @@
             const li = document.createElement('li');
             li.className = `task-item ${task.completed ? 'completed' : ''}`;
             
-            // Butonlara ID'yi string olarak geçiriyoruz, fonksiyon içinde sayıya çevirebiliriz
-            // Ancak en güvenlisi doğrudan ID'yi kullanmak.
             li.innerHTML = `
                 <div class="task-info">
                     <div class="task-name">${task.name}</div>
@@ -522,11 +690,6 @@
             list.appendChild(li);
         });
     }
-
-    // Fonksiyonları global alana (window) bağla ki HTML'den erişilebilsin
-    window.toggleTask = toggleTask;
-    window.deleteTask = deleteTask;
-    window.addTask = addTask;
 
     // İlk yükleme
     renderTasks();
