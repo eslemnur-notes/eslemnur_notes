@@ -105,6 +105,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            
         }
 
         .logo span {
@@ -181,10 +182,13 @@
         .basmala-hero {
             font-family: 'Scheherazade New', serif;
             font-size: 2.5rem;
-            color: var(--primary-color);
             margin-bottom: 20px;
             direction: rtl;
             font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent; 
+          background-clip: text;
         }
 
         .hero h1 {
@@ -257,9 +261,12 @@
             text-align: center;
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
-            color: var(--primary-color);
             margin-bottom: 60px;
             position: relative;
+            background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; 
+            background-clip: text;
         }
 
         .section-title::after {
@@ -579,6 +586,14 @@
             display: none;
         }
 		
+      /* Gradient Metin Sınıfı */
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;
+  font-weight: 700; 
+}
     </style>
 </head>
 <body>
@@ -617,7 +632,7 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="basmala-hero"> بسم الله الرحمن الرحيم</div>
-            <h1>İlim Arayan, <br><span>Kod Yazan</span> Bir Talebe</h1>
+            <h1>İlim Arayan, <br><span class="gradient-text">Kod Yazan</span> Bir Talebe</h1>
             <p class="hero-subtitle" style="font-weight: 400 !important; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;">
     İmam Hatip Lisesi mezunu ve yakın zamanda İlahiyat Fakültesi'nde ilim yolculuğuna başlayacak bir öğrenci; modern teknolojileri dinî ilimlerle harmanlamaya çalışan bir yazılımcı.
 </p>
@@ -647,18 +662,18 @@
                         derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.
                     </p>
                     <p>
-                        Hem <strong>ilim talebesi</strong> (İlahiyat öğrencisi) hem de <strong>kendini <span style="-webkit-font-smoothing: antialiased !important; font-weight: 400 !important; letter-spacing: 0.02em !important;">geliştiren</span> bir yazılımcı</strong> olarak; 
+                        Hem <strong class="gradient-text">ilim talebesi</strong> (İlahiyat öğrencisi) hem de <strong class="gradient-text">kendini <span style="-webkit-font-smoothing: antialiased !important">geliştiren</span> bir yazılımcı</strong> olarak; 
                         Kur'an-ı Kerim'in derinliklerinde gezinirken, aynı zamanda modern web teknolojileriyle 
                         anlamlı dijital eserler ortaya koymaya çalışıyorum.
                     </p>
                     <p>
-                        <strong>Amacım:</strong>ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve 
+                        Amacım; ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve 
                         teknolojiyi hayır yolunda kullanmaktır.
                     </p>
                 </div>
                 <div class="about-visual">
                     <div class="icon-box">✿</div>
-                    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); margin-bottom: 10px;">İlim & Teknoloji</h3>
+                    <h3 class="gradient-text" style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">İlim & Teknoloji</h3>
                     <p style="color: var(--text-light); font-size: 0.95rem;">
                         "Rabbim, ilmimi arttır." duası doğrultusunda, her gün yeni bir şey öğrenerek 
                         hem dünyayı hem ahireti kazanmaya çalışıyorum.
