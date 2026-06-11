@@ -50,7 +50,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Geçiş efekti eklendi */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; 
         }
 
         body {
@@ -59,6 +59,9 @@
             color: var(--text-color);
             line-height: 1.7;
             overflow-x: hidden;
+		    text-rendering: optimizeLegibility;
+    		-webkit-font-smoothing: antialiased;
+    		-moz-osx-font-smoothing: grayscale;
         }
 
         a {
@@ -210,6 +213,9 @@
             justify-content: center;
             gap: 15px;
             margin-bottom: 40px;
+		    flex-wrap: wrap;       
+   	 	    padding: 0 10px;       
+    		max-width: 100%;
         }
 
         .badge {
