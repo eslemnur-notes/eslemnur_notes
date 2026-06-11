@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adım Adım Hac ve Umre - Eslem Nur</title>
+    
+    <!-- Google Fonts: Scheherazade New, Playfair Display, Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- ORTAK DEĞİŞKENLER (index.html ile aynı) --- */
+        :root {
+            --primary-color: #B76E79;
+            --secondary-color: #FDF5E6;
+            --button-bg: #D4A5A5;
+            --button-hover: #C58F8F;
+            --accent-color: #9E7F7F;
+            --bg-color: #FFF9F9;
+            --card-bg: #FFFFFF;
+            --text-color: #4E342E;
+            --text-light: #8D6E63;
+            --border-color: #F0E6E6;
+            --note-bg: #FFF0F5;
+            --soft-shadow: 0 4px 15px rgba(183, 110, 121, 0.15);
+            --header-bg: rgba(255, 249, 249, 0.95);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #E08E98;
+            --secondary-color: #2D2D2D;
+            --button-bg: #A07070;
+            --button-hover: #805050;
+            --accent-color: #C0A0A0;
+            --bg-color: #1A1A1A;
+            --card-bg: #252525;
+            --text-color: #EAEAEA;
+            --text-light: #B0B0B0;
+            --border-color: #444444;
+            --note-bg: #333333;
+            --soft-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            --header-bg: rgba(26, 26, 26, 0.95);
+        }
+
+        /* --- GENEL --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: var(--transition);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER & NAV (index.html'den kopyalandı) --- */
+        header {
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 400;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        /* --- TEMA TOGGLE --- */
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--note-bg);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* --- HAMBURGER --- */
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 10px;
+            margin-left: auto;
+            background: none;
+            border: none;
+        }
+
+        /* --- PROGRESS BAR (Rehber için özel) --- */
+        .progress-container {
+            position: fixed;
+            top: 70px; /* Header yüksekliği kadar */
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: rgba(0,0,0,0.05);
+            z-index: 999;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-color), #8E5A65);
+            transition: width 0.4s ease;
+        }
+
+        /* --- HERO BÖLÜMÜ --- */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--note-bg) 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .basmala-hero {
+            font-family: 'Scheherazade New', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            direction: rtl;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; 
+            background-clip: text;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-family: 'Inter', 'Segoe UI', sans-serif !important;
+            font-weight: 300 !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        /* --- ADIMLAR (STEPS) --- */
+        .steps-container {
+            margin: 40px auto 80px;
+            position: relative;
+            min-height: 500px;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--soft-shadow);
+            border: 1px solid var(--border-color);
+            display: none;
+            animation: fadeIn 0.6s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card.active {
+            display: block;
+        }
+
+        /* Dekoratif Çizgi (Kartın solunda) */
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), #8E5A65);
+        }
+
+        .step-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .step-content {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* --- DUA KUTUSU (index.html'deki note-bg ile) --- */
+        .dua-box {
+            background-color: var(--note-bg);
+            border: 1px dashed var(--primary-color);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .dua-title {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .dua-text {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.6rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            direction: rtl;
+            line-height: 1.6;
+        }
+
+        .dua-text-latin {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 5px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* --- NAV BUTONLARI --- */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .step-indicator {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* index.html'deki buton stilleri */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 35px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 35px;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            background: transparent;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled, .btn-outline:disabled {
+            background-color: var(--border-color);
+            color: var(--text-light);
+            border-color: var(--border-color);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* --- ANİMASYON --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 80px 0 40px; }
+            .step-card { padding: 25px; }
+            .step-title { font-size: 1.5rem; }
+            .dua-text { font-size: 1.3rem; }
+            
+            /* Mobil Menü */
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px;
+                font-size: 1.1rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .hamburger { display: block; }
+                        .nav-links a:hover {
+                background: var(--note-bg);
+                color: var(--primary-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASYON -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <span>بسم الله</span>
+                    Eslem Nur Çetin
+                </a>
+                
+                <!-- TEMA DEĞİŞTİRME BUTONU -->
+                <button id="themeToggle" class="theme-toggle" aria-label="Temayı Değiştir">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <!-- HAMBURGER BUTONU -->
+                <button class="hamburger" onclick="toggleMenu()" aria-label="Menü">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <!-- LİNKLER -->
+                <div class="nav-links" id="navLinks">
+                    <a href="#rehber">Rehber</a>
+                    <a href="#dua">Dualar</a>
+                    <a href="#faq">S.S.S</a>
+                    <a href="#iletisim">İletişim</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- İLERLEME ÇUBUĞU -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- HERO BÖLÜMÜ -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="basmala-hero">بسم الله الرحمن الرحيم</div>
+            <h1>Adım Adım <span class="gradient-text">Hac ve Umre</span></h1>
+            <p class="hero-subtitle">
+                Ruhunuzu besleyen bu kutsal yolculukta, her adımı bilinçli ve dualarla atmanız için hazırladığımız rehberimiz.
+            </p>
+        </div>
+    </section>
+
+    <!-- ADIMLAR ALANI -->
+    <div class="container">
+        <div class="steps-container" id="rehber">
+            
+            <!-- ADIM 1: İHRAM -->
+            <div class="step-card active" data-step="1">
+                <span class="step-number">Adım 1</span>
+                <h2 class="step-title">İhrama Girme</h2>
+                <div class="step-content">
+                    <p>Mekke'ye veya Mina'ya girmeden önce belirlenmiş miyakat noktasında ihram niyeti edilir ve dua okunur. Erkekler iki rekat namaz kılıp ihram elbiselerini giyerler. Kadınlar normal temiz ve sade kıyafetlerini giyerler, yüzlerini açık bırakırlar.</p>
+                    <div class="dua-box">
+                        <span class="dua-title">İhram Niyeti Duaları:</span>
+                        <div class="dua-text">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</div>
+                        <div class="dua-text-latin">Labbeke Allahumme Umretn</div>
+                        <p style="font-size: 0.9rem; margin-top: 5px; color: var(--text-light);">(Allahım! Umre niyetiyle sana yedim, geldim.)</p>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator">Adım 1 / 5</span>
+                    <button class="btn-outline prev-btn" disabled>
+                        <i class="fas fa-arrow-left"></i> Önceki
+                    </button>
+                    <button class="btn-primary next-btn">
+                        Sonraki <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ADIM 2: TAĞAVVÜF -->
+            <div class="step-card" data-step="2">
+                <span class="step-number">Adım 2</span>
+                <h2 class="step-title">Tavaf (Kabe Çevirme)</h2>
+                <div class="step-content">
+                    <p>İhramdan sonra Kabe'yi yedi kere sağına alarak tavaf edilir. Tavafın başlangıç ve bitişi Hacer-i Esved karşısında yapılır. Tavaf sırasında istiaze ve tekbirler alınır.</p>
+                    <div class="dua-box">
+                        <span class="dua-title">Tavaf Duası:</span>
+                        <div class="dua-text">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+                        <div class="dua-text-latin">Rabbena atina fiddunnya haseneten ve fil ahireti haseneten ve kina azabannar</div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator">Adım 2 / 5</span>
+                    <button class="btn-outline prev-btn">
+                        <i class="fas fa-arrow-left"></i> Önceki
+                    </button>
+                    <button class="btn-primary next-btn">
+                        Sonraki <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ADIM 3: SA'Yİ -->
+            <div class="step-card" data-step="3">
+                <span class="step-number">Adım 3</span>
+                <h2 class="step-title">Seyi (Yürüyüş)</h2>
+                <div class="step-content">
+                    <p>Tavafın ardından Safa ve Merve tepeleri arasında yedi kez seyi yapılır. Safa'ya çıkılır, dua edilir, ardından Merve'ye inilir ve tekrar dönülür. Bu, Hz. Hacer'in su ararken yaptığı çabayı anma anlamına gelir.</p>
+                    <div class="dua-box">
+                        <span class="dua-title">Safa-Merve Duası:</span>
+                        <div class="dua-text">إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ ۖ فَمَنۡ حَجَّ الْبَيْتَ أَوِ اعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَن يَطَّوَّفَ بِهِمَا</div>
+                        <div class="dua-text-latin">İnnes safav vel merve min şa'airillah...</div>
+                        <p style="font-size: 0.9rem; margin-top: 5px; color: var(--text-light);">(Safa ve Merve, Allah'ın şiarlarındandır...)</p>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator">Adım 3 / 5</span>
+                    <button class="btn-outline prev-btn">
+                        <i class="fas fa-arrow-left"></i> Önceki
+                    </button>
+                    <button class="btn-primary next-btn">
+                        Sonraki <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ADIM 4: MİNA VE ARAFE -->
+            <div class="step-card" data-step="4">
+                <span class="step-number">Adım 4</span>
+                <h2 class="step-title">Mina ve Arafat</h2>
+                <div class="step-content">
+                    <p>Hac ibadetinin en önemli kısmıdır. Zilhicce'nin 9'uncu günü Arafat'ta vakfe yapılır. İkindi namazına kadar dualar, zikirler ve tövbe edilir. Akşam olunca Müzdelife'ye hareket edilir.</p>
+                    <div class="dua-box">
+                        <span class="dua-title">Arafat Duası:</span>
+                        <div class="dua-text">لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ ۚ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ</div>
+                        <div class="dua-text-latin">La ilahe illallah vahdahu la şerike leh, lehu'l mülkü ve lehu'l hamdü ve hüve alâ külli şey'in kadîr.</div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator">Adım 4 / 5</span>
+                    <button class="btn-outline prev-btn">
+                        <i class="fas fa-arrow-left"></i> Önceki
+                    </button>
+                    <button class="btn-primary next-btn">
+                        Sonraki <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ADIM 5: ŞEYTAN TAŞLAMA -->
+            <div class="step-card" data-step="5">
+                <span class="step-number">Adım 5</span>
+                <h2 class="step-title">Şeytan Taşlama ve Kurban</h2>
+                <div class="step-content">
+                    <p>Mina'da üç büyük şaytanı taşlamak (Cemrat). Ardından kurban kesilir, saçlar tıraş edilir veya kısaltılır. İhramdan çıkanlar (Tahallul) normal kıyafetlerine dönebilirler, ancak cinsel ilişkiden kaçınılır.</p>
+                    <div class="dua-box">
+                        <span class="dua-title">Taşlama Sırasında:</span>
+                        <div class="dua-text">اللَّهُمَّ اجْعَلْهُ حَجًّا مَبْرُورًا وَذَنْبًا مَغْفُورًا وَسَعْيًا مَشْكُورًا</div>
+                        <div class="dua-text-latin">Allahummeec'alhu haccen mebruren ve zenben mağfuren ve sa'yen meşkura.</div>
+                        <p style="font-size: 0.9rem; margin-top: 5px; color: var(--text-light);">(Allahım! Bunu makbul bir hac, affolunmuş bir günah ve şükredilecek bir seyahat eyle.)</p>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator">Adım 5 / 5</span>
+                    <button class="btn-outline prev-btn">
+                        <i class="fas fa-arrow-left"></i> Önceki
+                    </button>
+                    <button class="btn-primary next-btn" id="finishBtn" disabled>
+                        Tamamlandı <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SSS BÖLÜMÜ -->
+        <section id="faq" class="section" style="padding: 60px 0;">
+            <h2 class="section-title" style="text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 40px; background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Sıkça Sorulan Sorular</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <details style="background: var(--card-bg); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden;">
+                    <summary style="padding: 18px 25px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--text-color);">
+                        Umre için kaç gün ayırmalıyım?
+                        <span style="color: var(--primary-color); font-size: 1.2rem;">+</span>
+                    </summary>
+                    <p style="padding: 20px 25px; color: var(--text-light); border-top: 1px solid var(--border-color); font-size: 0.95rem;">
+                        Umre ibadeti kısa sürede tamamlanabilir ancak konaklama, seyahat ve manevi hazırlık için genellikle 7-10 gün yeterli bir süredir.
+                    </p>
+                </details>
+                <details style="background: var(--card-bg); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden;">
+                    <summary style="padding: 18px 25px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--text-color);">
+                        Kadınlar için özel bir kısıtlama var mı?
+                        <span style="color: var(--primary-color); font-size: 1.2rem;">+</span>
+                    </summary>
+                    <p style="padding: 20px 25px; color: var(--text-light); border-top: 1px solid var(--border-color); font-size: 0.95rem;">
+                        Kadınlar yüzlerini açık bırakmalı, eldiven takmamalı ve siyah kıyafet giymemeye özen göstermelidirler. Diğer hususlar erkeklerle aynıdır.
+                    </p>
+                </details>
+                <details style="background: var(--card-bg); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden;">
+                    <summary style="padding: 18px 25px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--text-color);">
+                        İhram elbiseleri nereden temin edilir?
+                        <span style="color: var(--primary-color); font-size: 1.2rem;">+</span>
+                    </summary>
+                    <p style="padding: 20px 25px; color: var(--text-light); border-top: 1px solid var(--border-color); font-size: 0.95rem;">
+                        İhram elbiseleri Türkiye'deki dükkanlardan veya Mekke'de miyakat noktaları yakınındaki mağazalardan temin edilebilir.
+                    </p>
+                </details>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="iletisim" style="background: var(--card-bg); border-top: 1px solid var(--border-color); padding: 60px 0 30px; text-align: center; margin-top: 80px;">
+        <div class="container footer-content">
+            <div class="footer-arabic" style="font-family: 'Scheherazade New', serif; font-size: 1.8rem; color: var(--primary-color); margin-bottom: 15px; direction: rtl;">رَبِّ زِدْنِي عِلْمًا</div>
+            <p style="margin-bottom: 30px; color: var(--text-light);">Rabbim, ilmimi arttır.</p>
+            
+            <p class="copyright" style="font-size: 0.85rem; color: var(--text-light); opacity: 0.8;">
+                © <span id="current-year"></span> Eslem Nur Çetin. Tüm hakları saklıdır.
+            </p>
+            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.7; color: var(--text-light);">
+                Bu rehber, dini bilgiler ışığında hazırlanmıştır. Detaylar için Diyanet İşleri Başkanlığı kaynaklarına başvurunuz.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // --- DEĞİŞKENLER ---
+        const steps = document.querySelectorAll('.step-card');
+        const totalSteps = steps.length;
+        let currentStep = 1;
+        
+        const progressBar = document.getElementById('progressBar');
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        // --- SAYFA YÜKLENDİĞİNDE ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            setupStepButtons();
+            updateProgress();
+                    document.getElementById('current-year').textContent = new Date().getFullYear();
+            checkSavedStep();
+        });
+
+        // --- TEMA YÖNETİMİ ---
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            if (theme === 'light') {
+                themeIcon.className = 'fas fa-moon';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // --- ADIM BUTONLARI ---
+        function setupStepButtons() {
+            steps.forEach((step, index) => {
+                const nextBtn = step.querySelector('.next-btn');
+                const prevBtn = step.querySelector('.prev-btn');
+
+                // Sonraki butonu
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        if (currentStep < totalSteps) {
+                            changeStep(currentStep + 1);
+                            // Son adımda butonu devre dışı bırak
+                            if (currentStep + 1 === totalSteps) {
+                                nextBtn.disabled = true;
+                                nextBtn.innerHTML = 'Tamamlandı <i class="fas fa-check"></i>';
+                            }
+                        }
+                    });
+                }
+
+                // Önceki butonu
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        if (currentStep > 1) {
+                            changeStep(currentStep - 1);
+                            // İlk adımdaysak önceki butonu devre dışı bırak
+                            if (currentStep - 1 === 1) {
+                                // İlk adımdaki butonu bul
+                                const firstPrevBtn = steps.querySelector('.prev-btn');
+                                if(firstPrevBtn) firstPrevBtn.disabled = true;
+                            }
+                            // Eğer son adımdan geri gelindiyse, son butonu tekrar aktif et
+                            if (currentStep - 1 < totalSteps) {
+                                const lastNextBtn = steps[totalSteps - 1].querySelector('.next-btn');
+                                if(lastNextBtn) {
+                                    lastNextBtn.disabled = false;
+                                    lastNextBtn.innerHTML = 'Sonraki <i class="fas fa-arrow-right"></i>';
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        // --- ADIM DEĞİŞTİRME ---
+        function changeStep(step) {
+            // Mevcut adımı gizle
+            steps[currentStep - 1].classList.remove('active');
+            
+            // Yeni adımı göster
+            currentStep = step;
+            steps[currentStep - 1].classList.add('active');
+
+            // İlerleme çubuğunu güncelle
+            updateProgress();
+
+            // Sayfayı yeni adımın üst kısmına kaydır
+            steps[currentStep - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Adımı kaydet
+            localStorage.setItem('hacUmreStep', currentStep);
+        }
+
+        // --- İLERLEME ÇUBUĞU ---
+        function updateProgress() {
+            const percentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = percentage + '%';
+        }
+
+        // --- KAYDEDİLMİŞ ADIMI YÜKLE ---
+        function checkSavedStep() {
+            const savedStep = localStorage.getItem('hacUmreStep');
+            if (savedStep && savedStep > 1 && savedStep <= totalSteps) {
+                // İlk adımdaki "Önceki" butonunu devre dışı bırak
+                const firstPrevBtn = steps.querySelector('.prev-btn');
+                if(firstPrevBtn) firstPrevBtn.disabled = true;
+                
+                // Son adımdaki butonu kontrol et
+                const lastNextBtn = steps[totalSteps - 1].querySelector('.next-btn');
+                if(lastNextBtn && parseInt(savedStep) === totalSteps) {
+                    lastNextBtn.disabled = true;
+                    lastNextBtn.innerHTML = 'Tamamlandı <i class="fas fa-check"></i>';
+                }
+                
+                changeStep(parseInt(savedStep));
+            } else {
+                // İlk adımdaki "Önceki" butonunu devre dışı bırak
+                const firstPrevBtn = steps.querySelector('.prev-btn');
+                if(firstPrevBtn) firstPrevBtn.disabled = true;
+            }
+        }
+
+        // --- MOBİL MENÜ ---
+        function toggleMenu() {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Menü linklerine tıklayınca menüyü kapat
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                if(icon.classList.contains('fa-times')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Sayfa dışına tıklayınca menüyü kapat
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                if(icon.classList.contains('fa-times')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
