@@ -535,7 +535,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .about-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* Mobilde varsayılan gizli */
+            .nav-links { display: none; } 
             .logo { font-size: 1.2rem; }
             
             /* Hamburger butonu mobilde görünür, masaüstünde gizli */
@@ -595,40 +595,65 @@
   font-weight: 700; 
 }
 		/* --- TÜM BOLD METİNLER İÇİN TÜRKÇE UYUMLULUK --- */
+/* --- GÜNCELLENMİŞ: MOBİLDE TÜRKÇE KARAKTER UYUMU --- */
+
+/* Genel Bold Düzenlemesi (Masaüstü ve Mobil) */
 strong {
-  font-family: 'Lato', 'Segoe UI', sans-serif; 
-  font-weight: 700; 
-  -webkit-font-smoothing: antialiased; 
-  text-rendering: optimizeLegibility; 
-  letter-spacing: -0.01em; 
+  font-family: 'Lato', 'Segoe UI', sans-serif; /* Türkçe karakterler için daha güvenli font */
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Gradient metin */
   background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
   background-clip: text;
 }
-		/* --- MOBİLDE ÖZEL TÜRKÇE KARAKTER DENGESİ --- */
+
+/* Mobilde Özel Düzenlemeler */
 @media screen and (max-width: 768px) {
-  /* Tüm bold metinler için genel yumuşatma */
+  
+  /* Tüm bold metinler için yumuşatma */
   strong {
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: subpixel-antialiased; 
     text-rendering: optimizeLegibility;
-	background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
-  	-webkit-background-clip: text;
-  	-webkit-text-fill-color: transparent; 
-  	background-clip: text;
   }
 
-  /* Sadece 'geliştiren' kelimesine özel düzeltme */
-  .ince-vurgu { 
-    /* Ağırlığı düşürme! Bold kalsın. Sadece render ayarı yap */
-    -webkit-font-smoothing: subpixel-antialiased !important; /* Kenarları netleştirir, şişkinliği alır */
-    text-rendering: optimizeLegibility !important;
-    letter-spacing: -0.02em !important; /* Harfleri biraz sıkıştırarak görsel ağırlığı dengeler */
+  
+  strong[style*="Scheherazade"], 
+  strong .gradient-text,
+  .basmala-hero strong,
+  .footer-arabic strong {
     
-	background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
-  	-webkit-background-clip: text;
-  	-webkit-text-fill-color: transparent; 
-  	background-clip: text;
+    font-variation-settings: "wght" 600;
+    /* Veya daha agresif bir çözüm için transform kullanımı (kayma olursa) */
+    /* transform: scale(0.98); */
+    
+    /* Kenar yumuşatmayı iyileştir */
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-rendering: optimizeLegibility;
+
+    letter-spacing: 0.01em; 
+  }
+
+  /* Özel 'ince-vurgu' sınıfı için daha kesin çözüm */
+  .ince-vurgu {
+    
+    font-weight: 500 !important; 
+    font-variation-settings: "wght" 500;
+    
+    
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    text-rendering: optimizeLegibility !important;
+    
+    
+    letter-spacing: 0.02em !important;
+    
+    /* Gradient korumalı */
+    background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    background-clip: text;
   }
 }
     </style>
