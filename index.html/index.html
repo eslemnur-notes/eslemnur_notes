@@ -602,6 +602,23 @@ strong {
   text-rendering: optimizeLegibility; 
   letter-spacing: -0.01em; 
 }
+		/* --- MOBİLDE ÖZEL TÜRKÇE KARAKTER DENGESİ --- */
+@media screen and (max-width: 768px) {
+  /* Tüm bold metinler için genel yumuşatma */
+  strong {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Sadece 'geliştiren' kelimesine özel düzeltme */
+  .ince-vurgu { 
+    /* Ağırlığı düşürme! Bold kalsın. Sadece render ayarı yap */
+    -webkit-font-smoothing: subpixel-antialiased !important; /* Kenarları netleştirir, şişkinliği alır */
+    text-rendering: optimizeLegibility !important;
+    letter-spacing: -0.02em !important; /* Harfleri biraz sıkıştırarak görsel ağırlığı dengeler */
+    text-shadow: 0 0 0.3px var(--text-color); /* Çok hafif gölge ile kenarları birleştirir */
+  }
+}
     </style>
 </head>
 <body>
@@ -670,8 +687,11 @@ strong {
                         derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.
                     </p>
                     <p>
-                        Hem <strong>ilim talebesi</strong> (İlahiyat öğrencisi) hem de <strong>kendini geliştiren bir yazılımcı</strong> olarak; 
-                        Kur'an-ı Kerim'in derinliklerinde gezinirken, aynı zamanda modern web teknolojileriyle 
+                        <!-- Doğru Kullanım -->
+					<p>
+  						Hem <strong>ilim talebesi</strong> (İlahiyat öğrencisi) hem de 
+  						<strong>kendini <span class="ince-vurgu">geliştiren</span> bir yazılımcı</strong> olarak;
+  						Kur'an-ı Kerim'in derinliklerinde gezinirken, aynı zamanda modern web teknolojileriyle 
                         anlamlı dijital eserler ortaya koymaya çalışıyorum.
                     </p>
                     <p>
