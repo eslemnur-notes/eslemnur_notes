@@ -865,7 +865,7 @@
                 </div>
             </div>
 
-            <p class="copyright">© 2026 Eslem Nur Çetin. Tüm hakları saklıdır.</p>
+            <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin. Tüm hakları saklıdır.</p>
         </div>
         
         <!-- Ko-fi Widget -->
@@ -958,6 +958,14 @@
         window.onload = () => {
             initTheme();
         };
+		// --- YIL OTOMATİK GÜNCELLEME ---
+		document.addEventListener("DOMContentLoaded", function() {
+    		const yearSpan = document.getElementById("current-year");
+    		if (yearSpan) {
+        		const currentYear = new Date().getFullYear();
+        		yearSpan.textContent = currentYear;
+    }
+});
     </script>
 </body>
 </html>
