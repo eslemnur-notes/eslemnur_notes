@@ -259,14 +259,35 @@ button:hover {
 }
 .back-btn:hover { color: var(--primary-color); }
 
-/* --- MOBİL GÖRÜNÜM --- */
+/* --- MOBİL GÖRÜNÜM (DÜZELTİLDİ) --- */
 @media (max-width: 768px) {
-    .hamburger { display: block; }
+    .hamburger {
+        display: block;
+        order: 3; /* En sağda olsun */
+        margin-left: 10px !important;
+    }
+
+    #themeToggle {
+        display: flex; /* Mobilde de görünsün */
+        order: 2; /* Hamburgerden önce gelsin */
+        margin-right: 10px !important;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        order: 1; /* En solda olsun */
+        flex-shrink: 1; /* Taşmayı önle */
+        max-width: 50%; /* Logo çok büyümesin */
+    }
+
+    .logo span {
+        display: none; /* Mobilde Arapça basmalleri gizle (yer kurtar) */
+    }
 
     .nav-links {
         display: none;
         position: absolute;
-        top: 100%;
+        top: 100%; /* Header'ın hemen altına */
         left: 0;
         width: 100%;
         background: var(--card-bg);
@@ -277,29 +298,59 @@ button:hover {
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         z-index: 999;
+        margin-top: 0; /* Fazla boşluk olmasın */
     }
 
-    .nav-links.active { display: flex; }
+    .nav-links.active {
+        display: flex;
+    }
 
-    .logo { font-size: 1.2rem; }
-    
-    header { padding: 10px 0; }
+    .nav-links a {
+        padding: 15px;
+        font-size: 1.1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
 
-    
-    h1 { 
-        font-size: 1.8rem; 
-        margin: 20px 0 10px 0; 
+    nav {
+        flex-wrap: nowrap; /* Kırılma olmasın */
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px; /* Sağ/sol padding azalt */
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+        margin: 20px 0 10px 0;
         word-wrap: break-word;
         padding: 0 10px;
-        text-align: center; 
+        text-align: center;
     }
-    
-    .arabic { font-size: 1.6rem; }
-    .controls { flex-direction: column; }
-    select { width: 100%; }
-    button { width: 100%; }
-    
-    .container { padding: 0 15px; }
+
+    .arabic {
+        font-size: 1.4rem; /* Biraz küçülttüm */
+        line-height: 1.8;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
 }
     </style>
 </head>
