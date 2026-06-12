@@ -259,104 +259,143 @@ button:hover {
 }
 .back-btn:hover { color: var(--primary-color); }
 
-/* --- MOBİL GÖRÜNÜM (INDEX.HTML İLE AYNI) --- */
+/* --- MOBİL GÖRÜNÜM (DÜZELTİLDİ - DAHA GENİŞ BOŞLUKLAR) --- */
 @media (max-width: 768px) {
-    /* Hamburger Menüsü Görünür Yap */
-    .hamburger {
-        display: block;
-        margin-left: auto; /* En sağa it */
-        font-size: 1.8rem;
-        color: var(--primary-color);
-        padding: 5px;
-        z-index: 1001;
+    /* HEADER GENEL AYARLARI */
+    header {
+        padding: 15px 0 !important; /* Üst-alt daha fazla boşluk */
+        min-height: 70px; /* Minimum yükseklik verelim */
     }
 
-    /* Navigasyon Linklerini Gizle & Stili Ayarla */
+    nav {
+        padding: 0 15px !important; /* Sağ-sol kenar boşluğu */
+        gap: 15px !important; /* Elemanlar arası minimum boşluk */
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Taşırsa alt satıra geçsin */
+        row-gap: 10px; /* Satır arası boşluk */
+    }
+
+    /* LOGO AYARLARI (SOL TARAF) */
+    .logo {
+        font-size: 1.3rem !important;
+        line-height: 1.2;
+        padding: 8px 12px; /* Logo etrafına boşluk */
+        border-radius: 12px;
+        background: var(--note-bg); /* Hafif arka plan */
+        margin-right: auto; /* Sağa itmesin, sola yassın */
+    }
+
+    .logo span {
+        display: inline; /* Arapça yazı gizlenmesin */
+        font-size: 1.2rem;
+        margin-right: 8px; /* İsim ile arası */
+    }
+
+    /* TEMA BUTONU (ORTA/SAĞ) */
+    #themeToggle {
+        width: 48px !important; /* Biraz daha büyük */
+        height: 48px !important;
+        order: 2;
+        margin: 0 5px !important; /* Hamburger ile arası */
+        padding: 8px;
+    }
+
+    /* HAMBURGER BUTONU (SAĞ) */
+    .hamburger {
+        display: block;
+        order: 3; /* En sağda */
+        font-size: 2rem !important; /* Daha büyük */
+        color: var(--primary-color);
+        cursor: pointer;
+        padding: 10px !important; /* Buton etrafında boşluk */
+        margin-left: 5px !important;
+        margin-right: 0 !important;
+        background: none;
+        border: none;
+    }
+
+    /* NAV LINKLERİ (AÇILIR MENÜ) */
     .nav-links {
         display: none;
         position: absolute;
-        top: 100%; /* Header'ın hemen altına */
+        top: 100%;
         left: 0;
         width: 100%;
         background: var(--card-bg);
         flex-direction: column;
         text-align: center;
-        padding: 20px 0;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        padding: 25px 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         z-index: 999;
+        margin-top: 5px; /* Header'dan biraz boşluk */
     }
 
     .nav-links.active {
         display: flex;
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .nav-links a {
         display: block;
-        padding: 15px;
+        padding: 16px 20px; /* Link içi daha geniş */
         font-size: 1.1rem;
         border-bottom: 1px solid var(--border-color);
         color: var(--text-color);
         text-decoration: none;
+        transition: all 0.3s;
     }
 
     .nav-links a:hover {
         background: var(--note-bg);
         color: var(--primary-color);
+        padding-left: 25px; /* Hoverda hafif hareket */
     }
 
-    /* Logo Ayarları */
-    .logo {
-        font-size: 1.2rem;
-        flex-shrink: 1; /* Taşmayı önle */
-    }
-
-    /* Logo'daki Arapça Yazıyı Mobilde Gizle (Eğer çok kalabalık görünüyorsa) */
-    .logo span {
-        display: inline; /* index.html'de gizlenmemişse burayı 'none' yapabilirsin */
-        font-size: 1.1rem;
-    }
-
-    /* Tema Butonu Ayarları */
-    #themeToggle {
-        order: 2; /* Hamburgerden önce, logodan sonra gelsin */
-        margin-right: 15px !important; /* Hamburger ile arası */
-    }
-
-    /* Header ve Nav Düzenlemeleri */
-    header {
-        padding: 10px 0; /* Üst-alt boşluğu azalt */
-    }
-
-    nav {
-        flex-wrap: nowrap; /* Kırılma olmasın, tek satırda kalsın */
-        justify-content: space-between; /* Elemanları dağıt */
-        align-items: center; /* Dikey ortala */
-        padding: 0 15px !important; /* Sağ-sol kenar boşluğunu azalt ama ezilme */
-    }
-
-    /* İçerik Ayarları */
+    /* ANA BAŞLIK (H1) */
     h1 {
-        font-size: 1.6rem;
-        margin: 20px 0 10px 0;
+        font-size: 1.6rem !important;
+        margin: 25px 0 15px 0 !important;
         word-wrap: break-word;
-        padding: 0 10px;
+        padding: 0 15px;
         text-align: center;
     }
 
-    .arabic {
-        font-size: 1.5rem; /* Okunaklılık için biraz küçük */
-        line-height: 1.8;
+    /* DİĞER İÇERİK AYARLARI */
+    .header-sub {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        padding: 0 10px;
     }
 
     .controls {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        margin-bottom: 25px;
     }
 
     select, button {
         width: 100%;
+        font-size: 1rem;
+        padding: 14px 20px;
+    }
+
+    .arabic {
+        font-size: 1.5rem;
+        line-height: 2.2;
+        margin-bottom: 1.2rem;
+    }
+
+    .translation {
+        font-size: 1rem;
+        padding: 12px;
     }
 
     .container {
