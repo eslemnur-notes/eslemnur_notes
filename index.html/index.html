@@ -3,15 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Meta Etiketleri -->
     <title>Eslem Nur | İlim ve Kod</title>
+    <meta name="description" content="Eslem Nur Çetin - İlahiyat öğrencisi ve web geliştiricisinin portfolyosu. Kur'an notları ve dijital ilim projeleri.">
+    <meta name="keywords" content="İslami İlimler, Web Geliştirme, Tefsir, Arapça, Proton, Eslem Nur Çetin, İmam Hatip, Dijital Notlar, Portfolio">
+    <meta name="author" content="Eslem Nur Çetin">
+    <meta name="robots" content="index, follow">
     
-    
+    <!-- Open Graph (Sosyal Medya Paylaşımı İçin) -->
+    <meta property="og:title" content="Eslem Nur | İlim ve Kod">
+    <meta property="og:description" content="İlim talebesi ve yazılımcı portfolyosu. Ücretsiz ilmi notlar ve dijital uygulamalar.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1598788154388-39c97a3b00e2?q=80&w=1171&auto=format&fit=crop">
+    <meta property="og:url" content="https://eslemnur.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+
+    <!-- Fontlar & İkonlar -->
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        
         :root {
             --primary-color: #B76E79;
             --secondary-color: #FDF5E6;
@@ -28,7 +40,6 @@
             --header-bg: rgba(255, 249, 249, 0.95);
         }
 
-        /* --- KOYU MOD DEĞİŞKENLERİ --- */
         [data-theme="dark"] {
             --primary-color: #E08E98;
             --secondary-color: #2D2D2D;
@@ -45,617 +56,108 @@
             --header-bg: rgba(26, 26, 26, 0.95);
         }
 
-        /* --- GENEL AYARLAR --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; 
-        }
+        /* --- Temel Ayarlar --- */
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.7; overflow-x: hidden; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        ul { list-style: none; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        body {
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            overflow-x: hidden;
-		    text-rendering: optimizeLegibility;
-    		-webkit-font-smoothing: antialiased;
-    		-moz-osx-font-smoothing: grayscale;
-        }
+        /* --- Header & Navigasyon --- */
+        header { background: var(--header-bg); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); padding: 15px 0; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        .logo span { font-family: 'Scheherazade New', serif; font-size: 1.2rem; color: var(--accent-color); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 400; color: var(--text-color); font-size: 0.95rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--primary-color); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .theme-toggle { background: transparent; border: 2px solid var(--border-color); color: var(--text-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-right: 15px; transition: all 0.3s ease; }
+        .theme-toggle:hover { background: var(--note-bg); border-color: var(--primary-color); color: var(--primary-color); }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
+        /* --- Hero Bölümü --- */
+        .hero { padding: 100px 0; text-align: center; position: relative; background: linear-gradient(135deg, var(--bg-color) 0%, var(--note-bg) 100%); overflow: hidden; }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .basmala-hero { font-family: 'Scheherazade New', serif; font-size: 2.5rem; margin-bottom: 20px; direction: rtl; font-weight: 700; background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--text-color); margin-bottom: 15px; line-height: 1.2; }
+        .hero h1 span { color: var(--primary-color); }
+        .hero-subtitle { font-size: 1.2rem; color: var(--text-light); margin-bottom: 30px; font-family: 'Inter', 'Segoe UI', sans-serif !important; font-weight: 300 !important; letter-spacing: 0.5px !important; }
+        .hero-badges { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; padding: 0 10px; max-width: 100%; }
+        .badge { background: var(--note-bg); color: var(--accent-color); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; border: 1px solid var(--border-color); }
+        .btn-primary { display: inline-block; padding: 12px 35px; background-color: var(--primary-color); color: white; border-radius: 30px; font-weight: 600; box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3); transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--button-hover); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4); }
 
-        ul {
-            list-style: none;
-        }
+        /* --- Hakkımda --- */
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 60px; position: relative; background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .section-title::after { content: '✿'; display: block; font-size: 1.5rem; color: var(--accent-color); margin-top: 10px; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-text p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-light); }
+        .about-visual { background: var(--card-bg); padding: 40px; border-radius: 30px; box-shadow: var(--soft-shadow); border: 1px solid var(--border-color); text-align: center; position: relative; }
+        .about-visual::before { content: ''; position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px; border: 2px dashed var(--border-color); border-radius: 20px; z-index: 0; }
+        .icon-box { font-size: 4rem; color: var(--primary-color); margin-bottom: 20px; position: relative; z-index: 1; }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        /* --- Beceriler --- */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .skill-card { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--soft-shadow); border: 1px solid var(--border-color); transition: transform 0.3s; }
+        .skill-card:hover { transform: translateY(-5px); }
+        .skill-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .skill-icon { font-size: 1.8rem; color: var(--primary-color); }
+        .skill-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-color); }
+        .skill-list li { margin-bottom: 8px; color: var(--text-light); font-size: 0.95rem; padding-left: 20px; position: relative; }
+        .skill-list li::before { content: '•'; color: var(--primary-color); font-weight: bold; position: absolute; left: 0; }
 
-        /* --- HEADER & NAV --- */
-        header {
-            background: var(--header-bg);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 0;
-        }
+        /* --- Projeler --- */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-card { background: var(--card-bg); border-radius: 20px; box-shadow: var(--soft-shadow); overflow: hidden; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(183, 110, 121, 0.25); }
+        .project-img { height: 180px; background-color: #f0f0f0; overflow: hidden; }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+        .project-card:hover .project-img img { transform: scale(1.1); }
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary-color); margin-bottom: 10px; }
+        .project-desc { font-size: 0.95rem; color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
+        .btn-outline { display: inline-block; padding: 8px 25px; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 25px; font-weight: 600; font-size: 0.9rem; text-align: center; transition: all 0.3s; text-decoration: none; }
+        .btn-outline:hover { background-color: var(--primary-color); color: white; box-shadow: 0 4px 10px rgba(183, 110, 121, 0.4); }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* --- Footer --- */
+        footer { background: var(--card-bg); border-top: 1px solid var(--border-color); padding: 60px 0 30px; text-align: center; margin-top: 80px; }
+        .footer-content { max-width: 600px; margin: 0 auto; }
+        .footer-arabic { font-family: 'Scheherazade New', serif; font-size: 1.8rem; color: var(--primary-color); margin-bottom: 15px; direction: rtl; }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin: 30px 0; align-items: center; flex-wrap: wrap; }
+        .social-link { width: 45px; height: 45px; border-radius: 50%; background: var(--note-bg); display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-size: 1.2rem; transition: all 0.3s; text-decoration: none; }
+        .social-link:hover { background: var(--primary-color); color: white; transform: rotate(10deg); }
+        .copyright { font-size: 0.85rem; color: var(--text-light); opacity: 0.8; }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            
-        }
+        /* --- Sekme Butonları --- */
+        .tab-btn.active { background: var(--primary-color); color: white; border-color: var(--primary-color); box-shadow: 0 4px 10px rgba(183, 110, 121, 0.3); }
+        .tab-btn:hover:not(.active) { background: var(--note-bg); color: var(--primary-color); border-color: var(--primary-color); }
+        .project-group { animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .logo span {
-            font-family: 'Scheherazade New', serif;
-            font-size: 1.2rem;
-            color: var(--accent-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 400;
-            color: var(--text-color);
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* --- TEMA TOGGLE BUTONU --- */
-        .theme-toggle {
-            background: transparent;
-            border: 2px solid var(--border-color);
-            color: var(--text-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-right: 15px; /* Hamburger ile arası */
-            transition: all 0.3s ease;
-        }
-        .theme-toggle:hover {
-            background: var(--note-bg);
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        /* --- HERO BÖLÜMÜ --- */
-        .hero {
-            padding: 100px 0;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(135deg, var(--bg-color) 0%, var(--note-bg) 100%);
-            overflow: hidden;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .basmala-hero {
-            font-family: 'Scheherazade New', serif;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            direction: rtl;
-            font-weight: 700;
-            background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent; 
-          background-clip: text;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--text-color);
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--primary-color);
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 30px;
-            font-family: 'Inter', 'Segoe UI', sans-serif !important;
-            font-weight: 300 !important;
-            letter-spacing: 0.5px !important;
-        }
-
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-		    flex-wrap: wrap;       
-   	 	    padding: 0 10px;       
-    		max-width: 100%;
-        }
-
-        .badge {
-            background: var(--note-bg);
-            color: var(--accent-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-			font-weight: 400 !important; 
-			-webkit-font-smoothing: antialiased; 
-			text-rendering: optimizeLegibility;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 12px 35px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--button-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
-        }
-
-        /* --- HAKKIMDA BÖLÜMÜ --- */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 60px;
-            position: relative;
-            background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; 
-            background-clip: text;
-        }
-
-        .section-title::after {
-            content: '✿';
-            display: block;
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            margin-top: 10px;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-            color: var(--text-light);
-        }
-
-        .about-visual {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: var(--soft-shadow);
-            border: 1px solid var(--border-color);
-            text-align: center;
-            position: relative;
-        }
-
-        .about-visual::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            border: 2px dashed var(--border-color);
-            border-radius: 20px;
-            z-index: 0;
-        }
-
-        .icon-box {
-            font-size: 4rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* --- BECERİLERİM --- */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: var(--soft-shadow);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .skill-icon {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-        }
-
-        .skill-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--text-color);
-        }
-
-        .skill-list li {
-            margin-bottom: 8px;
-            color: var(--text-light);
-            font-size: 0.95rem;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .skill-list li::before {
-            content: '•';
-            color: var(--primary-color);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        /* --- PROJELER --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: var(--soft-shadow);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(183, 110, 121, 0.25);
-        }
-
-        .project-img {
-            height: 180px;
-            background-color: #f0f0f0;
-            overflow: hidden;
-        }
-
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
-        }
-
-        .project-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .project-desc {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .btn-outline {
-            display: inline-block;
-            padding: 8px 25px;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-align: center;
-            transition: all 0.3s;
-			font-weight: 400 !important; 
-			-webkit-font-smoothing: antialiased; 
-			text-rendering: optimizeLegibility;
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        /* --- İLETİŞİM & FOOTER --- */
-        footer {
-            background: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-            padding: 60px 0 30px;
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .footer-arabic {
-            font-family: 'Scheherazade New', serif;
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            direction: rtl;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
-            align-items: center;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--note-bg);
-            display: flex;
-            align-items:             center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: rotate(10deg);
-        }
-
-        .copyright {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            opacity: 0.8;
-        }
-        /* --- SEKME BUTONLARI STİLİ --- */
-        .tab-btn.active {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-            box-shadow: 0 4px 10px rgba(183, 110, 121, 0.3);
-        }
-        .tab-btn:hover:not(.active) {
-            background: var(--note-bg);
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        /* --- PROJE GRUPLARI --- */
-        .project-group {
-            animation: fadeIn 0.5s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-                /* --- RESPONSIVE & MOBİL MENÜ --- */
+        /* --- Responsive --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .about-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; } 
+            .nav-links { display: none; }
             .logo { font-size: 1.2rem; }
-            
-            /* Hamburger butonu mobilde görünür, masaüstünde gizli */
-            .hamburger {
-                display: block !important;
-                font-size: 1.8rem;
-                color: var(--primary-color);
-                cursor: pointer;
-                padding: 10px;
-                margin-left: auto;
-                background: none;
-                border: none;
-            }
-
-            /* Menü açıkken çalışacak stiller */
-            .nav-links.active {
-                display: flex !important;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--card-bg);
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 0;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                border-bottom-left-radius: 20px;
-                border-bottom-right-radius: 20px;
-                z-index: 1000;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 15px;
-                font-size: 1.1rem;
-                border-bottom: 1px solid var(--border-color);
-                color: var(--text-color);
-            }
-            
-            .nav-links a:hover {
-                background: var(--note-bg);
-                color: var(--primary-color);
-            }
+            .hamburger { display: block !important; font-size: 1.8rem; color: var(--primary-color); cursor: pointer; padding: 10px; margin-left: auto; background: none; border: none; }
+            .nav-links.active { display: flex !important; position: absolute; top: 70px; left: 0; width: 100%; background: var(--card-bg); flex-direction: column; text-align: center; padding: 20px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; z-index: 1000; animation: slideDown 0.3s ease-out; }
+            @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+            .nav-links a { display: block; padding: 15px; font-size: 1.1rem; border-bottom: 1px solid var(--border-color); color: var(--text-color); }
+            .nav-links a:hover { background: var(--note-bg); color: var(--primary-color); }
         }
+        .hamburger { display: none; }
+        
+        .gradient-text { background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; }
+        strong { font-family: 'Lato', 'Segoe UI', sans-serif; font-weight: 700; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .ince-vurgu { font-weight: 500 !important; font-variation-settings: "wght" 500; -webkit-font-smoothing: subpixel-antialiased !important; text-rendering: optimizeLegibility !important; letter-spacing: 0.02em !important; background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-        /* Masaüstünde hamburger gizli olmalı (Media Query dışında) */
-        .hamburger {
-            display: none;
+        @media screen and (max-width: 768px) {
+            strong { -webkit-font-smoothing: subpixel-antialiased; text-rendering: optimizeLegibility; }
         }
-		
-      /* Gradient Metin Sınıfı */
-.gradient-text {
-  background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  background-clip: text;
-  font-weight: 700; 
-}
-		/* --- TÜM BOLD METİNLER İÇİN TÜRKÇE UYUMLULUK --- */
-/* --- GÜNCELLENMİŞ: MOBİLDE TÜRKÇE KARAKTER UYUMU --- */
-
-/* Genel Bold Düzenlemesi (Masaüstü ve Mobil) */
-strong {
-  font-family: 'Lato', 'Segoe UI', sans-serif; /* Türkçe karakterler için daha güvenli font */
-  font-weight: 700;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  /* Gradient metin */
-  background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  background-clip: text;
-}
-
-/* Mobilde Özel Düzenlemeler */
-@media screen and (max-width: 768px) {
-  
-  /* Tüm bold metinler için yumuşatma */
-  strong {
-    -webkit-font-smoothing: subpixel-antialiased; 
-    text-rendering: optimizeLegibility;
-  }
-
-  
-  strong[style*="Scheherazade"], 
-  strong .gradient-text,
-  .basmala-hero strong,
-  .footer-arabic strong {
-    
-    font-variation-settings: "wght" 600;
-    /* Veya daha agresif bir çözüm için transform kullanımı (kayma olursa) */
-    /* transform: scale(0.98); */
-    
-    /* Kenar yumuşatmayı iyileştir */
-    -webkit-font-smoothing: subpixel-antialiased;
-    text-rendering: optimizeLegibility;
-
-    letter-spacing: 0.01em; 
-  }
-
-  /* Özel 'ince-vurgu' sınıfı için daha kesin çözüm */
-  .ince-vurgu {
-    
-    font-weight: 500 !important; 
-    font-variation-settings: "wght" 500;
-    
-    
-    -webkit-font-smoothing: subpixel-antialiased !important;
-    text-rendering: optimizeLegibility !important;
-    
-    
-    letter-spacing: 0.02em !important;
-    
-    /* Gradient korumalı */
-    background: linear-gradient(90deg, var(--primary-color), #8E5A65); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    background-clip: text;
-  }
-}
     </style>
 </head>
 <body>
@@ -664,22 +166,9 @@ strong {
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">
-                    <span>بسم الله</span>
-                    Eslem Nur Çetin
-                </a>
-                
-                <!-- TEMA DEĞİŞTİRME BUTONU -->
-                <button id="themeToggle" class="theme-toggle" aria-label="Temayı Değiştir">
-                    <i class="fas fa-moon"></i>
-                </button>
-
-                <!-- HAMBURGER BUTONU -->
-                <button class="hamburger" onclick="toggleMenu()" style="background: none; border: none; cursor: pointer;">
-                    ☰
-                </button>
-                
-                <!-- LİNKLER -->
+                <a href="#" class="logo"><span>بسم الله</span> Eslem Nur Çetin</a>
+                <button id="themeToggle" class="theme-toggle" aria-label="Temayı Değiştir"><i class="fas fa-moon" aria-hidden="true"></i></button>
+                <button class="hamburger" onclick="toggleMenu()" style="background: none; border: none; cursor: pointer;" aria-label="Menüyü Aç">☰</button>
                 <div class="nav-links">
                     <a href="#about">Hakkımda</a>
                     <a href="#skills">Yetenekler</a>
@@ -695,112 +184,55 @@ strong {
         <div class="container hero-content">
             <div class="basmala-hero"> بسم الله الرحمن الرحيم</div>
             <h1>İlim Arayan, <br><span class="gradient-text">Kod Yazan</span> Bir Talebe</h1>
-            <p class="hero-subtitle" style="font-weight: 400 !important; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;">
-    İmam Hatip Lisesi mezunu ve yakın zamanda İlahiyat Fakültesi'nde ilim yolculuğuna başlayacak bir öğrenci; modern teknolojileri dinî ilimlerle harmanlamaya çalışan bir yazılımcı.
-</p>
-            
-            <div class="hero-badges" style="font-weight: 400 !important; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;">
-                <span class="badge">Kur'an</span>
-                <span class="badge">Arapça</span>
-                <span class="badge">Tefsir</span>
-                <span class="badge">HTML/CSS</span>
-                <span class="badge">Web Geliştirme</span>
+            <p class="hero-subtitle">İmam Hatip Lisesi mezunu ve yakın zamanda İlahiyat Fakültesi'nde ilim yolculuğuna başlayacak bir öğrenci; modern teknolojileri dinî ilimlerle harmanlamaya çalışan bir yazılımcı.</p>
+            <div class="hero-badges">
+                <span class="badge">Kur'an</span><span class="badge">Arapça</span><span class="badge">Tefsir</span><span class="badge">HTML/CSS</span><span class="badge">Web Geliştirme</span>
             </div>
-
             <a href="#projects" class="btn-primary">Projelerimi Gör</a>
         </div>
     </section>
 
-    <!-- HAKKIMDA BÖLÜMÜ -->
+    <!-- HAKKIMDA -->
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">Hakkımda</h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p>
-                        <span style="font-family: 'Scheherazade New', serif; font-size: 1.4rem; color: var(--primary-color); direction: rtl; display: inline-block; margin-right: 10px; vertical-align: middle;">السلام عليكم ورحمة الله وبركاته</span>
-                        Ben Eslem Nur. İlimi kalbimle, kodları ise zihnimle birleştirmeye çalışıyorum. 
-                        İmam Hatip Lisesi eğitimim boyunca edindiğim ilmi birikimi, yakın zamanda İlahiyat Fakültesi'nde 
-                        derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.
-                    </p>
-                    <p>
-                        <!-- Doğru Kullanım -->
-					<p>
-  						Hem <strong>ilim talebesi</strong> (İlahiyat öğrencisi) hem de 
-  						<strong>kendini <span class="ince-vurgu">geliştiren</span> bir yazılımcı</strong> olarak;
-  						Kur'an-ı Kerim'in derinliklerinde gezinirken, aynı zamanda modern web teknolojileriyle 
-                        anlamlı dijital eserler ortaya koymaya çalışıyorum.
-                    </p>
-                    <p>
-                      <strong style="text-decoration: underline;">Amacım:</strong> ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve 
-                        teknolojiyi hayır yolunda kullanmaktır.
-                    </p>
+                    <p><span style="font-family: 'Scheherazade New', serif; font-size: 1.4rem; color: var(--primary-color); direction: rtl; display: inline-block; margin-right: 10px; vertical-align: middle;">السلام عليكم ورحمة الله وبركاته</span> Ben Eslem Nur. İlimi kalbimle, kodları ise zihnimle birleştirmeye çalışıyorum. İmam Hatip Lisesi eğitimim boyunca edindiğim ilmi birikimi, yakın zamanda İlahiyat Fakültesi'nde derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.</p>
+                    <p>Hem <strong>ilim talebesi</strong> (İlahiyat öğrencisi) hem de <strong>kendini <span class="ince-vurgu">geliştiren</span> bir yazılımcı</strong> olarak; Kur'an-ı Kerim'in derinliklerinde gezinirken, aynı zamanda modern web teknolojileriyle anlamlı dijital eserler ortaya koymaya çalışıyorum.</p>
+                    <p><strong style="text-decoration: underline;">Amacım:</strong> ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve teknolojiyi hayır yolunda kullanmaktır.</p>
                 </div>
                 <div class="about-visual">
                     <div class="icon-box">✿</div>
                     <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px; color: var(--primary-color)">İlim & Teknoloji</h3>
-                    <p style="color: var(--text-light); font-size: 0.95rem;">
-                        "Rabbim, ilmimi arttır." duası doğrultusunda, her gün yeni bir şey öğrenerek 
-                        hem dünyayı hem ahireti kazanmaya çalışıyorum.
-                    </p>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">"Rabbim, ilmimi arttır." duası doğrultusunda, her gün yeni bir şey öğrenerek hem dünyayı hem ahireti kazanmaya çalışıyorum.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- BECERİLERİM -->
-    <section id="skills" class="section" >
+    <section id="skills" class="section">
         <div class="container">
             <h2 class="section-title">Yeteneklerim</h2>
             <div class="skills-container">
-                
                 <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">📖</div>
-                        <div class="skill-title">İslami İlimler</div>
-                    </div>
-                    <ul class="skill-list">
-                        <li>Tefsir ve Meali Okuma</li>
-                        <li>Arapça Dil Bilgisi</li>
-                        <li>Tecvid Kuralları</li>
-                        <li>Hadis ve Fıkıh Temelleri</li>
-                        <li>İslam Tarihçesi</li>
-                    </ul>
+                    <div class="skill-header"><div class="skill-icon">📖</div><div class="skill-title">İslami İlimler</div></div>
+                    <ul class="skill-list"><li>Tefsir ve Meali Okuma</li><li>Arapça Dil Bilgisi</li><li>Tecvid Kuralları</li><li>Hadis ve Fıkıh Temelleri</li><li>İslam Tarihçesi</li></ul>
                 </div>
-
                 <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">💻</div>
-                        <div class="skill-title">Yazılım & Tasarım</div>
-                    </div>
-                    <ul class="skill-list">
-                        <li>HTML5 & CSS3 (Semantik & Responsive)</li>
-                        <li>JavaScript (Temel Seviye)</li>
-                        <li>Web Tasarım (UI/UX)</li>
-                        <li>Dijital Not Yönetimi</li>
-                        <li>Dosya Formatları (PDF, EPUB)</li>
-                    </ul>
+                    <div class="skill-header"><div class="skill-icon">💻</div><div class="skill-title">Yazılım & Tasarım</div></div>
+                    <ul class="skill-list"><li>HTML5 & CSS3 (Semantik & Responsive)</li><li>JavaScript (Temel Seviye)</li><li>Web Tasarım (UI/UX)</li><li>Dijital Not Yönetimi</li><li>Dosya Formatları (PDF, EPUB)</li></ul>
                 </div>
-
                 <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">🌸</div>
-                        <div class="skill-title">Kişisel Özellikler</div>
-                    </div>
-                    <ul class="skill-list">
-                        <li>Sistemli Çalışma</li>
-                        <li>Araştırma & Analiz</li>
-                        <li>Dijital İçerik Üretimi</li>
-                        <li>Zaman Yönetimi</li>
-                        <li>Aile ve Topluluk Projeleri</li>
-                    </ul>
+                    <div class="skill-header"><div class="skill-icon">🌸</div><div class="skill-title">Kişisel Özellikler</div></div>
+                    <ul class="skill-list"><li>Sistemli Çalışma</li><li>Araştırma & Analiz</li><li>Dijital İçerik Üretimi</li><li>Zaman Yönetimi</li><li>Aile ve Topluluk Projeleri</li></ul>
                 </div>
-
             </div>
         </div>
     </section>
 
-        <!-- PROJELERİM (GÜNCELLENMİŞ) -->
+    <!-- PROJELERİM (TÜM PROJELE Rİ GERİ GETİRİLDİ) -->
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title">Projelerim</h2>
@@ -808,180 +240,96 @@ strong {
                 Hazırladığım ücretsiz dijital notlar ve web projeleri. Hepsini sadaka-i cariye niyetiyle paylaşıyorum.
             </p>
 
-            <!-- SEKME BUTONLARI -->
             <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-                <button class="tab-btn active" onclick="switchProjectTab('pdf')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">
-                    PDF & Defterler
-                </button>
-                <button class="tab-btn" onclick="switchProjectTab('web')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">
-                    Web Uygulamaları
-                </button>
+                <button class="tab-btn active" tabindex="0" onclick="switchProjectTab('pdf')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">PDF & Defterler</button>
+                <button class="tab-btn" tabindex="0" onclick="switchProjectTab('web')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Web Uygulamaları</button>
             </div>
 
-            <!-- PDF & DEFTERLER GRUBU (Varsayılan Aktif) -->
-            <div id="group-pdf" class="project-group active">
+            <!-- PDF GRUBU (7 PROJE) -->
+            <div id="group-pdf" class="project-group active" style="display: grid;">
                 <div class="projects-grid">
-                    <!-- PROJE 1 -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://i.pinimg.com/736x/03/96/57/03965764fcaed9d3e045ccb040656816.jpg" alt="Gölgeli Kur'an"></div>
-                        <div class="project-content">
-                            <div class="project-title">Gölgeli Kur'an</div>
-                            <p class="project-desc">Kur'an-ı Kerim'i yazarak öğrenmek için hazırlanmış zarif şablon.</p>
-                            <a href="https://drive.proton.me/urls/QADJ318QJR#JmAVkU5icdO9" target="_blank" class="btn-outline">İndir</a>
-                        </div>
+                        <div class="project-img"><img src="https://i.pinimg.com/736x/03/96/57/03965764fcaed9d3e045ccb040656816.jpg" alt="Gölgeli Kur'an" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Gölgeli Kur'an</div><p class="project-desc">Kur'an-ı Kerim'i yazarak öğrenmek için hazırlanmış zarif şablon.</p><a href="https://drive.proton.me/urls/QADJ318QJR#JmAVkU5icdO9" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                    <!-- PROJE 2 -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://i.pinimg.com/736x/90/a7/a1/90a7a1ed70e10606b9b14d48ef4f3399.jpg" alt="Esma-ul Husna"></div>
-                        <div class="project-content">
-                            <div class="project-title">Esma-ul Husna (Dijital)</div>
-                            <p class="project-desc">Allah'ın 99 ismini interaktif olarak inceleyebileceğiniz defter. (GoodNotes)</p>
-                            <a href="https://drive.proton.me/urls/QBP0M93S1G#oLuzlVWbQhwi" target="_blank" class="btn-outline">İndir</a>
-                        </div>
+                        <div class="project-img"><img src="https://i.pinimg.com/736x/90/a7/a1/90a7a1ed70e10606b9b14d48ef4f3399.jpg" alt="Esma-ul Husna" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Esma-ul Husna (Dijital)</div><p class="project-desc">Allah'ın 99 ismini interaktif olarak inceleyebileceğiniz defter. (GoodNotes)</p><a href="https://drive.proton.me/urls/QBP0M93S1G#oLuzlVWbQhwi" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                    <!-- PROJE 3 -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://i.pinimg.com/736x/29/49/ec/2949ec4870f641e96ab09f7527edb379.jpg" alt="Tefsir Defteri"></div>
-                        <div class="project-content">
-                            <div class="project-title">Tefsir Defteri</div>
-                            <p class="project-desc">Tefsir derslerinizi düzenli tutmanız için özel şablon. (GoodNotes)</p>
-                            <a href="https://drive.proton.me/urls/PCW42519N4#TvDOno7RwWoS" target="_blank" class="btn-outline">İndir</a>
-                        </div>
+                        <div class="project-img"><img src="https://i.pinimg.com/736x/29/49/ec/2949ec4870f641e96ab09f7527edb379.jpg" alt="Tefsir Defteri" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Tefsir Defteri</div><p class="project-desc">Tefsir derslerinizi düzenli tutmanız için özel şablon. (GoodNotes)</p><a href="https://drive.proton.me/urls/PCW42519N4#TvDOno7RwWoS" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                    <!-- PROJE 4 -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://i.pinimg.com/736x/66/df/07/66df0729c23cce40c6655f5673b746d0.jpg" alt="Planlayıcılar"></div>
-                        <div class="project-content">
-                            <div class="project-title">Planlayıcılar & Pratik</div>
-                            <p class="project-desc">Ramazan, 3 Aylar ve Arapça pratiği için şablon seti.</p>
-                            <a href="https://drive.proton.me/urls/QF5MAKAHV0#mRAbfH2k0IVP" target="_blank" class="btn-outline">İndir</a>
-                        </div>
+                        <div class="project-img"><img src="https://i.pinimg.com/736x/66/df/07/66df0729c23cce40c6655f5673b746d0.jpg" alt="Planlayıcılar" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Planlayıcılar & Pratik</div><p class="project-desc">Ramazan, 3 Aylar ve Arapça pratiği için şablon seti.</p><a href="https://drive.proton.me/urls/QF5MAKAHV0#mRAbfH2k0IVP" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                    <!-- PROJE 5 -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/b7ac8682-b961-49af-96d5-02d369a02737_img_1908.jpeg" alt="Ders Notları"></div>
-                        <div class="project-content">
-                            <div class="project-title">Ders Notlarım (Özet)</div>
-                            <p class="project-desc">Tefsir, Arapça ve Tecvid derslerimin özetleri.</p>
-                            <a href="https://drive.proton.me/urls/XCB07CSQXR#3yJVP4NTZKsA" target="_blank" class="btn-outline">İndir</a>
-                        </div>
+                        <div class="project-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/b7ac8682-b961-49af-96d5-02d369a02737_img_1908.jpeg" alt="Ders Notları" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Ders Notlarım (Özet)</div><p class="project-desc">Tefsir, Arapça ve Tecvid derslerimin özetleri.</p><a href="https://drive.proton.me/urls/XCB07CSQXR#3yJVP4NTZKsA" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                    <!-- PROJE 6 -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/5b484285-e755-4651-9672-074a4bc3584d_img_1916.jpeg" alt="Lise Notları"></div>
-                        <div class="project-content">
-                            <div class="project-title">Lise & TYT/AYT Notları</div>
-                            <p class="project-desc">İmam Hatip Lisesi ve genel lise dersleri için özetler.</p>
-                            <a href="https://drive.proton.me/urls/RQQDN0VSYG#dwOmk7qTrmCM" target="_blank" class="btn-outline">İndir</a>
-                        </div>
+                        <div class="project-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/5b484285-e755-4651-9672-074a4bc3584d_img_1916.jpeg" alt="Lise Notları" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Lise & TYT/AYT Notları</div><p class="project-desc">İmam Hatip Lisesi ve genel lise dersleri için özetler.</p><a href="https://drive.proton.me/urls/RQQDN0VSYG#dwOmk7qTrmCM" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                    <!-- PROJE 7 -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/b93aedca-8fb4-4e27-8b4a-ff668ad8c76b_img_1537.jpeg" alt="Günlük Dualar"></div>
-                        <div class="project-content">
-                            <div class="project-title">Günlük Dualar</div>
-                            <p class="project-desc">Sabah-akşam ve günlük duaların özetleri.</p>
-                            <a href="https://drive.proton.me/urls/5HWA7GZHXW#CK509RcHWmcB" target="_blank" class="btn-outline">İndir</a>
-                        </div>
+                        <div class="project-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/b93aedca-8fb4-4e27-8b4a-ff668ad8c76b_img_1537.jpeg" alt="Günlük Dualar" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Günlük Dualar</div><p class="project-desc">Sabah-akşam ve günlük duaların özetleri.</p><a href="https://drive.proton.me/urls/5HWA7GZHXW#CK509RcHWmcB" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
                 </div>
             </div>
 
-            <!-- WEB UYGULAMALARI GRUBU (Başlangıçta Gizli) -->
+            <!-- WEB GRUBU (6 PROJE) -->
             <div id="group-web" class="project-group" style="display: none;">
                 <div class="projects-grid">
-                    <!-- PROJE 8: NUR KURAN -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://images.unsplash.com/photo-1598788154388-39c97a3b00e2?q=80&w=1171&auto=format&fit=crop" alt="Nur Kuran"></div>
-                        <div class="project-content">
-                            <div class="project-title">Nur Kuran-ı Kerim</div>
-                            <p class="project-desc">Diyanet API'si ile çalışan, Arapça ve Türkçe mealini gösteren modern uygulama.</p>
-                            <a href="kuran.html" target="_blank" class="btn-outline">Uygulamayı Aç</a>
-                        </div>
+                        <div class="project-img"><img src="https://images.unsplash.com/photo-1598788154388-39c97a3b00e2?q=80&w=1171&auto=format&fit=crop" alt="Nur Kuran" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Nur Kuran-ı Kerim</div><p class="project-desc">Diyanet API'si ile çalışan, Arapça ve Türkçe mealini gösteren modern uygulama.</p><a href="kuran.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Aç</a></div>
                     </div>
-                    <!-- PROJE 9: İLİM TAKİBİ -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://i.pinimg.com/736x/3b/5b/b2/3b5bb2fdda7779df81dd7e09d90a31e1.jpg" alt="İlim Takibi"></div>
-                        <div class="project-content">
-                            <div class="project-title">İlim ve İbadet Takibi</div>
-                            <p class="project-desc">Günlük ibadet ve ilim çalışmalarınızı takip eden, seviye sistemi olan uygulama.</p>
-                            <a href="gelisim.html" target="_blank" class="btn-outline">Uygulamayı Aç</a>
-                        </div>
+                        <div class="project-img"><img src="https://i.pinimg.com/736x/3b/5b/b2/3b5bb2fdda7779df81dd7e09d90a31e1.jpg" alt="İlim Takibi" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">İlim ve İbadet Takibi</div><p class="project-desc">Günlük ibadet ve ilim çalışmalarınızı takip eden, seviye sistemi olan uygulama.</p><a href="gelisim.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Aç</a></div>
                     </div>
-                    <!-- PROJE 10: KELİME AVI -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://i.pinimg.com/736x/e5/30/2d/e5302dfe03b028390bbfc7093fea5a76.jpg" alt="Kelime Avı"></div>
-                        <div class="project-content">
-                            <div class="project-title">Dini Literatür Kelime Avı</div>
-                            <p class="project-desc">İslami terimleri oyunlaştırarak öğrenen, KPSS ve Diyanet soruları içeren uygulama.</p>
-                            <a href="kelime-oyunu.html" target="_blank" class="btn-outline">Oyunu Başlat</a>
-                        </div>
+                        <div class="project-img"><img src="https://i.pinimg.com/736x/e5/30/2d/e5302dfe03b028390bbfc7093fea5a76.jpg" alt="Kelime Avı" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Dini Literatür Kelime Avı</div><p class="project-desc">İslami terimleri oyunlaştırarak öğrenen, KPSS ve Diyanet soruları içeren uygulama.</p><a href="kelime-oyunu.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Oyunu Başlat</a></div>
                     </div>
-                    <!-- PROJE 11: PLANLAYICI -->
                     <div class="project-card">
-                        <div class="project-img"><img src="https://i.pinimg.com/736x/f3/a0/62/f3a0620fc09eac6bebd4c4ac9672cb82.jpg" alt="Akıllı Planlayıcı"></div>
-                        <div class="project-content">
-                            <div class="project-title">Akıllı İlim & İbadet Planlayıcısı</div>
-                            <p class="project-desc">Hedeflerinizi günlük görevlerle birleştiren, koyu mod ve yedekleme özellikli sistem.</p>
-                            <a href="planner.html" target="_blank" class="btn-outline">Uygulamayı Başlat</a>
-                        </div>
+                        <div class="project-img"><img src="https://i.pinimg.com/736x/f3/a0/62/f3a0620fc09eac6bebd4c4ac9672cb82.jpg" alt="Akıllı Planlayıcı" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Akıllı İlim & İbadet Planlayıcısı</div><p class="project-desc">Hedeflerinizi günlük görevlerle birleştiren, koyu mod ve yedekleme özellikli sistem.</p><a href="planner.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Başlat</a></div>
                     </div>
-                  <!-- PROJE 12: DİJİTAL ZİKİR SAYACI (YENİ EKLEME) -->
-<div class="project-card">
-    <div class="project-img">
-        
-        <img src="https://i.pinimg.com/736x/e6/df/2c/e6df2c3c83cde2333090b727c4e6a647.jpg" alt="Dijital Zikir Sayacı">
-    </div>
-    <div class="project-content">
-        <div class="project-title">Dijital Zikir Sayacı</div>
-        <p class="project-desc">
-            Geleneksel tesbihin dijital dünyadaki hali. Zarif, minimalist ve karanlık mod destekli zikir sayacı. 
-            Hedef belirleme, titreşim geri bildirimi ve yerel depolama ile verileriniz kaybolmaz.
-        </p>
-        
-        <a href="zikir.html" target="_blank" class="btn-outline">Uygulamayı Başlat</a>
-    </div>
-</div>
-                  <!-- YENİ PROJE: HAC VE UMRE REHBERİ -->
-<div class="project-card">
-    <div class="project-img">
-        <!-- Hac ve Umre temasına uygun bir görsel (örnek: Kabe veya pembe tonlu bir illüstrasyon) -->
-        <img src="https://plus.unsplash.com/premium_vector-1723949035115-dbc310e25d5c?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hac ve Umre Rehberi">
-    </div>
-    <div class="project-content">
-        <div class="project-title">Adım Adım Hac ve Umre</div>
-        <p class="project-desc">
-            Kutsal topraklardaki yolculuğunuzu adım adım, dualarla ve doğru yöntemlerle takip edebileceğiniz interaktif rehber. 
-            İhramdan şeytan taşlamaya kadar tüm süreci görsel ve işitsel olarak anlatan, pembe temalı modern bir uygulama.
-        </p>
-        <!-- Rehberin olduğu dosyayı buraya linkleyin (örnek: umre-hac-rehber.html) -->
-        <a href="umre-hac-rehber.html" target="_blank" class="btn-outline">Rehberi Aç</a>
-    </div>
-</div>
+                    <div class="project-card">
+                        <div class="project-img"><img src="https://i.pinimg.com/736x/e6/df/2c/e6df2c3c83cde2333090b727c4e6a647.jpg" alt="Dijital Zikir Sayacı" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Dijital Zikir Sayacı</div><p class="project-desc">Geleneksel tesbihin dijital dünyadaki hali. Zarif, minimalist ve karanlık mod destekli zikir sayacı.</p><a href="zikir.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Başlat</a></div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-img"><img src="https://plus.unsplash.com/premium_vector-1723949035115-dbc310e25d5c?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hac ve Umre Rehberi" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="project-content"><div class="project-title">Adım Adım Hac ve Umre</div><p class="project-desc">Kutsal topraklardaki yolculuğunuzu adım adım, dualarla ve doğru yöntemlerle takip edebileceğiniz interaktif rehber.</p><a href="umre-hac-rehber.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Rehberi Aç</a></div>
+                    </div>
                 </div>
-              
             </div>
-
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (YORUM BÖLÜMÜ KALDIRILDI) -->
     <footer id="contact">
         <div class="container footer-content">
             <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
             <p style="margin-bottom: 30px;">Rabbim, ilmimizi arttır.</p>
             
             <div class="social-links">
-                <a href="http://linktr.ee/eslemnur_notes" target="_blank" class="social-link" title="Linktree">🔗</a>
-                <a href="https://ko-fi.com/eslemnur_notes" target="_blank" class="social-link" title="Ko-fi">☕</a>
+               
+                <a href="http://linktr.ee/eslemnur_notes" target="_blank" rel="noopener noreferrer" class="social-link" title="Linktree" aria-label="Linktree Profilim">
+                    <i class="fas fa-link"></i>
+                </a>
+                <a href="https://ko-fi.com/eslemnur_notes" target="_blank" rel="noopener noreferrer" class="social-link" title="Ko-fi" aria-label="Beni Kahve İçmeye Davet Et">
+                    <i class="fas fa-coffee"></i>
+                </a>
                 
-                <div style="display: inline-block; position: relative; cursor: pointer;" onclick="copyEmail()" title="E-posta adresini kopyalamak için tıklayın">
-                    <span class="social-link" style="background: none; border: 2px solid var(--primary-color); color: var(--primary-color); font-size: 1.2rem; width: 45px; height: 45px; display: inline-flex; align-items: center; justify-content: center;">✉️</span>
+                <div style="display: inline-block; position: relative; cursor: pointer;" onclick="copyEmail()" title="E-posta adresini kopyalamak için tıklayın" role="button" tabindex="0" aria-label="E-posta adresini kopyala">
+                    <span class="social-link" style="background: none; border: 2px solid var(--primary-color); color: var(--primary-color); font-size: 1.2rem; width: 45px; height: 45px; display: inline-flex; align-items: center; justify-content: center;"><i class="fas fa-envelope"></i></span>
                     <span style="margin-left: 10px; color: var(--primary-color); font-weight: 600; font-family: 'Lato', sans-serif;">eslemnur_notes@proton.me</span>
-                    
-                    <div id="copyFeedback" style="position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s; pointer-events: none;">
-                        Kopyalandı!
-                    </div>
+                    <div id="copyFeedback" style="position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Kopyalandı!</div>
                 </div>
             </div>
 
@@ -1002,23 +350,22 @@ strong {
 
     <!-- JAVASCRIPT -->
     <script>
-                // --- PROJE SEKMELERİ ---
+        // --- PROJE SEKMELERİ (LocalStorage ile Kalıcı Hafıza) ---
         function switchProjectTab(tabName) {
-            // Tüm sekmeleri aktiflikten çıkar
             const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            // Tüm grupları gizle
             const groups = document.querySelectorAll('.project-group');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
             groups.forEach(group => group.style.display = 'none');
 
-            // Seçilen sekmeyi aktif yap
-            event.target.classList.add('active');
-            
-            // Seçilen grubu göster
-            document.getElementById('group-' + tabName).style.display = 'block';
+            if (event && event.target) {
+                event.target.classList.add('active');
+                document.getElementById('group-' + tabName).style.display = 'grid';
+                localStorage.setItem('lastProjectTab', tabName);
+            }
         }
-      // --- TEMA YÖNETİMİ ---
+
+        // --- TEMA YÖNETİMİ (Kalıcı) ---
         function initTheme() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
@@ -1027,17 +374,19 @@ strong {
 
         function updateThemeIcon(theme) {
             const icon = document.querySelector('#themeToggle i');
+            const btn = document.querySelector('#themeToggle');
             if (theme === 'light') {
                 icon.className = 'fas fa-moon';
+                btn.setAttribute('aria-label', 'Koyu Temaya Geç');
             } else {
                 icon.className = 'fas fa-sun';
+                btn.setAttribute('aria-label', 'Aydınlık Temaya Geç');
             }
         }
 
         document.getElementById('themeToggle').addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme);
@@ -1049,13 +398,10 @@ strong {
             navLinks.classList.toggle('active');
         }
 
-        // Menü linklerine tıklayınca menüyü kapat
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 const navLinks = document.querySelector('.nav-links');
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                }
+                if (navLinks.classList.contains('active')) navLinks.classList.remove('active');
             });
         });
 
@@ -1065,27 +411,36 @@ strong {
             navigator.clipboard.writeText(email).then(() => {
                 const feedback = document.getElementById("copyFeedback");
                 feedback.style.opacity = "1";
-                setTimeout(() => {
-                    feedback.style.opacity = "0";
-                }, 2000);
-            }).catch(err => {
-                console.error("Kopyalama başarısız: ", err);
-                alert("E-posta adresi: " + email);
-            });
+                setTimeout(() => { feedback.style.opacity = "0"; }, 2000);
+            }).catch(err => { console.error("Kopyalama başarısız: ", err); alert("E-posta adresi: " + email); });
         }
 
-        // --- SAYFA YÜKLENDİĞİNDE ---
-        window.onload = () => {
+        // --- SAYFA YÜKLENDİĞİNDE BAŞLATMA ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTab = localStorage.getItem('lastProjectTab') || 'pdf';
+            
+            if (savedTab !== 'pdf') {
+                document.querySelectorAll('.project-group').forEach(g => g.style.display = 'none');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                
+                const selectedBtn = document.querySelector(`button[onclick="switchProjectTab('${savedTab}')"]`);
+                if (selectedBtn) {
+                    selectedBtn.classList.add('active');
+                    document.getElementById('group-' + savedTab).style.display = 'grid';
+                }
+            } else {
+                document.getElementById('group-pdf').style.display = 'grid';
+            }
+
             initTheme();
-        };
-		// --- YIL OTOMATİK GÜNCELLEME ---
-		document.addEventListener("DOMContentLoaded", function() {
-    		const yearSpan = document.getElementById("current-year");
-    		if (yearSpan) {
-        		const currentYear = new Date().getFullYear();
-        		yearSpan.textContent = currentYear;
-    }
-});
+            updateYear();
+        });
+
+        // --- YIL OTOMATİK GÜNCELLEME ---
+        function updateYear() {
+            const yearSpan = document.getElementById("current-year");
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+        }
     </script>
 </body>
 </html>
