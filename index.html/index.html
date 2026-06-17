@@ -224,7 +224,7 @@
         </div>
 
         <!-- Yetenekler İçeriği -->
-        <div id="group-yetenekler" class="project-group active" style="display: grid;">
+        <div id="group-yetenekler" class="skill-group active" style="display: grid;">
             <div class="skills-container">
                 
                 <div class="skill-card">
@@ -243,7 +243,7 @@
         </div>
 
                 <!-- Sertifikalar İçeriği -->
-        <div id="group-sertifika" class="project-group" style="display: none;">
+        <div id="group-sertifika" class="skill-group" style="display: none;">
             <div class="projects-grid"> 
                 
                 <!-- Sertifika 1 -->
@@ -443,34 +443,44 @@
         </script>
     </footer>
 
-    <!-- JAVASCRIPT -->
+        <!-- JAVASCRIPT -->
     <script>
-        // --- PROJE SEKMELERİ (LocalStorage ile Kalıcı Hafıza) ---
-        function switchProjectTab(tabName) {
-            const buttons = document.querySelectorAll('.tab-btn');
-            const groups = document.querySelectorAll('.project-group');
-            
-            buttons.forEach(btn => btn.classList.remove('active'));
-            groups.forEach(group => group.style.display = 'none');
-
-            if (event && event.target) {
-                event.target.classList.add('active');
-                document.getElementById('group-' + tabName).style.display = 'grid';
-                localStorage.setItem('lastProjectTab', tabName);
-            }
-        }
-// --- YETENEK SEKMELERİ ---
+        // --- YETENEK SEKMELERİ (Düzeltilmiş) ---
 function switchSkillTab(tabName) {
+    // SADECE skills bölümündeki butonları ve grupları seç
     const buttons = document.querySelectorAll('#skills .tab-btn');
-    const groups = document.querySelectorAll('#skills .project-group');
+    const groups = document.querySelectorAll('#skills .skill-group'); // 'project-group' yerine 'skill-group'
     
     buttons.forEach(btn => btn.classList.remove('active'));
     groups.forEach(group => group.style.display = 'none');
 
     if (event && event.target) {
         event.target.classList.add('active');
-        document.getElementById('group-' + tabName).style.display = 'grid';
-        
+    }
+
+    const targetGroup = document.getElementById('group-' + tabName);
+    if (targetGroup) {
+        targetGroup.style.display = 'grid'; // veya 'block', içeriğe göre
+    }
+}
+
+// --- PROJE SEKMELERİ (Düzeltilmiş) ---
+function switchProjectTab(tabName) {
+    // SADECE projects bölümündeki butonları ve grupları seç
+    const buttons = document.querySelectorAll('#projects .tab-btn');
+    const groups = document.querySelectorAll('#projects .project-group'); // Sadece projeler bölümündekileri seç
+    
+    buttons.forEach(btn => btn.classList.remove('active'));
+    groups.forEach(group => group.style.display = 'none');
+
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+
+    const targetGroup = document.getElementById('group-' + tabName);
+    if (targetGroup) {
+        targetGroup.style.display = 'grid';
+        localStorage.setItem('lastProjectTab', tabName);
     }
 }
 
@@ -524,24 +534,49 @@ function switchSkillTab(tabName) {
             }).catch(err => { console.error("Kopyalama başarısız: ", err); alert("E-posta adresi: " + email); });
         }
 
-        // --- SAYFA YÜKLENDİĞİNDE BAŞLATMA ---
-window.addEventListener('DOMContentLoaded', () => {
-    // Proje sekmelerini ayarla
-    const savedProjectTab = localStorage.getItem('lastProjectTab') || 'pdf';
-    if (savedProjectTab !== 'pdf') {
-        document.querySelectorAll('#projects .project-group').forEach(g => g.style.display = 'none');
-        document.querySelectorAll('#projects .tab-btn').forEach(b => b.classList.remove('active'));
-        const selectedBtn = document.querySelector(`#projects button[onclick="switchProjectTab('${savedProjectTab}')"]`);
-        if (selectedBtn) {
-            selectedBtn.classList.add('active');
-            document.getElementById('group-' + savedProjectTab).style.display = 'grid';
+        window.addEventListener('DOMContentLoaded', () => {
+    // --- Proje Sekmeleri ---
+    const savedProjectTab = localStorage.getItem('lastProjectTab');
+    const projectGroups = document.querySelectorAll('#projects .project-group');
+    const projectBtns = document.querySelectorAll('#projects .tab-btn');
+
+    // Önce hepsini gizle
+    projectGroups.forEach(g => g.style.display = 'none');
+    projectBtns.forEach(b => b.classList.remove('active'));
+
+    if (savedProjectTab) {
+        const btn = document.querySelector(`#projects button[onclick="switchProjectTab('${savedProjectTab}')"]`);
+        const grp = document.getElementById('group-' + savedProjectTab);
+        if (btn && grp) {
+            btn.classList.add('active');
+            grp.style.display = 'grid';
         }
     } else {
-        document.getElementById('group-pdf').style.display = 'grid';
+        // Varsayılan: PDF
+        const defBtn = document.querySelector('#projects button[onclick="switchProjectTab(\'pdf\')"]');
+        const defGrp = document.getElementById('group-pdf');
+        if (defBtn && defGrp) {
+            defBtn.classList.add('active');
+            defGrp.style.display = 'grid';
+        }
     }
 
+    // --- Yetenek Sekmeleri ---
+    // Yetenekler için varsayılanı "Yeteneklerim" olarak aç
+    const skillGroups = document.querySelectorAll('#skills .skill-group');
+    const skillBtns = document.querySelectorAll('#skills .tab-btn');
     
+    skillGroups.forEach(g => g.style.display = 'none');
+    skillBtns.forEach(b => b.classList.remove('active'));
+
+    const defSkillBtn = document.querySelector('#skills button[onclick="switchSkillTab(\'yetenekler\')"]');
+    const defSkillGrp = document.getElementById('group-yetenekler');
     
+    if (defSkillBtn && defSkillGrp) {
+        defSkillBtn.classList.add('active');
+        defSkillGrp.style.display = 'grid';
+    }
+
     initTheme();
     updateYear();
 });
