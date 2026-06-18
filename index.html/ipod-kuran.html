@@ -361,14 +361,11 @@
             <div class="now-playing-title" style="margin-top: 30px" >Ayarlar</div>
             <div style="font-size: 14px; color: #666; margin-top: 10px;">Tema Seçimi</div>
             
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px; width: 60%;">
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px; margin-bottom: 60px; width: 60%;">
                 <button id="btn-light" class="settings-btn">Aydınlık Mod ☀️</button>
                 <button id="btn-dark" class="settings-btn">Koyu Mod 🌙</button>
             </div>
             
-            <div style="margin-top: 30px; font-size: 10px; color: #999;">
-                Menü'ye basarak dönün
-            </div>
         </div>
         
         <!-- Durum Mesajı -->
@@ -637,7 +634,7 @@
             selectSurah(next);
         } else {
             statusMsg.textContent = "Süre Tamamlandı";
-            statusMsg.style.display = 'block';
+            statusMsg.style.display = 'none';
         }
     });
 
