@@ -19,6 +19,27 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="tr_TR">
 
+    <!-- PWA Manifest Ekleme -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#010101" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!-- PWA Service Worker Kaydı -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // Başındaki nokyayı (.sw.js) kaldır, sadece sw.js yap
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg))
+            .catch(err => console.log('Service Worker kaydı başarısız:', err));
+        });
+      }
+    </script>
+    </script>
+
     <!-- Fontlar & İkonlar -->
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
