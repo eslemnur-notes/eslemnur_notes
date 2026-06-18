@@ -1,6 +1,7 @@
 {
-  "name": "Eslem Nur",
-  "short_name": "E.Nur",
+  "name": "Eslem Nur | İlim ve Kod",
+  "short_name": "Eslem Nur",
+  "start_url": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +16,7 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/apple-touch-icon.png",  <-- Bu satırı ekle
+      "src": "/apple-touch-icon.png",  
       "sizes": "180x180",
       "type": "image/png"
     }
