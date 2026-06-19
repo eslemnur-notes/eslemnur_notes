@@ -12,25 +12,39 @@
   <!-- Fontlar & İkonlar -->
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
   
     <style>
       :root {--bg-color: #FFF9F9;
              --container-prim: #dd8399;
              --container-sec: #FFebf0;
              --bg-screen: #fff;
-             --box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+             --box-shadow: 0 20px 40px rgba(160, 100, 120, 0.2);
+             --shadow-light: rgba(255, 255, 255, 0.6);   
+             --shadow-dark: rgba(180, 100, 120, 0.25);   
+             --shadow-deep: rgba(140, 60, 80, 0.35); 
              --border: #999;
       }
+      
       [data-theme="dark"] {--bg-color: #1e1e1e;
              --container-prim: #dd8399;
              --container-sec: #FFebf0;
              --bg-screen: #fff;
-             --box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+             --shadow-light: rgba(255, 255, 255, 0.5);
+             --shadow-dark: rgba(100, 40, 60, 0.4);      
+             --shadow-deep: rgba(80, 20, 40, 0.5);       
+             --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
              --border: #555;}
+      
+      [data-theme="dark"] body {
+      background-image: none;
+    }
+
       
         /* --- GENEL AYARLAR --- */
       body {
         background-color: var(--bg-color);
+        background-image: radial-gradient(circle at 30% 30%, var(--bg-color) 0%, #FFebf0 100%);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -39,6 +53,7 @@
         margin: 0;
         user-select: none;
       }
+      
 
       /* --- MOBİL VARSAYILAN (300x500) --- */
       .ipod-container {
@@ -49,10 +64,11 @@
         border: none;
         
         box-shadow: 
-          10px 10px 20px rgba(0,0,0,0.15),
-          -5px -5px 15px rgba(255,255,255,0.6), 
-          inset 2px 2px 5px rgba(0,0,0,0.1),
-          inset -2px -2px 5px rgba(255,255,255,0.4);
+        15px 15px 40px var(--shadow-dark),      
+        -5px -5px 20px var(--shadow-light),     
+        inset 2px 2px 8px var(--shadow-light),  
+        inset -2px -2px 8px var(--shadow-deep), 
+        inset 0 0 20px rgba(0, 0, 0, 0.1);  
         
         display: flex;
         flex-direction: column;
@@ -68,8 +84,12 @@
         top: 0; left: 0; right: 0; bottom: 0;
         border-radius: 45px;
         box-shadow: 
-          inset 0 0 10px rgba(0,0,0,0.1), 
-          inset 2px 2px 5px rgba(255,255,255,0.5); 
+        15px 15px 40px var(--shadow-dark),      
+        -5px -5px 20px var(--shadow-light),     
+        inset 2px 2px 8px var(--shadow-light),  
+        inset -2px -2px 8px var(--shadow-deep), 
+        inset 0 0 20px rgba(0, 0, 0, 0.1);  
+
         pointer-events: none;
         z-index: 1;
       }
@@ -77,7 +97,7 @@
         width: 240px;
         height: 200px;
         background-color: var(--bg-screen);
-        border: 1px solid #999;
+        border: 1px solid #b1b1b1;
         border-radius: 12px;
         margin-bottom: 35px;
         overflow: hidden;
@@ -98,9 +118,11 @@
         position: relative;
         z-index: 2;
         box-shadow: 
-          5px 5px 10px rgba(0,0,0,0.1),
-          -2px -2px 5px rgba(255,255,255,0.8),
-          inset 2px 2px 5px rgba(0,0,0,0.05);
+        8px 8px 20px var(--shadow-dark),
+        -4px -4px 10px var(--shadow-light),
+        inset 2px 2px 5px var(--shadow-light),
+        inset -2px -2px 5px var(--shadow-deep),
+        inset 0 0 10px rgba(0, 0, 0, 0.1);
         touch-action: none;
       }
         
@@ -116,24 +138,26 @@
         transform: translate(-50%, -50%);
         border: 1px solid #ccc;
         box-shadow: 
-          inset 2px 2px 5px rgba(255,255,255,0.4),
-          inset -2px -2px 5px rgba(0,0,0,0.1);
+        3px 3px 8px var(--shadow-dark),
+        -2px -2px 5px var(--shadow-light),
+        inset 1px 1px 2px var(--shadow-light);
         cursor: pointer;
         z-index: 3;
       }
 
-      /* Tekerlek basıldığında efekt */
+      
       .wheel-center:active {
         transform: translate(-50%, -50%) scale(0.98);
         box-shadow: 
-          inset 3px 3px 8px rgba(0,0,0,0.2),
-          inset -1px -1px 2px rgba(255,255,255,0.1);
+        inset 3px 3px 8px var(--shadow-deep),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.2),
+        inset 0 0 10px rgba(0, 0, 0, 0.2);
       }
       
       .wheel-label {
         position: absolute;
         color: #999;
-        font-size: 16px; /* Mobil için biraz daha küçük */
+        font-size: 16px; 
         font-weight: bold;
         text-transform: uppercase;
       }
@@ -144,14 +168,43 @@
 
       /* Liste ve Player Stilleri (Ortak) */
       .screen-header {
-        background: #888;
-        color: white;
-        padding: 4px;
-        font-size: 10px;
-        text-align: center;
-        display: flex;
-        justify-content: space-between;
-      }
+  background: #c0c0c0; /* Klassisches iPod-Grau (Silver) */
+  color: #333333;      /* Dunkles Grau für Text (nicht reines Schwarz, das wirkt zu hart) */
+  padding: 3px 6px;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  border-bottom: 1px solid #999; /* Feine Linie unten */
+  font-family: "Chicago", "Geneva", sans-serif;
+  letter-spacing: -0.5px; /* Etwas enger wie bei alten Displays */
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* Leichter Innen-Schatten für Tiefe */
+}
+      
+      
+      .battery-status-container {
+  display: flex;
+  align-items: center;
+  gap: 2px; /* Abstand zwischen Emoji und Text */
+}
+      
+      .rotated-battery {
+  font-size: 11px;
+  line-height: 1;
+  transform: rotate(90deg);
+  transform-origin: center;
+  display: inline-block;
+  filter: grayscale(50%); /* Macht das Emoji etwas matter/realistischer */
+}
+
+.battery-text {
+  font-family: "Chicago", "Geneva", sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4); /* Leichter Textglanz */
+}
 
       .surah-list {
         list-style: none;
@@ -169,7 +222,7 @@
       }
 
       .surah-item.active {
-        background-color: #007aff;
+        background-color: var(--container-prim);
         color: white;
       }
 
@@ -208,7 +261,7 @@
       .progress-bar {
         width: 0%;
         height: 100%;
-        background: #007aff;
+        background: var(--container-prim);
         border-radius: 3px;
         transition: width 0.2s;
       }
@@ -225,6 +278,7 @@
         pointer-events: none;
       }
 
+      
       /* --- AYARLAR BUTONLARI --- */
       .settings-btn {
         background: #dd8399;
@@ -253,7 +307,7 @@
         background: #B76E79;
       }
 
-      /* --- MASAÜSTÜ AYARLARI (769px ve üzeri)--- */ 
+      /* --- MASAÜSTÜ AYARLARI --- */ 
       @media (min-width: 769px) {
         .ipod-container {
           width: 400px;
@@ -334,9 +388,12 @@
         <!-- Ekran -->
     <div class="screen">
         <div class="screen-header">
-            <span>🔋 100%</span>
-            <span>iKuran</span>
+          <div class="battery-status-container">
+            <span class="rotated-battery">🔋</span>
+            <span class="battery-text">100%</span>
         </div>
+            <span>iKuran</span>
+       </div>
         
         <!-- 1. Liste Görünümü -->
         <ul class="surah-list" id="surah-list">
@@ -362,8 +419,8 @@
             <div style="font-size: 14px; color: #666; margin-top: 10px;">Tema Seçimi</div>
             
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px; margin-bottom: 60px; width: 60%;">
-                <button id="btn-light" class="settings-btn">Aydınlık Mod ☀️</button>
-                <button id="btn-dark" class="settings-btn">Koyu Mod 🌙</button>
+                <button id="btn-light" class="settings-btn">Aydınlık Mod <i class='fas fa-sun' style='color: #FFF9F9'></i></button>
+                <button id="btn-dark" class="settings-btn">Koyu Mod <i class='fas fa-moon' style='color: #FFF9F9'></i></button>
             </div>
             
         </div>
