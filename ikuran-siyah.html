@@ -172,14 +172,36 @@
 
       /* Liste ve Player Stilleri (Ortak) */
       .screen-header {
-        background: #888;
-        color: white;
-        padding: 4px;
-        font-size: 10px;
-        text-align: center;
-        display: flex;
-        justify-content: space-between;
-      }
+  background: #b1b1b1;
+  color: white;
+  padding: 4px 8px; 
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  height: 18px; 
+}
+      
+      .battery-status-container {
+  display: flex;
+  align-items: center;
+  gap: 2px; 
+}
+      
+      .rotated-battery {
+  font-size: 10px;
+  line-height: 1;
+  transform: rotate(90deg); 
+  transform-origin: center;
+  display: inline-block;
+}
+
+/* Batterietext */
+.battery-text {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  white-space: nowrap; 
+}
 
       .surah-list {
         list-style: none;
@@ -357,12 +379,15 @@
 <div class="ipod-container">
     
     <!-- Ekran -->
-        <!-- Ekran -->
+        
     <div class="screen">
         <div class="screen-header">
-            <span>🔋 100%</span>
-            <span>iKuran</span>
+          <div class="battery-status-container">
+            <span class="rotated-battery">🔋</span>
+            <span class="battery-text">100%</span>
         </div>
+        <span>iKuran</span>
+       </div>
         
         <!-- 1. Liste Görünümü -->
         <ul class="surah-list" id="surah-list">
