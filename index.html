@@ -32,8 +32,8 @@
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           // Başındaki nokyayı (.sw.js) kaldır, sadece sw.js yap
-          navigator.serviceWorker.register('/eslemnur_notes/sw.js')
-            .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg))
+          navigator.serviceWorker.register('/eslemnur_notes/sw.js', { scope: '/eslemnur_notes/' })
+            .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
             .catch(err => console.log('Service Worker kaydı başarısız:', err));
         });
       }
