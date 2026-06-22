@@ -1,10 +1,10 @@
 const CACHE_NAME = 'eslem-nur-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/favicon.ico',
-  '/favicon-96x96.png',
-  '/site.webmanifest',
+  '/eslemnur_notes/',
+  '/eslemnur_notes/index.html',
+  '/eslemnur_notes/favicon.ico',
+  '/eslemnur_notes/favicon-96x96.png',
+  '/eslemnur_notes/site.webmanifest',
   // İstersen diğer CSS/JS dosyalarını da buraya ekleyebilirsin
 ];
 
