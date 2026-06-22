@@ -1,7 +1,7 @@
 {
   "name": "Eslem Nur | İlim ve Kod",
   "short_name": "Eslem Nur",
-  "start_url": "/",
+  "start_url": "/eslemnur_notes/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
