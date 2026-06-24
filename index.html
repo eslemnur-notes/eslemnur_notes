@@ -156,6 +156,8 @@
         
         .shop-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
         .shop-card:hover .shop-img img { transform: scale(1.1); }
+      
+
         
   
         /* --- Footer --- */
@@ -171,6 +173,7 @@
         .tab-btn.active { background: var(--primary-color); color: white; border-color: var(--primary-color); box-shadow: 0 4px 10px rgba(183, 110, 121, 0.3); }
         .tab-btn:hover:not(.active) { background: var(--note-bg); color: var(--primary-color); border-color: var(--primary-color); }
         .project-group { animation: fadeIn 0.5s ease; }
+        .shop-group { animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- Responsive --- */
@@ -269,8 +272,8 @@
         
         
         <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-            <button class="tab-btn active" tabindex="0" onclick="switchSkillTab('yetenekler')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Yeteneklerim</button>
-            <button class="tab-btn" tabindex="0" onclick="switchSkillTab('sertifika')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Sertifikalarım</button>
+            <button class="tab-btn skill-tab-btn active" tabindex="0" onclick="switchSkillTab('yetenekler')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Yeteneklerim</button>
+            <button class="tab-btn skill-tab-btn" tabindex="0" onclick="switchSkillTab('sertifika')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Sertifikalarım</button>
         </div>
 
         <!-- Yetenekler İçeriği -->
@@ -371,8 +374,8 @@
             </p>
 
             <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-                <button class="tab-btn active" tabindex="0" onclick="switchProjectTab('pdf')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Şablon & Notlar</button>
-                <button class="tab-btn" tabindex="0" onclick="switchProjectTab('web')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Web Uygulamaları</button>
+                <button class="tab-btn project-tab-btn active" tabindex="0" onclick="switchProjectTab('pdf')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Şablon & Notlar</button>
+                <button class="tab-btn project-tab-btn" tabindex="0" onclick="switchProjectTab('web')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Web Uygulamaları</button>
             </div>
 
             <!-- PDF GRUBU -->
@@ -462,19 +465,32 @@
   
  <!-- Shop -->
     <section id="shop" class="section">
-        <div class="container">
-            <h2 class="section-title">Shop</h2>
-                <div class="shop-text">
-                    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-light);">
-                Hazırladığım dijital ürünleri burada satıyorum. Ücretsiz FlipBook halindeki dijital notlarıma ise Projeler kısmından ulaşabilirsiniz.
-            </p>
-                 <div class="shop-grid"><div class="shop-card">
-                        <div class="shop-img"><img src="https://i.pinimg.com/736x/90/a7/a1/90a7a1ed70e10606b9b14d48ef4f3399.jpg" alt="Esma-ul Husna" loading="lazy" decoding="async" width="300" height="180"></div>
-                        <div class="shop-content"><div class="shop-title">Esma-ul Husna</div><p class="shop-desc">Allah'ın 99 ismini interaktif olarak inceleyebileceğiniz defter. (GoodNotes)</p><a href="https://ko-fi.com/s/596c3f86fe" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
-                    </div>
-              <div class="shop-card">
-                        <div class="shop-img"><img src="https://i.pinimg.com/736x/29/49/ec/2949ec4870f641e96ab09f7527edb379.jpg" alt="Tefsir Defteri" loading="lazy" decoding="async" width="300" height="180"></div><div class="shop-content"><div class="shop-title">Tefsir Defteri</div><p class="shop-desc">Tefsir derslerinizi düzenli tutmanız için özel şablon. (GoodNotes)</p><a href="https://ko-fi.com/s/f68844b74c" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
-                    </div>
+    <div class="container">
+        <h2 class="section-title">
+            Shop
+        </h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-light);">
+            Hazırladığım dijital ürünleri burada satıyorum. Ücretsiz FlipBook halindeki dijital notlarıma ise Projeler kısmından ulaşabilirsiniz.
+        </p>
+
+        <!-- Shop Sekme Butonları -->
+        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
+            <button class="tab-btn shop-tab-btn active" tabindex="0" onclick="switchShopTab('PDF')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;" aria-selected="true">Defterler & PDF</button>
+            <button class="tab-btn shop-tab-btn" tabindex="0" onclick="switchShopTab('Hat')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;" aria-selected="false">Çizimlerim / Hat</button>
+        </div>
+
+        <!-- Grup 1: PDF -->
+        <div id="group-PDF" class="shop-group active" style="display: grid;">
+            <div class="shop-grid">
+                
+                <div class="shop-card">
+                    <div class="shop-img"><img src="https://i.pinimg.com/736x/90/a7/a1/90a7a1ed70e10606b9b14d48ef4f3399.jpg" alt="Esma-ul Husna" loading="lazy" decoding="async" width="300" height="180"></div>
+                    <div class="shop-content"><div class="shop-title">Esma-ul Husna</div><p class="shop-desc">Allah'ın 99 ismini interaktif olarak inceleyebileceğiniz defter. (GoodNotes)</p><a href="https://ko-fi.com/s/596c3f86fe" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
+                </div>
+              
+               <div class="shop-card">
+                    <div class="shop-img"><img src="https://i.pinimg.com/736x/29/49/ec/2949ec4870f641e96ab09f7527edb379.jpg" alt="Tefsir Defteri" loading="lazy" decoding="async" width="300" height="180"></div><div class="shop-content"><div class="shop-title">Tefsir Defteri</div><p class="shop-desc">Tefsir derslerinizi düzenli tutmanız için özel şablon. (GoodNotes)</p><a href="https://ko-fi.com/s/f68844b74c" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
+                </div>
                    <div class="shop-card">
                         <div class="shop-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/6bc6eb8b-83b7-472d-80e0-217845318dfb_img_0841.jpeg" alt="Tefsir Notları" loading="lazy" decoding="async" width="300" height="180"></div>
                         <div class="shop-content"><div class="shop-title">Tefsir Notlarım (PDF)</div><p class="shop-desc">Tefsir derslerimin özetleri.</p><a href="https://ko-fi.com/s/0ce64ba049" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
@@ -502,10 +518,61 @@
                         <div class="shop-img"><img src="https://i.pinimg.com/736x/3d/68/ff/3d68ffa01e8780f319b264acad1523c6.jpg" alt="Planlayıcılar" loading="lazy" decoding="async" width="300" height="180"></div>
                         <div class="shop-content"><div class="shop-title">Noktalı Dijital Defterler</div><p class="shop-desc">7 farklı logolu kapak seçeneğiyle; her kapak rengi, içindeki sayfaların rengini (Siyah, Gri/Mor veya Beyaz) belirler. İlim notlarınızı ve dualarınızı düzenli, estetik ve kişisel bir dokunuşla kaydetmek için tasarlandı.</p><a href="https://tr.ee/NdjjoZ" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
+              
                 </div>
             </div>
-        </div>
-    </section>
+      
+      <!-- Grup 2: Hat -->
+<div id="group-Hat" class="shop-group" style="display: none;">
+    <!-- Önce Bilgilendirme Kutusu -->
+    <div style="grid-column: 1 / -1; background: linear-gradient(90deg, rgba(183,110,121,0.1), rgba(183,110,121,0.05)); border: 2px dashed var(--primary-color); border-radius: 20px; padding: 20px; margin-bottom: 30px; text-align: center;">
+        <p style="color: var(--primary-color); font-weight: 600; margin: 0;">
+            🇩🇪 Sadece Almanya içinde siparişe açıktır.
+        </p>
+        
+    </div>
+    <div class="shop-grid">
+        <div class="shop-card">
+            <div class="shop-img">
+                <img src="https://storage.ko-fi.com/cdn/useruploads/display/4ddc13a5-e770-439b-8207-2ec3ab5f130e_minileinwand-1.jpeg" alt="Esma-ul Husna" loading="lazy" decoding="async" width="300" height="180">
+            </div>
+            <div class="shop-content">
+                <div class="shop-title">Mini Leinwand</div>
+              <p class="shop-desc">1 x Personalisierter Mini Leinwand<br>
+                1 x Mini Leinwandständer </p>
+                <a href="https://ko-fi.com/c/b6cfbca213" target="_blank" rel="noopener noreferrer" class="btn-outline">Bestellen</a>
+            </div>
+        </div> 
+      
+      <div class="shop-card">
+            <div class="shop-img">
+                <img src="https://storage.ko-fi.com/cdn/useruploads/display/508f202a-8d12-4734-a1f0-1ac56bcf3ad6_img_0448.jpeg" alt="Esma-ul Husna" loading="lazy" decoding="async" width="300" height="180">
+            </div>
+            <div class="shop-content">
+                <div class="shop-title">⌀ 25 cm Leinwand mit او Schriftzug </div>
+              <p class="shop-desc">1 x Personalisierter Leinwand mit او Schriftzug</p> 
+
+<p class="shop-desc" style="font-size: 12px">Bedeutung: „Steh aufrecht wie der Buchstabe Elif dem Ungläubigen gegenüber, neige dich wie der Buchstabe Vav vor Allah."</p>
+
+                <a href="https://ko-fi.com/c/ad33ee2468" target="_blank" rel="noopener noreferrer" class="btn-outline">Bestellen</a>
+            </p>
+        </div> 
+      </div> 
+      
+      <div class="shop-card">
+            <div class="shop-img">
+                <img src="https://storage.ko-fi.com/cdn/useruploads/display/aeb6addc-9df2-4da4-9acf-88470f2fbe9d_img_0556.jpeg" alt="Esma-ul Husna" loading="lazy" decoding="async" width="300" height="180">
+            </div>
+            <div class="shop-content">
+                <div class="shop-title">Leinwand mit Sure / Vers</div>
+                <p class="shop-desc">1 x Personalisierter Leinwand mit einer kurzen Sure bzw. Vers</p>
+                <a href="https://ko-fi.com/c/433dac6c7c" target="_blank" rel="noopener noreferrer" class="btn-outline">Bestellen</a>
+            </div>
+        </div> 
+    </div>
+</div>
+     </section>
+       
     
 
     <!-- FOOTER -->
@@ -547,36 +614,44 @@
 
         <!-- JAVASCRIPT -->
     <script>
-        // --- YETENEK SEKMELERİ (Düzeltilmiş) ---
+        // --- YETENEK SEKMELERİ ---
 function switchSkillTab(tabName) {
-    // SADECE skills bölümündeki butonları ve grupları seç
-    const buttons = document.querySelectorAll('#skills .tab-btn');
-    const groups = document.querySelectorAll('#skills .skill-group'); // 'project-group' yerine 'skill-group'
+    // SADECE 'skill-tab-btn' sınıfını seç
+    const buttons = document.querySelectorAll('#skills .skill-tab-btn');
+    const groups = document.querySelectorAll('#skills .skill-group');
     
-    buttons.forEach(btn => btn.classList.remove('active'));
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+    });
     groups.forEach(group => group.style.display = 'none');
 
-    if (event && event.target) {
+    if (event && event.target && event.target.classList.contains('skill-tab-btn')) {
         event.target.classList.add('active');
+        event.target.setAttribute('aria-selected', 'true');
     }
 
     const targetGroup = document.getElementById('group-' + tabName);
     if (targetGroup) {
-        targetGroup.style.display = 'grid'; // veya 'block', içeriğe göre
+        targetGroup.style.display = 'grid';
     }
 }
 
-// --- PROJE SEKMELERİ (Düzeltilmiş) ---
+// --- PROJE SEKMELERİ ---
 function switchProjectTab(tabName) {
-    // SADECE projects bölümündeki butonları ve grupları seç
-    const buttons = document.querySelectorAll('#projects .tab-btn');
-    const groups = document.querySelectorAll('#projects .project-group'); // Sadece projeler bölümündekileri seç
+    // SADECE 'project-tab-btn' sınıfını seç
+    const buttons = document.querySelectorAll('#projects .project-tab-btn');
+    const groups = document.querySelectorAll('#projects .project-group');
     
-    buttons.forEach(btn => btn.classList.remove('active'));
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+    });
     groups.forEach(group => group.style.display = 'none');
 
-    if (event && event.target) {
+    if (event && event.target && event.target.classList.contains('project-tab-btn')) {
         event.target.classList.add('active');
+        event.target.setAttribute('aria-selected', 'true');
     }
 
     const targetGroup = document.getElementById('group-' + tabName);
@@ -586,6 +661,29 @@ function switchProjectTab(tabName) {
     }
 }
 
+// --- SHOP SEKMELERİ ---
+function switchShopTab(tabName) {
+    // SADECE 'shop-tab-btn' sınıfını seç
+    const buttons = document.querySelectorAll('#shop .shop-tab-btn');
+    const groups = document.querySelectorAll('#shop .shop-group');
+    
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+    });
+    groups.forEach(group => group.style.display = 'none');
+
+    if (event && event.target && event.target.classList.contains('shop-tab-btn')) {
+        event.target.classList.add('active');
+        event.target.setAttribute('aria-selected', 'true');
+    }
+
+    const targetGroup = document.getElementById('group-' + tabName);
+    if (targetGroup) {
+        targetGroup.style.display = 'grid';
+        localStorage.setItem('lastShopTab', tabName);
+    }
+}
         // --- TEMA YÖNETİMİ (Kalıcı) ---
         function initTheme() {
             const savedTheme = localStorage.getItem('theme') || 'light';
@@ -636,53 +734,87 @@ function switchProjectTab(tabName) {
             }).catch(err => { console.error("Kopyalama başarısız: ", err); alert("E-posta adresi: " + email); });
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-    // --- Proje Sekmeleri ---
+               window.addEventListener('DOMContentLoaded', () => {
+    // --- Proje Sekmeleri (Sadece project-tab-btn) ---
     const savedProjectTab = localStorage.getItem('lastProjectTab');
+    const projectBtns = document.querySelectorAll('#projects .project-tab-btn');
     const projectGroups = document.querySelectorAll('#projects .project-group');
-    const projectBtns = document.querySelectorAll('#projects .tab-btn');
 
-    // Önce hepsini gizle
     projectGroups.forEach(g => g.style.display = 'none');
-    projectBtns.forEach(b => b.classList.remove('active'));
+    projectBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+    });
 
     if (savedProjectTab) {
-        const btn = document.querySelector(`#projects button[onclick="switchProjectTab('${savedProjectTab}')"]`);
+        const btn = Array.from(projectBtns).find(b => b.getAttribute('onclick').includes(`'${savedProjectTab}'`));
         const grp = document.getElementById('group-' + savedProjectTab);
         if (btn && grp) {
             btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
             grp.style.display = 'grid';
         }
     } else {
-        // Varsayılan: PDF
-        const defBtn = document.querySelector('#projects button[onclick="switchProjectTab(\'pdf\')"]');
+        const defBtn = Array.from(projectBtns).find(b => b.getAttribute('onclick').includes("'pdf'"));
         const defGrp = document.getElementById('group-pdf');
         if (defBtn && defGrp) {
             defBtn.classList.add('active');
+            defBtn.setAttribute('aria-selected', 'true');
             defGrp.style.display = 'grid';
         }
     }
 
-    // --- Yetenek Sekmeleri ---
-    // Yetenekler için varsayılanı "Yeteneklerim" olarak aç
+    // --- Yetenek Sekmeleri (Sadece skill-tab-btn) ---
+    const skillBtns = document.querySelectorAll('#skills .skill-tab-btn');
     const skillGroups = document.querySelectorAll('#skills .skill-group');
-    const skillBtns = document.querySelectorAll('#skills .tab-btn');
-    
-    skillGroups.forEach(g => g.style.display = 'none');
-    skillBtns.forEach(b => b.classList.remove('active'));
 
-    const defSkillBtn = document.querySelector('#skills button[onclick="switchSkillTab(\'yetenekler\')"]');
+    skillGroups.forEach(g => g.style.display = 'none');
+    skillBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+    });
+
+    const defSkillBtn = Array.from(skillBtns).find(b => b.getAttribute('onclick').includes("'yetenekler'"));
     const defSkillGrp = document.getElementById('group-yetenekler');
-    
     if (defSkillBtn && defSkillGrp) {
         defSkillBtn.classList.add('active');
+        defSkillBtn.setAttribute('aria-selected', 'true');
         defSkillGrp.style.display = 'grid';
+    }
+
+    // --- Shop Sekmeleri (Sadece shop-tab-btn) ---
+    const savedShopTab = localStorage.getItem('lastShopTab');
+    const shopBtns = document.querySelectorAll('#shop .shop-tab-btn');
+    const shopGroups = document.querySelectorAll('#shop .shop-group');
+
+    shopGroups.forEach(g => g.style.display = 'none');
+    shopBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+    });
+
+    if (savedShopTab) {
+        const btn = Array.from(shopBtns).find(b => b.getAttribute('onclick').includes(`'${savedShopTab}'`));
+        const grp = document.getElementById('group-' + savedShopTab);
+        if (btn && grp) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+            grp.style.display = 'grid';
+        }
+    } else {
+        const defBtn = Array.from(shopBtns).find(b => b.getAttribute('onclick').includes("'PDF'"));
+        const defGrp = document.getElementById('group-PDF');
+        if (defBtn && defGrp) {
+            defBtn.classList.add('active');
+            defBtn.setAttribute('aria-selected', 'true');
+            defGrp.style.display = 'grid';
+        }
     }
 
     initTheme();
     updateYear();
 });
-
+      
         // --- YIL OTOMATİK GÜNCELLEME ---
         function updateYear() {
             const yearSpan = document.getElementById("current-year");
