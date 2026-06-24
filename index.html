@@ -15,10 +15,17 @@
     <meta property="og:title" content="Eslem Nur | İlim ve Kod">
     <meta property="og:description" content="İlim talebesi ve yazılımcı portfolyosu. Ücretsiz ilmi notlar ve dijital uygulamalar.">
     <meta property="og:image" content="https://i.pinimg.com/736x/98/a5/ca/98a5ca07841720013645e7a35330fa02.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://eslemnur.github.io/eslemnur_notes/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="tr_TR">
 
+  <!-- Font Preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" as="style">
+  
     <!-- PWA Manifest Ekleme -->
     <link rel="apple-touch-icon" sizes="180x180" href="/eslemnur_notes/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/eslemnur_notes/favicon-96x96.png" />
@@ -130,31 +137,26 @@
         .skill-list li { margin-bottom: 8px; color: var(--text-light); font-size: 0.95rem; padding-left: 20px; position: relative; }
         .skill-list li::before { content: '•'; color: var(--primary-color); font-weight: bold; position: absolute; left: 0; }
 
-        /* --- Projeler --- */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-card { background: var(--card-bg); border-radius: 20px; box-shadow: var(--soft-shadow); overflow: hidden; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; flex-direction: column; }
+        /* --- Projeler ve Shop --- */
+        .projects-grid, .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-card, .shop-card { background: var(--card-bg); border-radius: 20px; box-shadow: var(--soft-shadow); overflow: hidden; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; flex-direction: column; }
         .project-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(183, 110, 121, 0.25); }
-        .project-img { height: 180px; background-color: #f0f0f0; overflow: hidden; }
+        .project-img, .shop-img { height: 180px; background-color: #f0f0f0; overflow: hidden; }
         .project-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
         .project-card:hover .project-img img { transform: scale(1.1); }
-        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .project-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary-color); margin-bottom: 10px; }
-        .project-desc { font-size: 0.95rem; color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
+        .project-content, .shop-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-title, .shop-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary-color); margin-bottom: 10px; }
+        .project-desc, .shop-desc { font-size: 0.95rem; color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
         .btn-outline { display: inline-block; padding: 8px 25px; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 25px; font-weight: 600; font-size: 0.9rem; text-align: center; transition: all 0.3s; text-decoration: none; }
         .btn-outline:hover { background-color: var(--primary-color); color: white; box-shadow: 0 4px 10px rgba(183, 110, 121, 0.4); }
 
       
-        /* ---Shop --- */
-      
-        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .shop-card { background: var(--card-bg); border-radius: 20px; box-shadow: var(--soft-shadow); overflow: hidden; border: 1px solid var(--border-color); transition: all 0.3s ease; display: flex; flex-direction: column; }
+        
         .shop-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(183, 110, 121, 0.25); }
-        .shop-img { height: 180px; background-color: #f0f0f0; overflow: hidden; }
+        
         .shop-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
-        .shop-card:hover .project-img img { transform: scale(1.1); }
-        .shop-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .shop-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary-color); margin-bottom: 10px; }
-        .shop-desc { font-size: 0.95rem; color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
+        .shop-card:hover .shop-img img { transform: scale(1.1); }
+        
   
         /* --- Footer --- */
         footer { background: var(--card-bg); border-top: 1px solid var(--border-color); padding: 60px 0 30px; text-align: center; margin-top: 80px; }
@@ -194,7 +196,7 @@
         
         .gradient-text { background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; }
         strong { font-family: 'Lato', 'Segoe UI', sans-serif; font-weight: 700; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .ince-vurgu { font-weight: 500 !important; font-variation-settings: "wght" 500; -webkit-font-smoothing: subpixel-antialiased !important; text-rendering: optimizeLegibility !important; letter-spacing: 0.02em !important; background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        
 
         @media screen and (max-width: 768px) {
             strong { -webkit-font-smoothing: subpixel-antialiased; text-rendering: optimizeLegibility; }
@@ -228,7 +230,7 @@
     <!-- HERO BÖLÜMÜ -->
     <section class="hero">
         <div class="container hero-content">
-            <div class="basmala-hero"> بسم الله الرحمن الرحيم</div>
+            <div class="basmala-hero" aria-label="Bismillah"> بسم الله الرحمن الرحيم</div>
             <h1>İlim Arayan, <br><span class="gradient-text">Kod Yazan</span> Bir Talebe</h1>
             <p class="hero-subtitle">İmam Hatip Lisesi mezunu ve yakın zamanda İlahiyat Fakültesi'nde ilim yolculuğuna başlayacak bir öğrenci; modern teknolojileri dinî ilimlerle harmanlamaya çalışan bir yazılımcı.</p>
             <div class="hero-badges">
@@ -248,7 +250,7 @@
             <div class="about-grid">
                 <div class="about-text">
                     <p><span style="font-family: 'Scheherazade New', serif; font-size: 1.4rem; color: var(--primary-color); direction: rtl; display: inline-block; margin-right: 10px; vertical-align: middle;">السلام عليكم ورحمة الله وبركاته</span> Ben Eslem Nur. İlimi kalbimle, kodları ise zihnimle birleştirmeye çalışıyorum. İmam Hatip Lisesi eğitimim boyunca edindiğim ilmi birikimi, yakın zamanda İlahiyat Fakültesi'nde derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.</p>
-                    <p>Hem <strong>ilim talebesi</strong> (İlahiyat öğrencisi) hem de <strong>kendini <span class="ince-vurgu">geliştiren</span> bir yazılımcı</strong> olarak; Kur'an-ı Kerim'in derinliklerinde gezinirken, aynı zamanda modern web teknolojileriyle anlamlı dijital eserler ortaya koymaya çalışıyorum.</p>
+                    <p>Hem <strong>ilim talebesi</strong> (İlahiyat öğrencisi) hem de <strong>kendini geliştiren</span> bir yazılımcı</strong> olarak; Kur'an-ı Kerim'in derinliklerinde gezinirken, aynı zamanda modern web teknolojileriyle anlamlı dijital eserler ortaya koymaya çalışıyorum.</p>
                     <p><strong style="text-decoration: underline;">Amacım:</strong> ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve teknolojiyi hayır yolunda kullanmaktır.</p>
                 </div>
                 <div class="about-visual">
@@ -297,7 +299,7 @@
                 <!-- Sertifika 1 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://imgs.search.brave.com/H41DUKTjQ2jfrzvhqRnycaaGDYymBdBylOWOtLaDEbY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9QeXRob25f/KHByb2dyYW1taW5n/X2xhbmd1YWdlKS9Q/eXRob25fKHByb2dy/YW1taW5nX2xhbmd1/YWdlKS1Mb2dvLndp/bmUuc3Zn" alt="Python" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                        <img src="https://imgs.search.brave.com/H41DUKTjQ2jfrzvhqRnycaaGDYymBdBylOWOtLaDEbY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9QeXRob25f/KHByb2dyYW1taW5n/X2xhbmd1YWdlKS9Q/eXRob25fKHByb2dy/YW1taW5nX2xhbmd1/YWdlKS1Mb2dvLndp/bmUuc3Zn" alt="Python Programlama Sertifikası" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
                     </div>
                     <div class="project-content">
                         <div class="project-title">Python Sertifikası</div>
@@ -310,7 +312,7 @@
                 <!-- Sertifika 2 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://imgs.search.brave.com/XdOj0jNCyxw6SLQZ0leaxN0W-TxPF-R7AYc05CjuCGw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vbWpIRno2/ZkpOZThNVnJEU3M5/N1k2bFhRdEhBemFs/d29nTFJiUkZqLVNl/MC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlz/YjJkdi9kSGx3TG5W/ekwyWnBiR1V2L1l5/MXphR0Z5Y0M1emRt/Yw" alt="C#" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                        <img src="https://imgs.search.brave.com/XdOj0jNCyxw6SLQZ0leaxN0W-TxPF-R7AYc05CjuCGw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vbWpIRno2/ZkpOZThNVnJEU3M5/N1k2bFhRdEhBemFs/d29nTFJiUkZqLVNl/MC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlz/YjJkdi9kSGx3TG5W/ekwyWnBiR1V2L1l5/MXphR0Z5Y0M1emRt/Yw" alt="C# Programlama Sertifikası" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
                     </div>
                     <div class="project-content">
                         <div class="project-title">C# Sertifikası</div>
@@ -322,7 +324,7 @@
                 <!-- Sertifika 3 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://imgs.search.brave.com/ipyoQx_XRRi3gxyK3TC3uMryY9JcsK5rZKDFy0-WXbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNmLzdh/LzI0LzNmN2EyNDAx/NDI5OGIzZWJmYWE4/OTU5NmEwZWNkMzgy/LmpwZw" alt="html css" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                        <img src="https://imgs.search.brave.com/ipyoQx_XRRi3gxyK3TC3uMryY9JcsK5rZKDFy0-WXbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNmLzdh/LzI0LzNmN2EyNDAx/NDI5OGIzZWJmYWE4/OTU5NmEwZWNkMzgy/LmpwZw" alt="Responsive Web Design Sertifikası" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
                     </div>
                     <div class="project-content">
                         <div class="project-title">Responsive Web Design Sertifikası </div>
@@ -335,7 +337,7 @@
                 <!-- Sertifika 4 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://plus.unsplash.com/premium_photo-1685086785054-d047cdc0e525?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="english b1" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                        <img src="https://plus.unsplash.com/premium_photo-1685086785054-d047cdc0e525?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="English B1 Sertifikası" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
                     </div>
                     <div class="project-content">
                         <div class="project-title">English for Developers (B1)</div>
@@ -346,7 +348,7 @@
               <!-- Sertifika 5 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/69/6c/c3/696cc346b4793cdf138edff209f97196.jpg" alt="Canva" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                        <img src="https://i.pinimg.com/736x/69/6c/c3/696cc346b4793cdf138edff209f97196.jpg" alt="Canva Sertifikaları" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
                     </div>
                     <div class="project-content">
                         <div class="project-title">Tasarım & UI/UX Temelleri</div>
@@ -473,30 +475,30 @@
               <div class="shop-card">
                         <div class="shop-img"><img src="https://i.pinimg.com/736x/29/49/ec/2949ec4870f641e96ab09f7527edb379.jpg" alt="Tefsir Defteri" loading="lazy" decoding="async" width="300" height="180"></div><div class="shop-content"><div class="shop-title">Tefsir Defteri</div><p class="shop-desc">Tefsir derslerinizi düzenli tutmanız için özel şablon. (GoodNotes)</p><a href="https://ko-fi.com/s/f68844b74c" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                   <div class="project-card">
+                   <div class="shop-card">
                         <div class="shop-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/6bc6eb8b-83b7-472d-80e0-217845318dfb_img_0841.jpeg" alt="Tefsir Notları" loading="lazy" decoding="async" width="300" height="180"></div>
                         <div class="shop-content"><div class="shop-title">Tefsir Notlarım (PDF)</div><p class="shop-desc">Tefsir derslerimin özetleri.</p><a href="https://ko-fi.com/s/0ce64ba049" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div> 
                     
-                    <div class="project-card">
+                    <div class="shop-card">
                         <div class="shop-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/fe9a27ef-3adf-4f06-96d4-89fa4f41aea8_img_0839.jpeg" alt="Ders Notları" loading="lazy" decoding="async" width="300" height="180"></div>
                         <div class="shop-content"><div class="shop-title">Tecvid Notlarım (PDF)</div><p class="shop-desc">Tecvid derslerimin özetleri.</p><a href="https://ko-fi.com/s/36cbecd911" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                    <div class="project-card">
+                    <div class="shop-card">
                         <div class="shop-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/62985c42-f2b8-446f-89be-410e52429b3f_img_0838.jpeg" alt="Ders Notları" loading="lazy" decoding="async" width="300" height="180"></div>
                         <div class="shop-content"><div class="shop-title">Arapça Notlarım (PDF)</div><p class="shop-desc">Arapça Gramer derslerimin özetleri.</p><a href="https://ko-fi.com/s/6d093fe301" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                   <div class="project-card">
+                   <div class="shop-card">
                         <div class="shop-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/8feb2621-865c-4878-b676-30f1544e9866_img_0845.jpeg" alt="Planlayıcılar" loading="lazy" decoding="async" width="300" height="180"></div>
                         <div class="shop-content"><div class="shop-title">Kur’ân Günlüğüm</div><p class="shop-desc">Kur'an okurken notlarınızı, dualarınızı ve tefekkürlerinizi kaydetmek için özel olarak hazırlanmış, yazdırılabilir ve dijital kullanıma uygun PDF Şablonu. Düzenli bir manevi takip için hemen indirin.</p><a href="https://ko-fi.com/s/08ce0ce0fd" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
-                   <div class="project-card">
+                   <div class="shop-card">
                         <div class="shop-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/0f829c6f-af56-47d3-9adf-d613fcfc92f3_img_0846.jpeg" alt="Planlayıcılar" loading="lazy" decoding="async" width="300" height="180"></div>
                         <div class="shop-content"><div class="shop-title">Ramazan Planlayıcı</div><p class="shop-desc">Ramazan ayı ibadetlerini, duaları ve hedefleri takip etmek için özel hazırlanmış, yazdırılabilir ve dijital kullanıma uygun planlayıcı PDF. Oruç, namaz ve sadaka takiplerinizle bu mübarek ayı düzenli geçirin.</p><a href="https://ko-fi.com/s/6ae48ff989" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
                    
                    
-                   <div class="project-card">
+                   <div class="shop-card">
                         <div class="shop-img"><img src="https://i.pinimg.com/736x/3d/68/ff/3d68ffa01e8780f319b264acad1523c6.jpg" alt="Planlayıcılar" loading="lazy" decoding="async" width="300" height="180"></div>
                         <div class="shop-content"><div class="shop-title">Noktalı Dijital Defterler</div><p class="shop-desc">7 farklı logolu kapak seçeneğiyle; her kapak rengi, içindeki sayfaların rengini (Siyah, Gri/Mor veya Beyaz) belirler. İlim notlarınızı ve dualarınızı düzenli, estetik ve kişisel bir dokunuşla kaydetmek için tasarlandı.</p><a href="https://tr.ee/NdjjoZ" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
