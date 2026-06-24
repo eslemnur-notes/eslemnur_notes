@@ -174,6 +174,13 @@
         /* --- Responsive --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
+            .hero .btn-primary {
+        padding: 8px 15px !important; 
+        font-size: 0.85rem !important; 
+        white-space: nowrap; }
+            .hero .btn-primary {
+                flex: 1 1 auto; 
+                max-width: 48%; }
             .about-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .logo { font-size: 1.2rem; }
@@ -192,6 +199,9 @@
         @media screen and (max-width: 768px) {
             strong { -webkit-font-smoothing: subpixel-antialiased; text-rendering: optimizeLegibility; }
         }
+      
+     
+}
     </style>
 </head>
 <body>
@@ -224,7 +234,10 @@
             <div class="hero-badges">
                 <span class="badge">Kur'an</span><span class="badge">Arapça</span><span class="badge">Tefsir</span><span class="badge">HTML/CSS</span><span class="badge">Web Geliştirme</span>
             </div>
-            <a href="#projects" class="btn-primary">Projelerimi Gör</a>
+         <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 12px; width: 100%; max-width: 100%; margin: 20px auto;">
+    <a href="#projects" class="btn-primary">Projelerimi Gör</a>
+    <a href="#shop" class="btn-primary">Ürünlerimi Gör</a>
+</div>
         </div>
     </section>
 
@@ -482,6 +495,11 @@
                         <div class="shop-content"><div class="shop-title">Ramazan Planlayıcı</div><p class="shop-desc">Ramazan ayı ibadetlerini, duaları ve hedefleri takip etmek için özel hazırlanmış, yazdırılabilir ve dijital kullanıma uygun planlayıcı PDF. Oruç, namaz ve sadaka takiplerinizle bu mübarek ayı düzenli geçirin.</p><a href="https://ko-fi.com/s/6ae48ff989" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
                     </div>
                    
+                   
+                   <div class="project-card">
+                        <div class="shop-img"><img src="https://i.pinimg.com/736x/3d/68/ff/3d68ffa01e8780f319b264acad1523c6.jpg" alt="Planlayıcılar" loading="lazy" decoding="async" width="300" height="180"></div>
+                        <div class="shop-content"><div class="shop-title">Noktalı Dijital Defter</div><p class="shop-desc">7 farklı logolu kapak seçeneğiyle; her kapak rengi, içindeki sayfaların rengini (Siyah, Gri/Mor veya Beyaz) belirler. İlim notlarınızı ve dualarınızı düzenli, estetik ve kişisel bir dokunuşla kaydetmek için tasarlandı.</p><a href="https://tr.ee/NdjjoZ" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a></div>
+                    </div>
                 </div>
             </div>
         </div>
