@@ -1,15 +1,10 @@
-const CACHE_NAME = 'eslem-nur-v4';
+const CACHE_NAME = 'eslem-nur-v2';
 const urlsToCache = [
-  'eslemnur_notes/arapca.html',
-  '/eslemnur_notes/gelisim.html',
-  '/eslemnur_notes/umre-hac.html',
-  'eslemnur_notes/zikir.html',
-  'eslemnur_notes/kuran.html',
-  'eslemnur_notes/kelime-oyunu.html',
-  'eslemnur_notes/planner.html',
-  '/eslemnur_notes/favicon4.ico',
-  '/eslemnur_notes/favicon4-96x96.png',
-  '/eslemnur_notes/site4.webmanifest',
+  
+  '/eslemnur_notes/ikuran-siyah.html',
+  '/eslemnur_notes/PWA/icon/favicon2.ico',
+  '/eslemnur_notes/PWA/png/favicon2-96x96.png',
+  '/eslemnur_notes/PWA/manifest/site2.webmanifest',
   // İstersen diğer CSS/JS dosyalarını da buraya ekleyebilirsin
 ];
 

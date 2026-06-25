@@ -27,19 +27,19 @@
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" as="style">
   
     <!-- PWA Manifest Ekleme -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/eslemnur_notes/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/eslemnur_notes/favicon-96x96.png" />
-    <link rel="manifest" href="/eslemnur_notes/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/eslemnur_notes/PWA/png/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/eslemnur_notes/PWA/png/favicon-96x96.png" />
+    <link rel="manifest" href="/eslemnur_notes/PWA/manifest/site.webmanifest" />
     <meta name="theme-color" content="#000000" />
-    <link rel="icon" type="image/svg+xml" href="/eslemnur_notes/favicon.svg" />
-    <link rel="shortcut icon" href="/eslemnur_notes/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/eslemnur_notes/PWA/svg/favicon.svg" />
+    <link rel="shortcut icon" href="/eslemnur_notes/PWA/icon/favicon.ico" />
 
     <!-- PWA Service Worker Kaydı -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           // Başındaki nokyayı (.sw.js) kaldır, sadece sw.js yap
-          navigator.serviceWorker.register('/eslemnur_notes/sw.js', { scope: '/eslemnur_notes/' })
+          navigator.serviceWorker.register('/eslemnur_notes/PWA/js-files/sw.js', { scope: '/eslemnur_notes/' })
             .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
             .catch(err => console.log('Service Worker kaydı başarısız:', err));
         });
