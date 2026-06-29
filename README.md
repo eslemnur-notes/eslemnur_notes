@@ -1,10 +1,12 @@
+# بسم الله الرحمن الرحيم
+
 # 🌸 Eslem Nur | İlim ve Kod
 
 > "Rabbim, ilmimizi arttır." — رَبِّ زِدْنَا عِلْمًا
 
 İmam Hatip Lisesi mezunu ve İlahiyat Fakültesi'ne hazırlanan bir ilim talebesinin; dinî ilimleri modern web teknolojileriyle harmanlayan kişisel portfolyo ve dijital ürün platformu.
 
-🔗 **Canlı Site:** [بسم الله الرحمن الرحيم](https://eslemnur-notes.github.io/eslemnur_notes/)
+🔗 **Canlı Site:** [Eslem Nur](https://eslemnur-notes.github.io/eslemnur_notes/)
 
 ---
 
