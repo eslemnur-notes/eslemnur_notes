@@ -4,7 +4,7 @@
 
 İmam Hatip Lisesi mezunu ve İlahiyat Fakültesi'ne hazırlanan bir ilim talebesinin; dinî ilimleri modern web teknolojileriyle harmanlayan kişisel portfolyo ve dijital ürün platformu.
 
-🔗 **Canlı Site:** [eslemnur.github.io/eslemnur_notes](https://eslemnur.github.io/eslemnur_notes/)
+🔗 **Canlı Site:** [eslemnur-notes.github.io/eslemnur_notes](https://eslemnur-notes.github.io/eslemnur_notes/)
 
 ---
 
