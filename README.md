@@ -36,7 +36,11 @@
 ## 📖 İçerik Bölümleri
 
 ### Hakkımda
-İlmî yolculuğunu ve teknolojiyle birleştirme vizyonunu anlatan tanıtım.
+Ben Eslem Nur. İlimi kalbimle, kodları ise zihnimle birleştirmeye çalışıyorum. İmam Hatip Lisesi eğitimim boyunca edindiğim ilmi birikimi, yakın zamanda İlahiyat Fakültesi'nde derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.
+
+Hem ilim talebesi (İlahiyat öğrencisi) hem de kendini geliştiren bir yazılımcı olarak; modern web teknolojileriyle anlamlı dijital eserler ortaya koymaya çalışıyorum.
+
+Amacım: ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve teknolojiyi hayır yolunda kullanmaktır.
 
 ### Yetenekler & Sertifikalar
 | Sertifika | Kurum |
@@ -49,7 +53,7 @@
 
 ### Projeler
 - **Şablon & Notlar:** Gölgeli Kur'an, Tefsir/Tecvid/Arapça özetleri (FlipBook), Günlük Dualar, Planlayıcılar
-- **Web Uygulamaları:** Nur Kuran-ı Kerim, İlim & İbadet Takibi, Kelime Avı, Akıllı Planlayıcı, Zikir Sayacı, Hac & Umre Rehberi, Ayet-i Kelim, iKuran
+- **Web Uygulamaları:** Nur Kuran-ı Kerim, İlim & İbadet Takibi, Kelime Avı, Akıllı Planlayıcı, Zikir Sayacı, Hac & Umre Rehberi, Ayet-i Kelim, iKuran, Notion Planlayıcım (Şablon)
 
 ### Shop
 - **Defterler & PDF:** GoodNotes şablonları, dijital defterler, Ramazan planlayıcı (Ko-fi üzerinden)
@@ -73,7 +77,7 @@
 
 © 2026 Eslem Nur Çetin. Tüm hakları saklıdır.
 
-Bu projedeki içerikler (notlar, şablonlar, web uygulamaları) **sadaka-i cariye** niyetiyle paylaşılmıştır. Ücretsiz içerikler serbestçe kullanılabilir; ticari ürünler için Ko-fi üzerinden satın alınmalıdır.
+Bu projedeki içerikler (notlar, şablonlar, web uygulamaları) **sadaka-i cariye** niyetiyle paylaşılmıştır. Ücretsiz içerikler serbestçe kullanılabilinir; ticari ürünler için Ko-fi üzerinden satın alınmalıdır.
 
 ---
 
