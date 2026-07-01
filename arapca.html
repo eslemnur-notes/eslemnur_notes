@@ -159,9 +159,9 @@
     justify-content: center;
 }
 
-/* Dark mode'da çerçeve daha belirgin olsun */
+
 [data-theme="dark"] .word-card::before {
-    border-color: #8B6A75;           /* Rose-gold yerine daha koyu */
+    border-color: #8B6A75;           
     opacity: 0.4;
 }
 
@@ -204,7 +204,7 @@
         }
 
         .context-card {
-    background: var(--card-bg);      /* ✓ Solid renk kullan */
+    background: var(--card-bg);     
     border-radius: 15px;
     padding: 20px;
     margin-top: 25px;
@@ -353,7 +353,7 @@
         /* --- Kontrol Paneli --- */
         .controls { display: flex; justify-content: center; gap: 15px; margin-top: 30px; flex-wrap: wrap; align-items: center; }
 
-                /* --- Footer --- */
+        /* --- Footer --- */
         footer.app-footer { background: var(--card-bg); border-top: 1px solid var(--border-color); padding: 40px 0; text-align: center; margin-top: 60px; }
         .footer-arabic { font-family: 'Scheherazade New', serif; font-size: 1.5rem; color: var(--primary-color); margin-bottom: 15px; direction: rtl; }
         .copyright { font-size: 0.85rem; color: var(--text-light); }
@@ -466,9 +466,7 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // =========================================================================
-        // ✅ VERİ TABANI (DİYANET İŞLERİ MEALİNE %100 SADIK - GERÇEK AYETLER)
-        // =========================================================================
+        
         const stories = { 
             eyyub: {
                 name: "Eyyüp A.S. (Sabır Kıssası)",
@@ -573,11 +571,7 @@
             }
         };
 
-        // =========================================================================
-        // ✅ UYGULAMA MANTIĞI
-        // =========================================================================
         
-        // Rastgele mod için tüm kelimeleri birleştir ve karıştır
         function initRandomMode() {
             const allWords = [];
             let idCounter = 1;
@@ -586,7 +580,7 @@
                     allWords.push({ ...word, id: idCounter++ });
                 });
             });
-            // Fisher-Yates Shuffle ile rastgele karıştır
+           
             for (let i = allWords.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [allWords[i], allWords[j]] = [allWords[j], allWords[i]];
@@ -656,7 +650,7 @@
                 document.getElementById('storyProgressText').textContent = "Tüm kıssalardan karışık kelimeler öğreniyorsunuz.";
             } else {
                 currentWords = stories[storyKey].words;
-                // DÜZELTİLDİ: split('(')[0] kullanarak array'ün ilk elemanını alıp trim() uyguluyoruz.
+               
                 const storyName = stories[storyKey].name.split('(')[0].trim();
                 document.getElementById('currentStoryName').textContent = storyName;
                 document.getElementById('storyProgressText').textContent = stories[storyKey].description;
@@ -675,7 +669,7 @@
             });
             
             renderWord();
-            updateProgress(); // DÜZELTİLDİ: Parantez eksikti
+            updateProgress(); 
         };
 
         // İlerleme Çubuğunu Güncelle
@@ -687,7 +681,7 @@
             const learnedCount = document.getElementById('learnedCount');
             const totalWords = document.getElementById('totalWords');
 
-            // DÜZELTİLDİ: Doğru ID'ler kullanıldı (progressFill, learnedCount, totalWords)
+            
             progressFill.style.width = `${progress}%`;
             learnedCount.textContent = currentWordIndex + 1;
             totalWords.textContent = currentWords.length;
@@ -711,7 +705,7 @@
                 }
             });
 
-            // Kartın içeriğini tamamen yeniden oluştur (word-content sınıfı yok, direkt içine yerleştiriyoruz)
+            // Kartın içeriği
             wordCard.innerHTML = `
                 <div class="arabic-word">${wordData.word}</div>
                 <div class="pronunciation">${wordData.pronunciation}</div>
@@ -742,7 +736,7 @@
             }
         };
 
-        // Ses Çalma Simülasyonu (Gerçek ses dosyası olmadığı için konsola log atar ve animasyon oynatır)
+        // Ses Çalma Simülasyonu (Gerçek ses dosyası değil) 
         window.playAudio = function() {
             const btn = document.querySelector('.audio-btn');
             if (btn.classList.contains('playing')) return;
