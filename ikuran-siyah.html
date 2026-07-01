@@ -30,7 +30,7 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          // Başındaki nokyayı (.sw.js) kaldır, sadece sw.js yap
+          
           navigator.serviceWorker.register('/eslemnur_notes/PWA/js-files/sw2.js', { scope: '/eslemnur_notes/' })
             .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
             .catch(err => console.log('Service Worker kaydı başarısız:', err));
@@ -82,7 +82,7 @@
         
       }
 
-      /* --- MOBİL VARSAYILAN (300x500) --- */
+      /* --- MOBİL --- */
       .ipod-container {
         width: 300px;
         height: 500px;
@@ -427,21 +427,21 @@
   margin-right: 6px;
 }
 
-      /* --- AYARLAR GÖRÜNÜMÜ (Scrollable) --- */
+/* --- AYARLAR GÖRÜNÜMÜ (Scrollable) --- */
 #settings-view {
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Başlangıçtan başla */
+  justify-content: flex-start; 
   height: 100%;
   text-align: center;
   background: #fff;
-  overflow-y: auto; /* Kaydırma çubuğu ekle */
+  overflow-y: auto; 
   padding: 20px 10px;
   box-sizing: border-box;
 }
 
-/* Scrollbar stili (opsiyonel - daha şık görünüm için) */
+/* Scrollbar stili */
 #settings-view::-webkit-scrollbar {
   width: 6px;
 }
@@ -458,7 +458,7 @@
 
 
 
-      /* --- MASAÜSTÜ AYARLARI (769px ve üzeri)--- */ 
+      /* --- MASAÜSTÜ --- */ 
       @media (min-width: 769px) {
         .ipod-container {
           width: 400px;
@@ -570,9 +570,9 @@
         <div class="player-view" id="settings-view" style="display: none;">
     <div class="now-playing-title">Ayarlar</div>
     
-    <!-- İçerik artık kaydırılabilir -->
+    <!-- İçerik kaydırılabilir -->
     <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px; margin-bottom: 20px; width: 80%;">
-        <!-- Butonlarınız buraya -->
+        <!-- Butonlar -->
         <button id="btn-theme" class="settings-btn">
                     <i class='fas fa-moon' id="theme-icon"></i> 
                     <span id="theme-text">Koyu Mod</span>
@@ -656,16 +656,16 @@
     let playbackSpeed = 1.0;
     const speedLevels = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0];
     
-    // Ses seviyesi kontrolü için
+    // Ses seviyesi kontrolü 
     let targetVolume = 1.0;
     let volumeInterval = null;
 
     // --- Mesaj Gösterme Fonksiyonu ---
     function showMessage(msgId, text, timeout = 1000) {
-        // Tüm mesajları gizle
+        
         document.querySelectorAll('.status-msg').forEach(el => el.style.opacity = '0');
         
-        // İstenen mesajı seç
+        
         const msgEl = document.getElementById(msgId);
         if (msgEl) {
             msgEl.textContent = text;
@@ -949,7 +949,7 @@
         }
     });
 
-    // Mevcut lbl-prev event listener'ını güncelle:
+    // lbl-prev event listener
 document.querySelector('.lbl-prev').addEventListener('click', () => {
     if (playerView.style.display === 'flex') {
         audio.currentTime = Math.max(0, audio.currentTime - 10);
@@ -958,14 +958,14 @@ document.querySelector('.lbl-prev').addEventListener('click', () => {
         // Ayarlardayken yukarı kaydır
         settingsView.scrollTop = Math.max(0, settingsView.scrollTop - 50);
     } else if (listEl.style.display === 'none') {
-        // Bu koşul asla gerçekleşmeyecek çünkü settingsView açıldığında listEl zaten none
+        
         changeSelection(-1);
     } else {
         changeSelection(-1);
     }
 });
 
-// Mevcut lbl-next event listener'ını güncelle:
+
 document.querySelector('.lbl-next').addEventListener('click', () => {
     if (playerView.style.display === 'flex') {
         audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
@@ -1043,7 +1043,6 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
 
         // --- 8. Tema Değiştirme ---
     
-    // Butonun içindeki ikonu ve yazıyı güncelleyen fonksiyon
     function updateThemeButton() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         if (currentTheme === 'dark') {
@@ -1055,14 +1054,14 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
         }
     }
 
-    // Tema değiştirme fonksiyonu
+    
     function setTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         showMessage('msg-player', theme === 'light' ? "Aydınlık Mod" : "Koyu Mod");
     }
 
-    // Tema butonuna tıklama olayı (Toggle mantığı)
+    
     btnTheme.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -1070,12 +1069,12 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
         updateThemeButton();
     });
 
-    // Sayfa yüklendiğinde temayı ve butonu ayarla
+    
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         setTheme(savedTheme);
     }
-    updateThemeButton(); // İlk açılışta butonu güncelle
+    updateThemeButton(); 
 
     
 
@@ -1111,7 +1110,7 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
             shuffledIndices = [];
             currentShuffleIndex = 0;
             showMessage('msg-shuffle', "Karıştır Modu Kapalı", 2000);
-            btnShuffle.style.background = ''; // CSS'e geri dön
+            btnShuffle.style.background = ''; 
             btnShuffle.style.color = '';
         }
         
