@@ -864,7 +864,7 @@
         } 
         // AYARLAR AÇIKSA - KAYDIRMA
         else if (settingsView.style.display !== 'none') {
-            const scrollAmount = delta > 0 ? 40 : -40; // Pozitif döndükçe aşağı, negatif döndükçe yukarı
+            const scrollAmount = delta > 0 ? 40 : -40; 
             settingsView.scrollTop += scrollAmount;
             // Kaydırma mesajı göster
             showMessage('msg-player', '', 0);
@@ -961,23 +961,23 @@ document.querySelector('.lbl-prev').addEventListener('click', () => {
         audio.currentTime = Math.max(0, audio.currentTime - 10);
         showMessage('msg-skip', "-10s");
     } else if (settingsView.style.display !== 'none') {
-        // Ayarlardayken yukarı kaydır
+        
         settingsView.scrollTop = Math.max(0, settingsView.scrollTop - 50);
     } else if (listEl.style.display === 'none') {
-        // Bu koşul asla gerçekleşmeyecek çünkü settingsView açıldığında listEl zaten none
+        
         changeSelection(-1);
     } else {
         changeSelection(-1);
     }
 });
 
-// Mevcut lbl-next event listener'ını güncelle:
+
 document.querySelector('.lbl-next').addEventListener('click', () => {
     if (playerView.style.display === 'flex') {
         audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
         showMessage('msg-skip', "+10s");
     } else if (settingsView.style.display !== 'none') {
-        // Ayarlardayken aşağı kaydır
+        
         const maxScroll = settingsView.scrollHeight - settingsView.clientHeight;
         settingsView.scrollTop = Math.min(maxScroll, settingsView.scrollTop + 50);
     } else {
@@ -1049,7 +1049,7 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
 
         // --- 8. Tema Değiştirme ---
     
-    // Butonun içindeki ikonu ve yazıyı güncelleyen fonksiyon
+    
     function updateThemeButton() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         if (currentTheme === 'dark') {
@@ -1061,14 +1061,14 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
         }
     }
 
-    // Tema değiştirme fonksiyonu
+    
     function setTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         showMessage('msg-player', theme === 'light' ? "Aydınlık Mod" : "Koyu Mod");
     }
 
-    // Tema butonuna tıklama olayı (Toggle mantığı)
+    
     btnTheme.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -1076,12 +1076,12 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
         updateThemeButton();
     });
 
-    // Sayfa yüklendiğinde temayı ve butonu ayarla
+    
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         setTheme(savedTheme);
     }
-    updateThemeButton(); // İlk açılışta butonu güncelle
+    updateThemeButton(); 
 
     
 
@@ -1096,7 +1096,7 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
             btnRepeat.style.color = '#fff';
         } else {
             showMessage('msg-repeat', "Tekrar Modu Kapalı", 2000);
-            btnRepeat.style.background = ''; // CSS'e geri dön
+            btnRepeat.style.background = ''; 
             btnRepeat.style.color = '';
         }
     }
@@ -1117,7 +1117,7 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
             shuffledIndices = [];
             currentShuffleIndex = 0;
             showMessage('msg-shuffle', "Karıştır Modu Kapalı", 2000);
-            btnShuffle.style.background = ''; // CSS'e geri dön
+            btnShuffle.style.background = ''; 
             btnShuffle.style.color = '';
         }
         
@@ -1224,7 +1224,7 @@ document.querySelector('.lbl-next').addEventListener('click', () => {
         return `${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
-    // Başlat
+    
     fetchSurahs();
 
 </script>
