@@ -4,7 +4,7 @@
 
 > "Rabbim, ilmimizi arttır." — رَبِّ زِدْنَا عِلْمًا
 
-## İmam Hatip Lisesi mezunu ve İlahiyat Fakültesi birinci sınıf öğrencisi; dinî ilimleri modern web teknolojileriyle harmanlayan kişisel portfolyo ve dijital ürün platformu.
+İmam Hatip Lisesi mezunu ve İlahiyat Fakültesi birinci sınıf öğrencisi; dinî ilimleri modern web teknolojileriyle harmanlayan kişisel portfolyo ve dijital ürün platformu.
 
 🔗 **Canlı Site:** [Eslem Nur](https://eslemnur-notes.github.io/eslemnur_notes/)
 
@@ -36,11 +36,11 @@
 ## 📖 İçerik Bölümleri
 
 ### Hakkımda
-Ben Eslem Nur. İlimi kalbimle, kodları ise zihnimle birleştirmeye çalışıyorum. İmam Hatip Lisesi eğitimim boyunca edindiğim ilmi birikimi, yakın zamanda İlahiyat Fakültesi'nde derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.
+Ben Eslem Nur. İlimi kalbimle, kodları ise zihnimle birleştirmeye çalışıyorum. İmam Hatip Lisesi eğitimim boyunca edindiğim ilmi birikimi, İlahiyat Fakültesi'nde Allah'ın izniyle derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.
 
-Hem ilim talebesi (İlahiyat öğrencisi) hem de kendini geliştiren bir yazılımcı olarak; modern web teknolojileriyle anlamlı dijital eserler ortaya koymaya çalışıyorum.
+Hem ilim talebesi (İlahiyat öğrencisi) hem de kendini geliştiren bir yazılımcı olarak, modern web teknolojileriyle anlamlı dijital eserler ortaya koymaya çalışıyorum.
 
-Amacım: ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve teknolojiyi hayır yolunda kullanmaktır.
+Amacım:إن شاء الله ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve teknolojiyi hayır yolunda kullanmaktır.
 
 ### Yetenekler & Sertifikalar
 | Sertifika | Kurum |
