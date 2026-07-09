@@ -4,7 +4,7 @@
 
 > "Rabbim, ilmimizi arttır." — رَبِّ زِدْنَا عِلْمًا
 
-İmam Hatip Lisesi mezunu ve İlahiyat Fakültesi'ne hazırlanan bir ilim talebesinin; dinî ilimleri modern web teknolojileriyle harmanlayan kişisel portfolyo ve dijital ürün platformu.
+## İmam Hatip Lisesi mezunu ve İlahiyat Fakültesi birinci sınıf öğrencisi; dinî ilimleri modern web teknolojileriyle harmanlayan kişisel portfolyo ve dijital ürün platformu.
 
 🔗 **Canlı Site:** [Eslem Nur](https://eslemnur-notes.github.io/eslemnur_notes/)
 
