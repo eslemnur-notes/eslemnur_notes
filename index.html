@@ -372,11 +372,13 @@
                     
                     <div class="project-card">
                         <div class="project-img"><img src="https://i.pinimg.com/736x/a6/96/d7/a696d7208dc10222a799b7e4643436cf.jpg" alt="Ders Notları" loading="lazy" decoding="async" width="300" height="180"></div>
-                        <div class="project-content"><div class="project-title">Tecvid Notlarım (Özet)</div><p class="project-desc">Tecvid derslerimin özetleri. (FlipBook)</p><a href="https://heyzine.com/flip-book/98091be09f.html" target="_blank" rel="noopener noreferrer" class="btn-outline btn-download">Aç</a></div>
+                        <div class="project-content"><div class="project-title">Tecvid Notlarım (Özet)</div><p class="project-desc">Tecvid derslerimin özetleri. (FlipBook)</p><a href="https://heyzine.com/flip-book/98091be09f.html" target="_blank" rel="noopener noreferrer" class="btn-outline btn-download" id="btn-tecvid-tr">Aç (TR)</a>
+<a href="" target="_blank" rel="noopener noreferrer" class="btn-outline btn-download" style="margin-top: 10px" id="btn-tecvid-de">Aç (DE)</a></div>
                     </div>
                     <div class="project-card">
                         <div class="project-img"><img src="https://i.pinimg.com/736x/70/df/68/70df683db7f74c781a61742871a1513d.jpg" alt="Ders Notları" loading="lazy" decoding="async" width="300" height="180"></div>
-                        <div class="project-content"><div class="project-title">Arapça Gramer Notlarım (Özet)</div><p class="project-desc">Arapça derslerimin özetleri. (FlipBook)</p><a href="https://heyzine.com/flip-book/f0be814a9c.html" target="_blank" rel="noopener noreferrer" class="btn-outline btn-download">Aç</a></div>
+                        <div class="project-content"><div class="project-title">Arapça Gramer Notlarım (Özet)</div><p class="project-desc">Arapça derslerimin özetleri. (FlipBook)</p><a href="https://heyzine.com/flip-book/f0be814a9c.html" target="_blank" rel="noopener noreferrer" class="btn-outline btn-download" id="btn-arapca-tr">Aç (TR)</a>
+<a href="" target="_blank" rel="noopener noreferrer" class="btn-outline btn-download" style="margin-top: 10px" id="btn-arapca-de">Aç (DE)</a></div>
                     </div>
                     <div class="project-card">
                         <div class="project-img"><img src="https://storage.ko-fi.com/cdn/useruploads/display/5b484285-e755-4651-9672-074a4bc3584d_img_1916.jpeg" alt="Lise Notları" loading="lazy" decoding="async" width="300" height="180"></div>
@@ -590,7 +592,7 @@
         </script>
     </footer>
 
-    <!-- JAVASCRIPT (TAMAMLANDI) -->
+    <!-- JAVASCRIPT -->
     <script>
         // Dil Veritabanı (Türkçe ve Almanca İçerikler)
         const translations = {
@@ -651,6 +653,8 @@
                 btnDownload: "İndir",
                 btnOpen: "Uygulamayı Aç",
                 btnStart: "Oyunu Başlat",
+                btnOpenTR: "Aç (TR)",
+                btnOpenDE: "Aç (DE)",
               webProjects: [
     { title: "Nur Kuran-ı Kerim", desc: "Diyanet API'si ile çalışan, Arapça ve Türkçe mealini gösteren modern uygulama." },
     { title: "İlim ve İbadet Takibi", desc: "Günlük ibadet ve ilim çalışmalarınızı takip eden, seviye sistemi olan uygulama." },
@@ -750,6 +754,8 @@
                 btnDownload: "Herunterladen",
                 btnOpen: "App öffnen",
                 btnStart: "Spiel starten",
+                btnOpenTR: "Öffnen (TR)",
+                btnOpenDE: "Öffnen (DE)",
                 webProjects: [
     { title: "Nur Koran-ı Kerim", desc: "Moderne Anwendung mit Diyanet-API, die Arabisch und türkische Übersetzung anzeigt." },
     { title: "Ilm- und Gottesdienstverfolgung", desc: "Anwendung zur Verfolgung täglicher Gottesdienste und wissenschaftlicher Studien mit Levelsystem. (Türkisch)" },
@@ -939,6 +945,11 @@ document.getElementById("shop-note").textContent = translations[currentLang].sho
                 btn.textContent = translations[currentLang].btnOrder;
             });
             
+            // Arapça ve Tecvid İkinci Butonları Güncelleme
+document.getElementById("btn-tecvid-tr").textContent = translations[currentLang].btnOpenTR;
+document.getElementById("btn-tecvid-de").textContent = translations[currentLang].btnOpenDE;
+document.getElementById("btn-arapca-tr").textContent = translations[currentLang].btnOpenTR;
+document.getElementById("btn-arapca-de").textContent = translations[currentLang].btnOpenDE;
                      
             // Footer Güncelleme
             document.getElementById("footer-prayer").textContent = translations[currentLang].footerPrayer;
