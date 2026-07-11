@@ -962,6 +962,13 @@ document.getElementById("btn-arapca-de").textContent = translations[currentLang]
             navLinks.classList.toggle("active");
         }
 
+        // Mobil menü linklerine tıklandığında menüyü kapat
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+    });
+});
+        
         // Orijinal Tema Seçim Kodunuz (Uyumlu çalışması için ID kontrolü eklendi)
         document.getElementById('themeToggle').addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
