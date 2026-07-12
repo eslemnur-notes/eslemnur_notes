@@ -5,33 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iKuran | Eslem Nur</title>
     <meta name="description" content="iKuran“-App von Eslem Nur Çetin – einer Studentin der Theologie und Webentwicklerin. Hören Sie den Koran mit einem digitalen iPod.">
-    <meta name="keywords" content="Theologie, Web Entwicklung, Tafsir, Arabisch, Proton, Eslem Nur Çetin, Imam Hatip, Digitale Notizen, Portfolio, iKuran, iPod, pink">
+    <meta name="keywords" content="Theologie, Web Entwicklung, Tafsir, Arabisch, Proton, Eslem Nur Çetin, Imam Hatip, Digitale Notizen, Portfolio, iKuran, iPod, schwarz">
     <meta name="author" content="Eslem Nur Çetin">
     <meta name="robots" content="index, follow">
 
     
     <!-- Open Graph (Sosyal Medya Paylaşımı İçin) -->
-    <meta property="og:title" content="Eslem Nur | iKuran Pink">
+    <meta property="og:title" content="Eslem Nur | iKuran Schwarz">
     <meta property="og:description" content="Eslem Nur Çetin - Portfolio einer Theologiestudentin und Webentwicklerin. Kostenlose Ilm-Notizen und Web Apps.">
     <meta property="og:image" content="https://i.pinimg.com/736x/3b/ca/9c/3bca9c12c00bd3a0cc8872d168a9dc62.jpg">
-    <meta property="og:url" content="https://eslemnur.github.io/eslemnur_notes/deutsch/">
+    <meta property="og:url" content="https://eslemnur.github.io/eslemnur_notes/de/">
     <meta property="og:type" content="Web App">
     <meta property="og:locale" content="de_DE">
 
     <!-- PWA Manifest Ekleme -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/eslemnur_notes/PWA/png/apple-touch-icon3.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/eslemnur_notes/PWA/png/favicon3-96x96.png" />
-    <link rel="manifest2" href="/eslemnur_notes/PWA/manifest/site3.webmanifest" />
-    <meta name="theme-color" content="#ddc6dc" />
-    <link rel="icon" type="image/svg+xml" href="/eslemnur_notes/PWA/svg/favicon3.svg" />
-    <link rel="shortcut icon" href="/eslemnur_notes/PWA/icon/favicon3.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/eslemnur_notes/PWA/png/apple-touch-icon2.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/eslemnur_notes/PWA/png/favicon2-96x96.png" />
+    <link rel="manifest" href="/eslemnur_notes/PWA/manifest/site2.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href="/eslemnur_notes/PWA/svg/favicon2.svg" />
+    <link rel="shortcut icon" href="/eslemnur_notes/PWA/icon/favicon2.ico" />
 
     <!-- PWA Service Worker Kaydı -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          // Başındaki nokyayı (.sw.js) kaldır, sadece sw.js yap
-          navigator.serviceWorker.register('/eslemnur_notes/PWA/js-files/sw3.js', { scope: '/eslemnur_notes/' })
+          
+          navigator.serviceWorker.register('/eslemnur_notes/PWA/js-files/sw2.js', { scope: '/eslemnur_notes/' })
             .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
             .catch(err => console.log('Service Worker kaydı başarısız:', err));
         });
@@ -43,37 +43,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
   
-    <style>
-      :root {--bg-color: #FFF9F9;
-             --container-prim: #dd8399;
-             --container-sec: #FFebf0;
+<style>
+      :root {--bg-color: #f0f0f0;
+             --container-prim: #0a0a0a; 
+             --container-sec: #1a1a1a;  
              --bg-screen: #fff;
-             --box-shadow: 0 20px 40px rgba(160, 100, 120, 0.2);
-             --shadow-light: rgba(255, 255, 255, 0.6);   
-             --shadow-dark: rgba(180, 100, 120, 0.25);   
-             --shadow-deep: rgba(140, 60, 80, 0.35); 
-             --border: #999;
+             --box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+             --shadow-light: rgba(255, 255, 255, 0.12); 
+             --shadow-dark: rgba(0, 0, 0, 0.85);       
+             --shadow-deep: rgba(0, 0, 0, 0.95);  
+             --border: #333;
       }
-      
-      [data-theme="dark"] {--bg-color: #1e1e1e;
-             --container-prim: #dd8399;
-             --container-sec: #FFebf0;
+      [data-theme="dark"] {--bg-color: #202020;
+             --container-prim: #000000;
+             --container-sec: #111111;
              --bg-screen: #fff;
-             --shadow-light: rgba(255, 255, 255, 0.5);
-             --shadow-dark: rgba(100, 40, 60, 0.4);      
-             --shadow-deep: rgba(80, 20, 40, 0.5);       
-             --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-             --border: #555;}
+             --shadow-light: rgba(255, 255, 255, 0.08);
+             --shadow-dark: rgba(0, 0, 0, 0.9);
+             --shadow-deep: rgba(0, 0, 0, 1);
+             --border: #222;
+             --box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+             }
       
-      [data-theme="dark"] body {
+    [data-theme="dark"] body {
       background-image: none;
     }
-
       
         /* --- GENEL AYARLAR --- */
       body {
         background-color: var(--bg-color);
-        background-image: radial-gradient(circle at 30% 30%, var(--bg-color) 0%, #FFebf0 100%);
+        background-image: radial-gradient(circle at 30% 30%, #e0e0e0 0%, #c0c0c0 100%);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -81,24 +80,24 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         margin: 0;
         user-select: none;
+        
       }
-      
 
-
-      /* --- MOBİL VARSAYILAN (300x500) --- */
+      /* --- MOBİL --- */
       .ipod-container {
         width: 300px;
         height: 500px;
-        background: linear-gradient(135deg, var(--container-sec) 0%, var(--container-prim) 100%);
+        background: linear-gradient(135deg, var(--container-prim) 0%, var(--container-sec) 100%);
         border-radius: 45px;
         border: none;
         
-        box-shadow: 
-        15px 15px 40px var(--shadow-dark),      
-        -5px -5px 20px var(--shadow-light),     
-        inset 2px 2px 8px var(--shadow-light),  
-        inset -2px -2px 8px var(--shadow-deep), 
-        inset 0 0 20px rgba(0, 0, 0, 0.1);  
+        box-shadow:
+        15px 15px 40px var(--shadow-dark),
+        -5px -5px 20px rgba(255, 255, 255, 0.05), 
+        
+        inset 2px 2px 6px var(--shadow-light),
+        inset -2px -2px 6px var(--shadow-deep),
+        inset 0 0 25px rgba(0, 0, 0, 0.6);
         
         display: flex;
         flex-direction: column;
@@ -108,18 +107,20 @@
         transition: all 0.3s ease;
       }
 
+      
       .ipod-container::before {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
         border-radius: 45px;
-        box-shadow: 
-        15px 15px 40px var(--shadow-dark),      
-        -5px -5px 20px var(--shadow-light),     
-        inset 2px 2px 8px var(--shadow-light),  
-        inset -2px -2px 8px var(--shadow-deep), 
-        inset 0 0 20px rgba(0, 0, 0, 0.1);  
-
+        box-shadow:
+        15px 15px 40px var(--shadow-dark),
+        -5px -5px 20px rgba(255, 255, 255, 0.05), 
+        
+        inset 2px 2px 6px var(--shadow-light),
+        inset -2px -2px 6px var(--shadow-deep),
+        inset 0 0 25px rgba(0, 0, 0, 0.6);
+        
         pointer-events: none;
         z-index: 1;
       }
@@ -127,36 +128,37 @@
         width: 240px;
         height: 200px;
         background-color: var(--bg-screen);
-        border: 1px solid #b1b1b1;
+        border: 1px solid #333;
         border-radius: 12px;
         margin-bottom: 35px;
         overflow: hidden;
         position: relative;
         z-index: 2;
         box-shadow: 
-          inset 3px 3px 8px rgba(0,0,0,0.3), 
-          0 2px 5px rgba(0,0,0,0.1); 
+        inset 0 0 15px rgba(0,0,0,0.4), 
+        0 5px 15px rgba(0,0,0,0.4); 
       }
 
+     
 
       .click-wheel {
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        background: linear-gradient(145deg, #f0f0f0, #e6e6e6);
-        border: 1px solid #d1d1d1;
+        background: linear-gradient(145deg, #000000, #1a1a1a);
+        border: 1px solid #111;
         position: relative;
         z-index: 2;
         box-shadow: 
         8px 8px 20px var(--shadow-dark),
-        -4px -4px 10px var(--shadow-light),
+        -4px -4px 10px rgba(255, 255, 255, 0.05),
         inset 2px 2px 5px var(--shadow-light),
         inset -2px -2px 5px var(--shadow-deep),
-        inset 0 0 10px rgba(0, 0, 0, 0.1);
+        inset 0 0 10px rgba(0, 0, 0, 0.8);
         touch-action: none;
       }
         
-
+      
       .wheel-center {
         width: 70px;
         height: 70px;
@@ -166,37 +168,33 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border: 1px solid #ccc;
+        border: 1px solid #000;
         box-shadow: 
         3px 3px 8px var(--shadow-dark),
-        -2px -2px 5px var(--shadow-light),
-        inset 1px 1px 2px var(--shadow-light);
+        -2px -2px 5px rgba(255, 255, 255, 0.05),
+        inset 1px 1px 2px var(--shadow-dark);
         cursor: pointer;
         z-index: 3;
       }
 
-      
+      /* Tekerlek basıldığında efekt */
       .wheel-center:active {
-        transform: translate(-50%, -50%) scale(0.98);
+        transform: translate(-50%, -50%) scale(0.96);
         box-shadow: 
-        inset 3px 3px 8px var(--shadow-deep),
-        inset -2px -2px 5px rgba(255, 255, 255, 0.2),
-        inset 0 0 10px rgba(0, 0, 0, 0.2);
+          inset 3px 3px 8px var(--shadow-deep),
+          inset -2px -2px 5px rgba(255, 255, 255, 0.02),
+          inset 0 0 10px rgba(0, 0, 0, 0.9);
       }
       
       .wheel-label {
         position: absolute;
-        color: #999;
+        color: #555;
         font-size: 16px; 
         font-weight: bold;
         text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.2s;
+        text-shadow: 0 1px 0 rgba(255,255,255,0.05);
       }
-      .lbl-menu:hover, .lbl-prev:hover, .lbl-next:hover, .lbl-play:hover {
-        color: var(--container-prim);
-        
-      }
+      [data-theme="dark"] .wheel-label { color: #777; }
       .lbl-menu { top: 20px; left: 50%; transform: translateX(-50%); }
       .lbl-prev { left: 20px; top: 50%; transform: translateY(-50%); }
       .lbl-next { right: 20px; top: 50%; transform: translateY(-50%); }
@@ -204,25 +202,25 @@
 
       /* Liste ve Player Stilleri (Ortak) */
       .screen-header {
-  background: #c0c0c0;
-  color: #333333;
+  background: #c0c0c0; 
+  color: #333333;      
   padding: 3px 6px;
   font-size: 11px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 20px;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #999; 
   font-family: "Chicago", "Geneva", sans-serif;
-  letter-spacing: -0.5px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  letter-spacing: -0.5px; 
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); 
 }
       
       
       .battery-status-container {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 2px; 
 }
       
       .rotated-battery {
@@ -231,7 +229,7 @@
   transform: rotate(90deg);
   transform-origin: center;
   display: inline-block;
-  filter: grayscale(50%);
+  filter: grayscale(50%); 
 }
 
 .battery-text {
@@ -239,7 +237,7 @@
   font-weight: bold;
   font-size: 11px;
   white-space: nowrap;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4); 
 }
 
       .surah-list {
@@ -258,7 +256,7 @@
       }
 
       .surah-item.active {
-        background-color: var(--container-prim);
+        background-color: #007aff;
         color: white;
       }
 
@@ -277,6 +275,7 @@
 #btn-next-track {
   display: none !important;
 }
+
       
       .now-playing-title {
         font-weight: bold;
@@ -298,18 +297,16 @@
         border-radius: 3px;
         margin: 10px 0;
         position: relative;
-        cursor: pointer;
       }
 
       .progress-bar {
         width: 0%;
         height: 100%;
-        background: var(--container-prim);
+        background: #007aff;
         border-radius: 3px;
         transition: width 0.2s;
       }
 
-      
       /* --- DURUM MESAJLARI --- */
       .status-msg {
         position: absolute;
@@ -328,7 +325,7 @@
 
       /* Farklı Mesaj Konumları */
       .msg-loading {
-        top: 50%;
+        top: 55%;
         left: 50%;
         transform: translateX(-50%);
       }
@@ -388,7 +385,6 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-weight: bold;
-        
       }
       
       [data-theme="dark"] .status-msg {
@@ -397,9 +393,11 @@
         border: 1px solid #555;
       }
       
+
+
       /* --- AYARLAR BUTONLARI --- */
       .settings-btn {
-        background: #dd8399;
+        background: #343434;
         border: 1px solid #ccc;
         border-radius: 20px;
         padding: 5px;
@@ -411,24 +409,26 @@
       }
       
       .settings-btn:hover {
-        background: #B76E79;
+        background: #1a1a1a;
         border-color: #ccc;
       }
 
+
       [data-theme="dark"] .settings-btn {
-        background: #dd8399;
+        background: #343434;
         color: #fff;
         border-color: #ccc;
       }
 
       [data-theme="dark"] .settings-btn:hover {
-        background: #B76E79;
+        background: #1a1a1a;
       }
       
       #btn-theme i {
   margin-right: 6px;
 }
-     /* --- AYARLAR GÖRÜNÜMÜ (Scrollable) --- */
+
+/* --- AYARLAR GÖRÜNÜMÜ (Scrollable) --- */
 #settings-view {
   display: none;
   flex-direction: column;
@@ -442,7 +442,7 @@
   box-sizing: border-box;
 }
 
-
+/* Scrollbar stili */
 #settings-view::-webkit-scrollbar {
   width: 6px;
 }
@@ -459,19 +459,14 @@
 
 
 
-
-
-      /* --- MASAÜSTÜ AYARLARI --- */ 
+      /* --- MASAÜSTÜ --- */ 
       @media (min-width: 769px) {
         .ipod-container {
           width: 400px;
           height: 600px;
           border-radius: 40px;
           padding: 20px;
-          box-shadow: 
-        15px 15px 30px rgba(0,0,0,0.2),
-        -5px -5px 20px rgba(255,255,255,0.7),
-        inset 2px 2px 5px rgba(0,0,0,0.1);
+          
         }
 
         .screen {
@@ -492,7 +487,7 @@
         }
 
         .wheel-label {
-          font-size: 20px; 
+          font-size: 18px; 
         }
         .lbl-menu { top: 35px; }
         .lbl-prev { left: 35px; }
@@ -521,9 +516,9 @@
           height: 6px;
         }
         
-        
-        .status-msg {
+        #status-msg {
           font-size: 12px;
+          right: 25px;
         }
         
         /* --- AYARLAR BUTONLARI --- */
@@ -531,7 +526,7 @@
         border-radius: 20px;
         padding: 10px;
         font-size: 14px; }
-      } 
+      }
     </style>
 </head>
 <body>
@@ -557,7 +552,7 @@
         <div class="player-view" id="player-view">
             <div class="now-playing-title" id="np-title">Sure Name</div>
             <div class="now-playing-reciter">Mishary Alafasy</div>
-            <div style="font-size: 40px; "><i class='fa-solid fa-music' style='color: #dd8399'></i></div>
+            <div style="font-size: 40px; "><i class='fa-solid fa-music' style='color: #000'></i></div>
             <div class="progress-container" id="progress-container">
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
@@ -576,9 +571,9 @@
         <div class="player-view" id="settings-view" style="display: none;">
     <div class="now-playing-title">Einstellungen</div>
     
-    <!-- İçerik artık kaydırılabilir -->
+    <!-- İçerik kaydırılabilir -->
     <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px; margin-bottom: 20px; width: 80%;">
-        <!-- Butonlarınız buraya -->
+        <!-- Butonlar -->
         <button id="btn-theme" class="settings-btn">
                     <i class='fas fa-moon' id="theme-icon"></i> 
                     <span id="theme-text">Dark Mode</span>
@@ -600,8 +595,7 @@
                 <button class="settings-btn" id="btn-speed-up" style="font-size: 10px; margin-bottom: 70px; "><i class='fas fa-plus'></i></button>
             </div>
         </div>
-        
-        <!-- Durum Mesajları -->
+<!-- Durum Mesajları -->
         <div id="msg-loading" class="status-msg msg-loading">Ladet...</div>
         <div id="msg-player" class="status-msg msg-player">Läuft</div>
         <div id="msg-skip" class="status-msg msg-skip">+5s</div>
