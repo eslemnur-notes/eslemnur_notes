@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilm & Ibadah-Planer | Eslem Nur</title>
+
+     <meta name="description" content="Eslem Nur Çetin - Intelligenter İlim & İbadet-Planer für Theologiestudierende und Webentwickler. Quran-Notizen und digitale Wissenschaftsprojekte.">
+    <meta name="keywords" content="Islamische Wissenschaften, Webentwicklung, Tafsir, Arabisch, Proton, Eslem Nur Çetin, Imam Hatip, Digitale Notizen, Ibadah, Planer">
+    <meta name="author" content="Eslem Nur Çetin">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="Eslem Nur | Intelligenter Ilm & Ibadah-Planer">
+    <meta property="og:description" content="Portfolio einer suchenden Studentin des Wissens (Talib al-Ilm) und Webentwicklerin. Kostenlose wissenschaftliche Notizen und digitale Anwendungen.">
+    <meta property="og:image" content="https://i.pinimg.com/736x/1a/19/3e/1a193eb8c8c745411840775c20012a6b.jpg">
+    <meta property="og:url" content="https://eslemnur.github.io/eslemnur_notes/de/">
+    <meta property="og:type" content="Web App">
+    <meta property="og:locale" content="de_DE">
+    <link rel="apple-touch-icon" sizes="180x180" href="/eslemnur_notes/PWA/png/apple-touch-icon4.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/eslemnur_notes/PWA/png/favicon4-96x96.png" />
+    <link rel="manifest" href="/eslemnur_notes/PWA/manifest/site4.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="/eslemnur_notes/PWA/svg/favicon4.svg" />
+    <link rel="shortcut icon" href="/eslemnur_notes/PWA/icon/favicon4.ico" />
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/eslemnur_notes/PWA/js-files/sw4.js', { scope: '/eslemnur_notes/' })
+            .then(reg => console.log('Service Worker erfolgreich registriert!', reg.scope))
+            .catch(err => console.log('Service Worker Registrierung fehlgeschlagen:', err));
+        });
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- FARBPALETTE (LIGHT MODE) --- */
+        :root {
+            --primary-color: #B76E79;
+            --secondary-color: #FFF0F6;
+            --button-bg: #D4A5A5;
+            --button-hover: #C58F8F;
+            --accent-color: #9E7F7F;
+            --bg-color: #FFF9F9;
+            --card-bg: #FFFFFF;
+            --text-color: #4E342E;
+            --text-light: #8D6E63;
+            --border-color: #F0E6E6;
+            --note-bg: #FFF0F5;
+            --success-bg: #E8F5E9;
+            --success-text: #2E7D32;
+            --shadow-color: rgba(183, 110, 121, 0.15);
+            --header-bg: rgba(255, 249, 249, 0.95);
+            --ramadan-primary: #4CAF50; /* Grün für Ramadan */
+            --ramadan-bg: #E8F5E9;
+        }
+
+        /* --- DARK MODE VARIABLEN --- */
+        [data-theme="dark"] {
+            --primary-color: #E08E98;
+            --secondary-color: #2D2D2D;
+            --button-bg: #A07070;
+            --button-hover: #805050;
+            --accent-color: #C0A0A0;
+            --bg-color: #1A1A1A;
+            --card-bg: #252525;
+            --text-color: #EAEAEA;
+            --text-light: #B0B0B0;
+            --border-color: #444444;
+            --note-bg: #333333;
+            --success-bg: #1B3320;
+            --success-text: #4CAF50;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --header-bg: rgba(26, 26, 26, 0.95);
+        }
+
+        /* --- RAMADAN MODUS --- */
+        body.ramadan-mode {
+            --primary-color: var(--ramadan-primary);
+            --button-bg: #45a049;
+            --button-hover: #3d8b40;
+            --accent-color: #8BC34A;
+            --bg-color: var(--ramadan-bg);
+            --note-bg: #C8E6C9;
+            --shadow-color: rgba(76, 175, 80, 0.2);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* HEADER */
+        header {
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 400; color: var(--text-color); font-size: 0.95rem; position: relative; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+            background-color: var(--primary-color); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        .theme-toggle:hover { background: var(--note-bg); border-color: var(--primary-color); }
+
+        /* PLANNER ALANI */
+        .planner-wrapper {
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--secondary-color) 100%);
+            min-height: calc(100vh - 150px);
+        }
+
+        .planner-header { text-align: center; margin-bottom: 30px; }
+        .basmala { font-family: 'Scheherazade New', serif; font-size: 1.8rem; color: var(--primary-color); margin-bottom: 10px; direction: rtl; }
+        .planner-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--text-color); }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            background: var(--note-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        body.ramadan-mode .status-badge {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .motivation-box {
+            background: var(--note-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--text-color);
+            display: inline-block;
+            max-width: 800px;
+        }
+
+        /* SEKME BUTONLARI */
+        .tabs-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+        .tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tab-btn {
+            background: transparent; border: 2px solid var(--border-color);
+            font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-light);
+            cursor: pointer; padding: 10px 25px; border-radius: 25px;
+            font-weight: 600; transition: all 0.3s;
+        }
+        .tab-btn:hover { background: var(--note-bg); color: var(--primary-color); }
+        .tab-btn.active { background: var(--primary-color); color: white; border-color: var(--primary-color); box-shadow: 0 4px 10px var(--shadow-color); }
+
+        .backup-controls { display: flex; gap: 10px; }
+        .btn-secondary {
+            background: transparent; border: 2px solid var(--border-color); color: var(--text-color);
+            padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem;
+            transition: all 0.3s; display: flex; align-items: center; gap: 5px;
+        }
+        .btn-secondary:hover { background: var(--note-bg); border-color: var(--primary-color); color: var(--primary-color); }
+
+        /* BÖLÜMLER */
+        .section { display: none; animation: fadeIn 0.5s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .plan-card {
+            background: var(--card-bg); border-radius: 20px; box-shadow: 0 4px 15px var(--shadow-color);
+            padding: 25px; border: 1px solid var(--border-color); margin-bottom: 25px;
+        }
+        .plan-title {
+            font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary-color);
+            margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .date-display { font-size: 0.85rem; color: var(--text-light); }
+
+        /* GÖREV LİSTESİ */
+        .task-list { list-style: none; }
+        .task-item {
+            display: flex; align-items: center; gap: 15px; padding: 12px;
+            background: var(--note-bg); border-radius: 12px; margin-bottom: 10px;
+            transition: all 0.3s; border-left: 3px solid var(--primary-color);
+        }
+        .task-item.completed { opacity: 0.7; border-left-color: var(--success-text); }
+        .task-checkbox { width: 22px; height: 22px; cursor: pointer; accent-color: var(--primary-color); }
+        .task-text { flex-grow: 1; font-size: 0.95rem; }
+        .task-category {
+            font-size: 0.75rem; padding: 3px 10px; border-radius: 15px; color: white; font-weight: 600;
+        }
+        .cat-worship { background: #E88B8B; }
+        .cat-study { background: #8BC4A4; }
+        .cat-goal { background: #D4A5A5; }
+        .cat-iftar { background: #FF9800; } /* Ramadan-Spezifisch */
+        .cat-sahur { background: #2196F3; } /* Ramadan-Spezifisch */
+        
+        .delete-btn { background: transparent; border: none; color: var(--accent-color); cursor: pointer; font-size: 1.2rem; padding: 5px; }
+        .delete-btn:hover { color: #C62828; }
+
+        /* FORM */
+        .add-task-form {
+            background: var(--card-bg); padding: 20px; border-radius: 15px; margin-top: 20px;
+            border: 1px solid var(--border-color);
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-color); font-size: 0.9rem; }
+        .form-input, .form-select {
+            width: 100%; padding: 12px 15px; border: 1px solid var(--border-color);
+            border-radius: 10px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+            color: var(--text-color); background: var(--card-bg);
+        }
+        .form-input:focus, .form-select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(183, 110, 121, 0.2); }
+        
+        .btn-add {
+            background: var(--primary-color); color: white; border: none; padding: 12px 30px;
+            border-radius: 25px; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+            width: 100%; transition: all 0.3s; box-shadow: 0 4px 15px var(--shadow-color);
+        }
+        .btn-add:hover { background: var(--button-hover); transform: translateY(-2px); }
+
+        /* ÖZET PANELİ */
+        .summary-panel {
+            background: var(--note-bg); border-radius: 20px; padding: 25px; margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+        .summary-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary-color); margin-bottom: 20px; text-align: center; }
+        .summary-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; text-align: center; }
+        .stat-item { background: var(--card-bg); padding: 15px; border-radius: 15px; box-shadow: 0 2px 8px var(--shadow-color); }
+        .stat-number { font-size: 2rem; font-weight: 700; color: var(--primary-color); display: block; }
+        .stat-label { font-size: 0.85rem; color: var(--text-light); margin-top: 5px; }
+
+        /* FOOTER */
+        footer { background: var(--card-bg); border-top: 1px solid var(--border-color); padding: 30px 0; text-align: center; margin-top: auto; }
+        .footer-arabic { font-family: 'Scheherazade New', serif; font-size: 1.5rem; color: var(--primary-color); margin-bottom: 10px; direction: rtl; }
+        .copyright { font-size: 0.85rem; color: var(--text-light); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .logo { font-size: 1.2rem; }
+            .planner-header h1 { font-size: 1.8rem; }
+            .summary-stats { grid-template-columns: repeat(2, 1fr); }
+            .tabs-container { flex-direction: column; align-items: stretch; }
+            .tabs { justify-content: center; }
+            .backup-controls { justify-content: center; }
+        }
+        
+        /* HAMBURGER MENÜ AYARLARI */
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+            margin-left: auto;
+            background: none;
+            border: none;
+        }
+
+        /* MOBİL GÖRÜNÜM */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px;
+                font-size: 1.1rem;
+                border-bottom: 1px solid var(--border-color);
+                color: var(--text-color);
+                text-decoration: none;
+            }
+            
+            .nav-links a:hover {
+                background: var(--note-bg);
+                color: var(--primary-color);
+            }
+            
+            header {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <span>بسم الله</span> Eslem Nur Çetin
+                </a>
+                <button id="themeToggle" class="theme-toggle" aria-label="Design wechseln">
+                <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" onclick="toggleMenu()">
+                    ☰
+                </button>
+                
+                <div class="nav-links">
+                    <a href="https://eslemnur-notes.github.io/eslemnur_notes/de.html#about">Über mich</a>
+                    <a href="https://eslemnur-notes.github.io/eslemnur_notes/de.html#skills">Fähigkeiten</a>
+                    <a href="https://eslemnur-notes.github.io/eslemnur_notes/de.html#skills">Zertifikate</a>
+                    <a href="https://eslemnur-notes.github.io/eslemnur_notes/de.html#projects">Projekte</a>
+                    <a href="https://eslemnur-notes.github.io/eslemnur_notes/de.html#contact">Kontakt</a>
+                    <a href="https://eslemnur-notes.github.io/eslemnur_notes/de.html" style="color: var(--primary-color); font-weight: bold;">Zur Startseite</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="planner-wrapper">
+        <div class="container">
+            
+            <div class="planner-header">
+                <div class="basmala">بسم الله الرحمن الرحيم</div>
+                <h1>Ilm & Ibadah Planer</h1>
+                <div id="ramadanStatus" class="status-badge">Datum wird überprüft...</div>
+                <div id="motivationBox" class="motivation-box"></div>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('daily')">Täglich</button>
+                    <button class="tab-btn" onclick="switchTab('weekly')">Wöchentlich</button>
+                    <button class="tab-btn" onclick="switchTab('monthly')">Monatlich</button>
+                </div>
+                
+                <div class="backup-controls">
+                    <button class="btn-secondary" onclick="backupData()"><i class="fas fa-download"></i> Sichern</button>
+                    <label for="importFile" class="btn-secondary" style="cursor: pointer;">
+                        <i class="fas fa-upload"></i> Importieren
+                    </label>
+                    <input type="file" id="importFile" style="display: none;" accept=".json" onchange="restoreData(this)">
+                </div>
+            </div>
+
+            <div id="daily" class="section active">
+                
+                <div class="summary-panel">
+                    <div class="summary-title">Heutige Übersicht</div>
+                    <div class="summary-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-tasks">0</span>
+                            <span class="stat-label">Gesamt</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="completed-tasks">0</span>
+                            <span class="stat-label">Erledigt</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="progress-percent">0%</span>
+                            <span class="stat-label">% Erfolg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-title">
+                        <span>Aufgabenliste</span>
+                        <span class="date-display" id="current-date"></span>
+                    </div>
+                    <ul class="task-list" id="task-list">
+                        </ul>
+                </div>
+
+                <div class="add-task-form">
+                    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); margin-bottom: 15px;">Neue Aufgabe hinzufügen</h3>
+                    <div class="form-group">
+                        <label class="form-label">Name der Aufgabe</label>
+                        <input type="text" id="new-task-name" class="form-input" placeholder="z. B.: 1 Seite Tafsir (Koranexegese) lesen">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Kategorie</label>
+                        <select id="new-task-category" class="form-select">
+                            <option value="worship">Ibadah (Gottesdienstliche Handlung)</option>
+                            <option value="study">Ilm (Wissenserwerb)</option>
+                            <option value="goal">Persönliches Ziel</option>
+                            <option value="ramadan" id="ramadanOption" style="display:none;">Ramadan-Spezial</option>
+                        </select>
+                    </div>
+                    <button class="btn-add" onclick="addTask()">Aufgabe hinzufügen</button>
+                </div>
+            </div>
+
+            <div id="weekly" class="section">
+                <div class="plan-card">
+                    <div class="plan-title">Wöchentliche Übersicht</div>
+                    <p style="text-align: center; color: var(--text-light); padding: 20px;">In dieser Woche erledigte Aufgaben: <strong id="weekly-total" style="color:var(--primary-color)">0</strong></p>
+                </div>
+            </div>
+
+            <div id="monthly" class="section">
+                <div class="summary-panel">
+                    <div class="summary-title">Ziele für diesen Monat</div>
+                    <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">
+                        Fügen Sie hier Ihre langfristigen spirituellen und akademischen Ziele hinzu. Jede erledigte tägliche Aufgabe trägt zum Fortschritt dieser Ziele bei.
+                    </p>
+                    
+                    <div id="monthly-goals-container" style="display: grid; gap: 20px;">
+                        <div style="text-align: center; padding: 20px; color: var(--text-light);">
+                            Sie haben noch keine monatlichen Ziele hinzugefügt. Klicken Sie auf das Formular unten, um zu beginnen!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-title">Neues Monatsziel hinzufügen</div>
+                    <div class="add-task-form" style="margin-top: 0;">
+                        <div class="form-group">
+                            <label class="form-label">Name des Ziels</label>
+                            <input type="text" id="new-monthly-goal-name" class="form-input" placeholder="z. B.: 2 Cüz Tafsir im Ramadan lesen">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Kategorie</label>
+                            <select id="new-monthly-goal-category" class="form-select">
+                                <option value="worship">Ibadah (Gottesdienstliche Handlung)</option>
+                                <option value="study">Ilm / Bildung</option>
+                                <option value="goal">Persönliche Weiterentwicklung</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="display: flex; gap: 15px;">
+                            <div style="flex: 1;">
+                                <label class="form-label">Zielmenge</label>
+                                <input type="number" id="new-monthly-goal-target" class="form-input" placeholder="z. B.: 20" min="1">
+                            </div>
+                            <div style="flex: 1;">
+                                <label class="form-label">Einheit</label>
+                                <select id="new-monthly-goal-unit" class="form-select">
+                                    <option value="sayfa">Seite(n)</option>
+                                    <option value="cuz">Cüz</option>
+                                    <option value="sura">Sure(n)</option>
+                                    <option value="kelime">Wort/Wörter</option>
+                                    <option value="kez">Mal</option>
+                                    <option value="saat">Stunde(n)</option>
+                                    <option value="gün">Tag(e) (Beständigkeit)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn-add" onclick="addMonthlyGoal()">Ziel speichern</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
+            <p style="margin-bottom: 10px;">"Oh Allah, mehre mich an Wissen." (Koran, 20:114)</p>
+            <p class="copyright">©️ <span id="year"></span> Eslem Nur Çetin. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- KONFIGURATION ---
+        const STORAGE_KEY = 'eslemnur_planner_data_v3';
+        const MOTIVATIONS = [
+            "„Wer etwas tut, um das Wohlgefallen Allahs zu erlangen, dessen Bemühen wird niemals verloren gehen.“",
+            "„Die geliebteste Tat bei Allah ist diejenige, die am regelmäßigsten verrichtet wird, auch wenn sie gering ist.“ (Al-Bukhari)",
+            "„Das Streben nach Wissen ist eine Pflicht für jeden Muslim.“ (At-Tirmidhi)",
+            "„Geduld (Sabr) ist die Hälfte des Glaubens (Iman).“",
+            "„Jedes Ding hat ein Geheimnis; das Geheimnis des Herzens ist das Gedenken Allahs (Dhikr).“",
+            "„Selbst die kleinste gute Tat, die du tun kannst, ist von Bedeutung.“",
+            "„Wenn der Monat Ramadan beginnt, werden die Tore des Paradieses geöffnet und die Tore des Höllenfeuers geschlossen.“"
+        ];
+
+        // --- RAMADAN LOGIK ---
+        async function checkRamadanMode() {
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            let isRamadan = false;
+            let statusMsg = "Es ist derzeit kein Ramadan.";
+
+            const ramazanEstimates = {
+                2025: { start: '2025-03-01', end: '2025-03-30' },
+                2026: { start: '2026-02-19', end: '2026-03-20' },
+                2027: { start: '2027-02-09', end: '2027-03-09' }
+            };
+
+            if (ramazanEstimates[currentYear]) {
+                const start = new Date(ramazanEstimates[currentYear].start);
+                const end = new Date(ramazanEstimates[currentYear].end);
+                if (today >= start && today <= end) {
+                    isRamadan = true;
+                    statusMsg = `Ramadan 1447/20${currentYear-1} ist aktiv! 🌙`;
+                }
+            }
+
+            document.getElementById('ramadanStatus').innerText = statusMsg;
+            
+            if (isRamadan) {
+                document.body.classList.add('ramadan-mode');
+                document.getElementById('ramadanOption').style.display = 'block';
+            } else {
+                document.body.classList.remove('ramadan-mode');
+                document.getElementById('ramadanOption').style.display = 'none';
+            }
+        }
+
+        // --- LOCAL STORAGE ---
+        function getData() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        function saveData(data) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            updateWeeklyStats();
+        }
+
+        function getTodayKey() {
+            return new Date().toISOString().split('T')[0];
+        }
+
+        function getCurrentDateDisplay() {
+            const today = new Date();
+            return today.toLocaleDateString('de-DE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        // --- DESIGN WECHSEL ---
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = document.querySelector('#themeToggle i');
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+
+        // --- MOTIVATION ---
+        function showMotivation() {
+            const randomIndex = Math.floor(Math.random() * MOTIVATIONS.length);
+            document.getElementById('motivationBox').innerText = `"${MOTIVATIONS[randomIndex]}"`;
+        }
+
+        // --- SEKME DEĞİŞTİRME ---
+        function switchTab(tabName) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // --- GÖREV İŞLEMLERİ ---
+        function addTask() {
+            const taskName = document.getElementById('new-task-name').value.trim();
+            const category = document.getElementById('new-task-category').value;
+            
+            if (!taskName) { alert('Bitte geben Sie einen Aufgabennamen ein!'); return; }
+
+            const data = getData();
+            const todayKey = getTodayKey();
+            let todaysTasks = data.find(day => day.date === todayKey);
+            if (!todaysTasks) {
+                todaysTasks = { date: todayKey, tasks: [] };
+                data.push(todaysTasks);
+            }
+
+            const newTask = { id: Date.now(), text: taskName, category: category, completed: false };
+            todaysTasks.tasks.push(newTask);
+            saveData(data);
+            document.getElementById('new-task-name').value = '';
+            renderTasks();
+        }
+
+        function toggleTask(taskId) {
+            const data = getData();
+            const todayKey = getTodayKey();
+            const todaysTasks = data.find(day => day.date === todayKey);
+            
+            if (todaysTasks) {
+                const task = todaysTasks.tasks.find(t => t.id === taskId);
+                if (task) {
+                    const wasCompleted = task.completed;
+                    task.completed = !task.completed;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
