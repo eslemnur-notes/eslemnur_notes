@@ -658,18 +658,326 @@
         }
 
         function toggleTask(taskId) {
-            const data = getData();
-            const todayKey = getTodayKey();
-            const todaysTasks = data.find(day => day.date === todayKey);
+    const data = getData();
+    const todayKey = getTodayKey();
+    const todaysTasks = data.find(day => day.date === todayKey);
+    
+    if (todaysTasks) {
+        const task = todaysTasks.tasks.find(t => t.id === taskId);
+        if (task) {
+            task.completed = !task.completed;
             
-            if (todaysTasks) {
-                const task = todaysTasks.tasks.find(t => t.id === taskId);
-                if (task) {
-                    const wasCompleted = task.completed;
-                    task.completed = !task.completed;
+            const changeAmount = task.completed ? 1 : -1;
+            if (task.category === 'worship' || task.category === 'study' || task.category === 'ramadan') {
+                updateMonthlyProgressByCategory(data, task.category, changeAmount);
+            }
+            
+            saveData(data);
+            renderTasks();
+            renderMonthlyGoals();
+        }
+    }
+}
+
+function deleteTask(taskId) {
+    if (!confirm('Möchten Sie diese Aufgabe wirklich löschen?')) return;
+    const data = getData();
+    const todayKey = getTodayKey();
+    const idx = data.findIndex(day => day.date === todayKey);
+    if (idx !== -1) {
+        data[idx].tasks = data[idx].tasks.filter(t => t.id !== taskId);
+        saveData(data);
+        renderTasks();
+    }
+}
+
+function getCategoryLabel(cat) {
+    const labels = { 
+        worship: 'Ibadah', 
+        study: 'Ilm', 
+        goal: 'Ziel', 
+        ramadan: 'Ramadan',
+        iftar: 'Iftar',
+        sahur: 'Sahur'
+    };
+    return labels[cat] || cat;
+}
+
+function getCategoryClass(cat) {
+    const classes = { 
+        worship: 'cat-worship', 
+        study: 'cat-study', 
+        goal: 'cat-goal', 
+        ramadan: 'cat-worship',
+        iftar: 'cat-iftar',
+        sahur: 'cat-sahur'
+    };
+    return classes[cat] || 'cat-goal';
+}
+
+function renderTasks() {
+    const data = getData();
+    const todayKey = getTodayKey();
+    const todaysTasks = data.find(day => day.date === todayKey);
+    const taskList = document.getElementById('task-list');
+    
+    document.getElementById('current-date').innerText = getCurrentDateDisplay();
+    updateSummary();
+    taskList.innerHTML = '';
+
+    if (!todaysTasks || todaysTasks.tasks.length === 0) {
+        taskList.innerHTML = `<li style="text-align: center; padding: 40px; color: var(--text-light);"><div style="font-size: 3rem; margin-bottom: 15px;">🌸</div><p>Sie haben heute noch keine Aufgaben hinzugefügt.<br>Beginnen Sie mit kleinen Schritten!</p></li>`;
+        return;
+    }
+
+    todaysTasks.tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.className = `task-item ${task.completed ? 'completed' : ''}`;
+        li.innerHTML = `
+            <input type="checkbox" class="task-checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask(${task.id})">
+            <span class="task-text">${task.text}</span>
+            <span class="task-category ${getCategoryClass(task.category)}">${getCategoryLabel(task.category)}</span>
+            <button class="delete-btn" onclick="deleteTask(${task.id})" title="Löschen">×</button>
+        `;
+        taskList.appendChild(li);
+    });
+}
+
+function updateSummary() {
+    const data = getData();
+    const todayKey = getTodayKey();
+    const todaysTasks = data.find(day => day.date === todayKey);
+    const totalEl = document.getElementById('total-tasks');
+    const completedEl = document.getElementById('completed-tasks');
+    const progressEl = document.getElementById('progress-percent');
+
+    if (!todaysTasks || todaysTasks.tasks.length === 0) {
+        totalEl.innerText = '0'; completedEl.innerText = '0'; progressEl.innerText = '0%';
+        return;
+    }
+
+    const total = todaysTasks.tasks.length;
+    const completed = todaysTasks.tasks.filter(t => t.completed).length;
+    const percent = Math.round((completed / total) * 100);
+
+    totalEl.innerText = total;
+    completedEl.innerText = completed;
+    progressEl.innerText = percent + '%';
+}
+
+function updateWeeklyStats() {
+    const data = getData();
+    const now = new Date();
+    const startOfWeek = new Date(now.setDate(now.getDate() - now.getDay()));
+    startOfWeek.setHours(0,0,0,0);
+    const endOfWeek = new Date(startOfWeek);
+    endOfWeek.setDate(endOfWeek.getDate() + 6);
+
+    let count = 0;
+    data.forEach(day => {
+        const d = new Date(day.date);
+        if (d >= startOfWeek && d <= endOfWeek) {
+            count += day.tasks.filter(t => t.completed).length;
+        }
+    });
+    document.getElementById('weekly-total').innerText = count;
+}
+
+function backupData() {
+    const data = getData();
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ilm-planer-backup_${getTodayKey()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function restoreData(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            if (Array.isArray(data)) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                alert('Daten erfolgreich wiederhergestellt! Seite wird neu geladen...');
+                location.reload();
+            } else {
+                alert('Ungültiges Dateiformat.');
+            }
+        } catch (err) {
+            alert('Dateilesefehler: ' + err.message);
+        }
+    };
+    reader.readAsText(file);
+}
+
+// --- MONATLICHE ZIELE ---
+function addMonthlyGoal() {
+    const name = document.getElementById('new-monthly-goal-name').value.trim();
+    const category = document.getElementById('new-monthly-goal-category').value;
+    const target = parseInt(document.getElementById('new-monthly-goal-target').value);
+    const unit = document.getElementById('new-monthly-goal-unit').value;
+
+    if (!name || !target) {
+        alert('Bitte geben Sie Zielname und Menge ein.');
+        return;
+    }
+
+    const data = getData();
+    const currentMonthKey = `monthly_goals_${getTodayKey().substring(0, 7)}`;
+    
+    let goals = data.find(g => g.date === currentMonthKey);
+    if (!goals) {
+        goals = { date: currentMonthKey, goals: [] };
+        data.push(goals);
+    }
+
+    const newGoal = {
+        id: Date.now(),
+        text: name,
+        category: category,
+        target: target,
+        current: 0,
+        unit: unit,
+        completed: false
+    };
+
+    goals.goals.push(newGoal);
+    saveData(data);
+    document.getElementById('new-monthly-goal-name').value = '';
+    document.getElementById('new-monthly-goal-target').value = '';
+    renderMonthlyGoals();
+    alert('Monatsziel erfolgreich hinzugefügt!');
+}
+
+function updateMonthlyProgress(goalId, amountToAdd) {
+    const data = getData();
+    const currentMonthKey = `monthly_goals_${getTodayKey().substring(0, 7)}`;
+    const monthData = data.find(g => g.date === currentMonthKey);
+
+    if (monthData) {
+        const goal = monthData.goals.find(g => g.id === goalId);
+        if (goal && !goal.completed) {
+            goal.current += amountToAdd;
+            if (goal.current >= goal.target) {
+                goal.current = goal.target;
+                goal.completed = true;
+            }
+            saveData(data);
+            renderMonthlyGoals();
+        }
+    }
+}
+
+function updateMonthlyProgressByCategory(data, category, amount) {
+    const currentMonthKey = `monthly_goals_${getTodayKey().substring(0, 7)}`;
+    const monthData = data.find(g => g.date === currentMonthKey);
+    
+    if (monthData) {
+        monthData.goals.forEach(goal => {
+            if (goal.category === category && !goal.completed) {
+                goal.current += amount;
+                if (goal.current >= goal.target) {
+                    goal.current = goal.target;
+                    goal.completed = true;
                 }
             }
+        });
+    }
+}
+
+function deleteMonthlyGoal(goalId) {
+    if (!confirm('Möchten Sie dieses Monatsziel wirklich löschen?')) return;
+    const data = getData();
+    const currentMonthKey = `monthly_goals_${getTodayKey().substring(0, 7)}`;
+    const idx = data.findIndex(g => g.date === currentMonthKey);
+    
+    if (idx !== -1) {
+        data[idx].goals = data[idx].goals.filter(g => g.id !== goalId);
+        saveData(data);
+        renderMonthlyGoals();
+    }
+}
+
+function renderMonthlyGoals() {
+    const data = getData();
+    const currentMonthKey = `monthly_goals_${getTodayKey().substring(0, 7)}`;
+    const monthData = data.find(g => g.date === currentMonthKey);
+    const container = document.getElementById('monthly-goals-container');
+
+    if (!monthData || monthData.goals.length === 0) {
+        container.innerHTML = `<div style="text-align: center; padding: 20px; color: var(--text-light);">Sie haben noch keine monatlichen Ziele hinzugefügt.</div>`;
+        return;
+    }
+
+    container.innerHTML = '';
+    monthData.goals.forEach(goal => {
+        const percent = Math.round((goal.current / goal.target) * 100);
+        const isCompleted = goal.completed ? 'completed' : '';
+        
+        const div = document.createElement('div');
+        div.className = `task-item ${isCompleted}`;
+        div.style.padding = '20px';
+        div.style.marginBottom = '20px';
+        div.style.background = 'var(--card-bg)';
+        div.style.border = '1px solid var(--border-color)';
+        div.style.flexDirection = 'column';
+        div.style.alignItems = 'stretch';
+
+        div.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <div style="font-weight: 700; font-size: 1.1rem; color: var(--text-color);">${goal.text}</div>
+                <span class="task-category ${getCategoryClass(goal.category)}">${getCategoryLabel(goal.category)}</span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 8px; color: var(--text-light);">
+                <span>Fortschritt: <strong style="color: var(--primary-color);">${goal.current} / ${goal.target} ${goal.unit}</strong></span>
+                <span>${percent}%</span>
+            </div>
+            
+            <div style="background: #eee; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 15px;">
+                <div style="width: ${percent}%; background: var(--primary-color); height: 100%; transition: width 0.5s ease;"></div>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-secondary" style="flex: 1; justify-content: center;" onclick="updateMonthlyProgress(${goal.id}, 1)">+1 Hinzufügen</button>
+                <button class="delete-btn" onclick="deleteMonthlyGoal(${goal.id})" style="align-self: center;" title="Löschen">×</button>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+
+const menuLinks = document.querySelectorAll('.nav-links a');
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
         }
+    });
+});
+
+// --- START ---
+window.onload = () => {
+    initTheme();
+    checkRamadanMode();
+    showMotivation();
+    renderTasks();
+    renderMonthlyGoals();
+    updateWeeklyStats();
+    
+    document.getElementById('year').innerText = new Date().getFullYear();
+};
     </script>
 </body>
 </html>
