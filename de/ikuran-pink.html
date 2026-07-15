@@ -32,8 +32,8 @@
         window.addEventListener('load', () => {
           // Başındaki nokyayı (.sw.js) kaldır, sadece sw.js yap
           navigator.serviceWorker.register('/eslemnur_notes/PWA/js-files/sw3.js', { scope: '/eslemnur_notes/' })
-            .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
-            .catch(err => console.log('Service Worker kaydı başarısız:', err));
+            .then(reg => console.log('Service Worker erfolgreich registriert!', reg.scope))
+            .catch(err => console.log('Service Worker Registrierung fehlgeschlagen:', err));
         });
       }
     </script>

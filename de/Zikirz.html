@@ -30,8 +30,8 @@
         window.addEventListener('load', () => {
           // Başındaki nokyayı (.sw.js) kaldır, sadece sw.js yap
           navigator.serviceWorker.register('/eslemnur_notes/PWA/js-files/sw4.js', { scope: '/eslemnur_notes/' })
-            .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
-            .catch(err => console.log('Service Worker kaydı başarısız:', err));
+            .then(reg => console.log('Service Worker erfolgreich registriert!', reg.scope))
+            .catch(err => console.log('Service Worker Registrierung fehlgeschlagen:', err));
         });
       }
     </script>
@@ -705,7 +705,7 @@
                 <a href="mailto:eslemnur_notes@proton.me" class="social-link" title="E-posta">✉️</a>
             </div>
 
-            <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin. Alle Rechte sind vorbehalten.</p>
+            <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 

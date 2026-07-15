@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schritt für Schritt Hajj & Umrah | Eslem Nur</title>
+
+    <meta name="description" content="Eslem Nur Çetin - Schritt-für-Schritt-Leitfaden für Hajj und Umrah von einer Theologiestudentin und Webentwicklerin. Koran-Notizen und digitale Islam-Projekte.">
+    <meta name="keywords" content="Islamische Wissenschaften, Webentwicklung, Tafsir, Arabisch, Eslem Nur Çetin, Digitale Notizen, Ibadah, Hajj, Umrah">
+    <meta name="author" content="Eslem Nur Çetin">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="Eslem Nur | Hajj-Umrah Leitfaden">
+    <meta property="og:description" content="Portfolio einer Islam-Studentin und Entwicklerin. Kostenlose wissenschaftliche Notizen und digitale Anwendungen.">
+    <meta property="og:image" content="https://i.pinimg.com/736x/31/b0/3e/31b03e07fc8b10f214d9df4292b31395.jpg">
+    <meta property="og:url" content="https://eslemnur.github.io/eslemnur_notes/de/">
+    <meta property="og:type" content="Web App">
+    <meta property="og:locale" content="de_DE">
+    <link rel="apple-touch-icon" sizes="180x180" href="/eslemnur_notes/PWA/png/apple-touch-icon4.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/eslemnur_notes/PWA/png/favicon4-96x96.png" />
+    <link rel="manifest" href="/eslemnur_notes/PWA/manifest/site4.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="/eslemnur_notes/PWA/svg/favicon4.svg" />
+    <link rel="shortcut icon" href="/eslemnur_notes/PWA/icon/favicon4.ico" />
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/eslemnur_notes/PWA/js-files/sw4.js', { scope: '/eslemnur_notes/' })
+            .then(reg => console.log('Service Worker erfolgreich registriert!', reg.scope))
+            .catch(err => console.log('Service Worker Registrierung fehlgeschlagen:', err));
+        });
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- ORTAK DEĞİŞKENLER --- */
+        :root {
+            --primary-color: #B76E79;
+            --secondary-color: #FDF5E6;
+            --button-bg: #D4A5A5;
+            --button-hover: #C58F8F;
+            --accent-color: #9E7F7F;
+            --bg-color: #FFF9F9;
+            --card-bg: #FFFFFF;
+            --text-color: #4E342E;
+            --text-light: #8D6E63;
+            --border-color: #F0E6E6;
+            --note-bg: #FFF0F5;
+            --soft-shadow: 0 4px 15px rgba(183, 110, 121, 0.15);
+            --header-bg: rgba(255, 249, 249, 0.95);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #E08E98;
+            --secondary-color: #2D2D2D;
+            --button-bg: #A07070;
+            --button-hover: #805050;
+            --accent-color: #C0A0A0;
+            --bg-color: #1A1A1A;
+            --card-bg: #252525;
+            --text-color: #EAEAEA;
+            --text-light: #B0B0B0;
+            --border-color: #444444;
+            --note-bg: #333333;
+            --soft-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            --header-bg: rgba(26, 26, 26, 0.95);
+        }
+
+        /* --- GENEL --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: var(--transition); }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.7; overflow-x: hidden; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER & NAV --- */
+        header { background: var(--header-bg); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); padding: 15px 0; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        .logo span { font-family: 'Scheherazade New', serif; font-size: 1.2rem; color: var(--accent-color); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-weight: 400; color: var(--text-color); font-size: 0.95rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--primary-color); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* --- TEMA TOGGLE & HAMBURGER --- */
+        .theme-toggle { background: transparent; border: 2px solid var(--border-color); color: var(--text-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-right: 15px; transition: var(--transition); }
+        .theme-toggle:hover { background: var(--note-bg); border-color: var(--primary-color); color: var(--primary-color); }
+        .hamburger { display: none; font-size: 1.8rem; color: var(--primary-color); cursor: pointer; padding: 10px; margin-left: auto; background: none; border: none; }
+
+        /* --- PROGRESS BAR --- */
+        .progress-container { position: fixed; top: 70px; left: 0; width: 100%; height: 4px; background-color: rgba(0,0,0,0.05); z-index: 999; }
+        .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary-color), #8E5A65); transition: width 0.4s ease; }
+
+        /* --- HERO --- */
+        .hero { padding: 100px 0 60px; text-align: center; position: relative; background: linear-gradient(135deg, var(--bg-color) 0%, var(--note-bg) 100%); overflow: hidden; }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .basmala-hero { font-family: 'Scheherazade New', serif; font-size: 2.5rem; margin-bottom: 20px; direction: rtl; font-weight: 700; background: linear-gradient(90deg, var(--primary-color), #8E5A65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--text-color); margin-bottom: 15px; line-height: 1.2; }
+        .hero h1 span { color: var(--primary-color); }
+        .hero-subtitle { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; font-family: 'Inter', sans-serif !important; font-weight: 300 !important; letter-spacing: 0.5px !important; }
+
+        /* --- İBADET SEÇİM --- */
+        .ibadet-selector { text-align: center; margin: 20px auto 40px; padding: 20px; background: var(--card-bg); border-radius: 15px; box-shadow: var(--soft-shadow); max-width: 600px; border: 1px solid var(--border-color); }
+        .selector-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-color); margin-bottom: 15px; }
+        .selector-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn-select { padding: 10px 25px; border-radius: 25px; border: 2px solid var(--primary-color); background: transparent; color: var(--primary-color); font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; min-width: 120px; }
+        .btn-select.active { background: var(--primary-color); color: white; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(183, 110, 121, 0.3); }
+        .btn-select:hover:not(.active) { background: var(--note-bg); }
+
+        /* --- ADIMLAR --- */
+        .steps-container { margin: 40px auto 80px; position: relative; min-height: 500px; }
+        .step-card { background: var(--card-bg); border-radius: 20px; padding: 40px; box-shadow: var(--soft-shadow); border: 1px solid var(--border-color); display: none; animation: fadeIn 0.6s ease; position: relative; overflow: hidden; }
+        .step-card.active { display: block; }
+        .step-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: linear-gradient(to bottom, var(--primary-color), #8E5A65); }
+        .step-number { font-size: 0.9rem; font-weight: 600; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+        .step-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 20px; color: var(--text-color); }
+        .step-content { font-size: 1rem; color: var(--text-light); margin-bottom: 30px; line-height: 1.8; }
+
+        /* --- DUA KUTUSU --- */
+        .dua-box { background-color: var(--note-bg); border: 1px dashed var(--primary-color); border-radius: 15px; padding: 25px; text-align: center; margin-bottom: 30px; }
+        .dua-title { display: block; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; font-size: 1.1rem; font-family: 'Playfair Display', serif; }
+        .dua-text { font-family: 'Scheherazade New', serif; font-size: 1.6rem; color: var(--text-color); margin-bottom: 10px; direction: rtl; line-height: 1.6; }
+        .dua-text-latin { font-size: 0.95rem; color: var(--text-light); font-style: italic; margin-bottom: 5px; font-family: 'Inter', sans-serif; }
+        .dua-translation { font-size: 0.95rem; color: var(--text-color); margin-top: 10px; font-weight: 500; }
+
+        /* --- NAV BUTONLARI --- */
+        .nav-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px; }
+        .step-indicator { font-weight: 600; color: var(--text-light); font-size: 0.9rem; }
+        
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 35px; background-color: var(--primary-color); color: white; border-radius: 30px; font-weight: 600; box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3); transition: all 0.3s ease; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+        .btn-primary:hover { background-color: var(--button-hover); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4); }
+        .btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 12px 35px; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 30px; font-weight: 600; cursor: pointer; background: transparent; transition: all 0.3s; font-family: 'Inter', sans-serif; }
+        .btn-outline:hover { background-color: var(--primary-color); color: white; transform: translateY(-2px); }
+        .btn-primary:disabled, .btn-outline:disabled { background-color: var(--border-color); color: var(--text-light); border-color: var(--border-color); cursor: not-allowed; transform: none; box-shadow: none; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 80px 0 40px; }
+            .step-card { padding: 25px; }
+            .step-title { font-size: 1.5rem; }
+            .dua-text { font-size: 1.3rem; }
+            .ibadet-selector { margin: 15px auto; padding: 15px; }
+            .selector-buttons { flex-direction: column; }
+            .btn-select { width: 100%; }
+            .nav-links { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: var(--card-bg); flex-direction: column; text-align: center; padding: 20px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; z-index: 1000; }
+            .nav-links.active { display: flex; }
+            .nav-links a { display: block; padding: 15px; font-size: 1.1rem; border-bottom: 1px solid var(--border-color); }
+            .hamburger { display: block; }
+            .nav-links a:hover { background: var(--note-bg); color: var(--primary-color); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <span>بسم الله</span>
+                    Eslem Nur Çetin
+                </a>
+                <button id="themeToggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+                <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+                <div class="nav-links" id="navLinks">
+                    <a href="#rehber">Leitfaden</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#iletisim">Kontakt</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="basmala-hero">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+            <h1>Schritt für Schritt <span class="gradient-text">Hajj & Umrah</span></h1>
+            <p class="hero-subtitle">Ein zuverlässiger, schrittweiser Leitfaden für die gesegnete Reise, in Übereinstimmung mit den Richtlinien des Präsidiums für religiöse Angelegenheiten (Diyanet).</p>
+
+            <div id="ibadetSelector" class="ibadet-selector">
+                <div class="selector-title">Welche gottesdienstliche Handlung möchten Sie vollziehen?</div>
+                <div class="selector-buttons">
+                    <button class="btn-select active" onclick="setIbadet('umre')" id="btnUmre"><i class="fas fa-moon"></i> Umrah</button>
+                    <button class="btn-select" onclick="setIbadet('hac')" id="btnHac"><i class="fas fa-kaaba"></i> Hajj</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="steps-container" id="rehber">
+            
+            <div class="step-card active" data-step="1">
+                <span class="step-number">Schritt 1</span>
+                <h2 class="step-title">Eintritt in den Ihram-Zustand (Niyyah/Absicht)</h2>
+                <div class="step-content">
+                    <p>Sobald Sie den Miqat-Punkt erreichen, vollziehen Sie die rituelle Ganzkörperwaschung (Ghusl) und verrichten zwei Rak'ah Gebet (dies ist Sunnah). Anschließend fassen Sie die Absicht (Niyyah) und beginnen mit der Talbiyah. Männer legen die Ihram-Kleidung an. Frauen tragen ihre gewohnte, saubere und schlichte Alltagskleidung. <strong>Frauen müssen ein Kopftuch tragen, ihr Gesicht jedoch unbedeckt lassen.</strong></p>
+                    <div class="dua-box">
+                        <span class="dua-title">Talbiyah (Absichtsgebet)</span>
+                        <div class="dua-text">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَك</div>
+                        <div class="dua-text-latin">Labbaykallâhumma labbayk, labbayka lâ scharîka laka labbayk, innal-hamda wan-ni'mata laka wal-mulk, lâ scharîka lak.</div>
+                        <div class="dua-translation">
+                            "Hier bin ich, o Allah, hier bin ich. Hier bin ich, Du hast keinen Partner, hier bin ich. Gewiss, alles Lob, alle Gnade und die Herrschaft gebühren Dir. Du hast keinen Partner."
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator" id="stepIndicator1">Schritt 1 / 3</span>
+                    <button class="btn-outline prev-btn" disabled>Zurück</button>
+                    <button class="btn-primary next-btn">Weiter</button>
+                </div>
+            </div>
+
+            <div class="step-card" data-step="2">
+                <span class="step-number">Schritt 2</span>
+                <h2 class="step-title">Tawaf (Umrundung der Kaaba)</h2>
+                <div class="step-content">
+                    <p>Umrunden Sie die Kaaba siebenmal gegen den Uhrzeigersinn (so dass sich die Kaaba zu Ihrer Linken befindet). Bei den ersten drei Runden gehen Männer mit kraftvollen Schritten und entblößter rechter Schulter (Ramal) – dies ist Sunnah. Nach Beendigung des Tawaf werden zwei Rak'ah Gebet hinter dem Maqam Ibrahim verrichtet.</p>
+                    <div class="dua-box">
+                        <span class="dua-title">Tawaf-Bittgebet (Allgemeines Bittgebet)</span>
+                        <div class="dua-text">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+                        <div class="dua-text-latin">Rabbanâ âtinâ fid-dunyâ hasanatan wa fil-âchirati hasanatan wa qinâ 'adhâban-nâr.</div>
+                        <div class="dua-translation">
+                            "Unser Rabb! Schenke uns Gutes im Diesseits und Gutes im Jenseits, und bewahre uns vor der Pein des Feuers."
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator" id="stepIndicator2">Schritt 2 / 3</span>
+                    <button class="btn-outline prev-btn">Zurück</button>
+                    <button class="btn-primary next-btn">Weiter</button>
+                </div>
+            </div>
+
+            <div class="step-card" data-step="3">
+                <span class="step-number">Schritt 3</span>
+                <h2 class="step-title">Sa'y (Lauf zwischen Safa und Marwah)</h2>
+                <div class="step-content">
+                    <p>Begeben Sie sich nach dem Tawaf zur Hügelkuppe Safa. Blicken Sie in Richtung Kaaba und rezitieren Sie den Vers: "Gewiss, Safa und Marwah gehören zu den rituellen Stätten Allahs...". Vollziehen Sie anschließend den siebenmaligen Lauf zwischen den beiden Hügeln Safa und Marwah.</p>
+                    <div class="dua-box">
+                        <span class="dua-title">Anfangsvers</span>
+                        <div class="dua-text">إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ ۖ فَمَنۡ حَجَّ الْبَيْتَ أَوِ اعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَن يَطَّوَّفَ بِهِمَا</div>
+                        <div class="dua-text-latin">Innas-Safâ wal-Marwata min scha'â'irillâh... Faman hagga-l-bayta awi-'tamara falâ gunâha 'alayhi an yattawwafa bihimâ.</div>
+                        <div class="dua-translation">
+                            "Gewiss, as-Safa und al-Marwah gehören zu den (Orten der) gottesdienstlichen Zeichen Allahs. Wer also die Pilgerfahrt zum Hause (der Kaaba) vollzieht oder die Besuchswallfahrt (Umrah) macht, für den ist es keine Sünde, sie zu umrunden." (Al-Baqarah, 158)
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator" id="stepIndicator3">Schritt 3 / 3</span>
+                    <button class="btn-outline prev-btn">Zurück</button>
+                    <button class="btn-primary next-btn" id="finishBtnUmre" disabled>Abgeschlossen</button>
+                </div>
+            </div>
+
+            <div class="step-card" data-step="4" data-only-hac="true">
+                <span class="step-number">Schritt 4</span>
+                <h2 class="step-title">Waqfah in Arafat (Die Hauptsäule der Hajj)</h2>
+                <div class="step-content">
+                    <p>Am 9. Tag des Monats Dhu l-Hijjah begeben sich die Pilger am Mittag nach Arafat. Dort werden das Mittags- und das Nachmittagsgebet zusammengefasst verrichtet (Jamʿ taqdīm). Bis zum Sonnenuntergang verweilt man im innigen Bittgebet, im Gedenken Allahs (Dhikr) und bittet um Vergebung. Dies ist der wichtigste Bestandteil der Hajj.</p>
+                    <div class="dua-box">
+                        <span class="dua-title">Arafat-Dhikr (Der vorzüglichste Dhikr)</span>
+                        <div class="dua-text">لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ ۚ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ</div>
+                        <div class="dua-text-latin">Lâ ilâha illallâhu wahdahu lâ scharîka lah, lahul-mulku wa lahul-hamdu wa huwa 'alâ kulli schay'in qadîr.</div>
+                        <div class="dua-translation">
+                            "Es gibt keinen Gott außer Allah, dem Einzigen. Er hat keinen Partner. Sein ist die Herrschaft und Sein ist das Lob, und Er hat Macht über alle Dinge."
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator" id="stepIndicator4">Schritt 4 / 5</span>
+                    <button class="btn-outline prev-btn">Zurück</button>
+                    <button class="btn-primary next-btn">Weiter</button>
+                </div>
+            </div>
+
+            <div class="step-card" data-step="5" data-only-hac="true">
+                <span class="step-number">Schritt 5</span>
+                <h2 class="step-title">Steinigung der Säulen, Opfertier & Kürzen der Haare</h2>
+                <div class="step-content">
+                    <p>Nach Arafat verbringt man die Nacht in Muzdalifah und zieht weiter nach Mina. Es folgt die rituelle Steinigung der großen Säule (Jamrat al-Aqabah). Anschließend wird das Opfertier dargebracht und die Haare werden rasiert oder gekürzt (Tahallul), womit der Ihram-Zustand teilweise aufgehoben wird.</p>
+                    <div class="dua-box">
+                        <span class="dua-title">Bittgebet während der Steinigung</span>
+                        <div class="dua-text">اللَّهُمَّ اجْعَلْهُ حَجًّا مَبْرُورًا وَسَعْيًا مَشْكُورًا وَذَنْبًا مَغْفُورًا</div>
+                        <div class="dua-text-latin">Allâhummag'alhu haggan mabrûran wa sa'yan maschkûran wa dhanban maghfûran.</div>
+                        <div class="dua-translation">
+                            "O Allah! Lass dies eine gesegnete und angenommene Hajj sein, ein Bemühen, das Anerkennung findet, und eine Sünde, die vergeben wird."
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <span class="step-indicator" id="stepIndicator5">Schritt 5 / 5</span>
+                    <button class="btn-outline prev-btn">Zurück</button>
+                    <button class="btn-primary next-btn" id="finishBtnHac" disabled>Abgeschlossen</button>
+                </div>
+            </div>
+
+        </div>
+
+        <section id="faq" style="padding: 60px 0;">
+            <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 40px; color: var(--primary-color);">Häufig gestellte Fragen (FAQ)</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                
+                <details style="background: var(--card-bg); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden;">
+                    <summary style="padding: 18px 25px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--text-color);">
+                        Wie verhalten sich Frauen während der Menstruation (Hayd)?
+                        <span style="color: var(--primary-color);">+</span>
+                    </summary>
+                    <p style="padding: 20px 25px; color: var(--text-light); border-top: 1px solid var(--border-color); line-height: 1.6;">
+                        Gemäß den Richtlinien des Präsidiums für religiöse Angelegenheiten (Diyanet):<br><br>
+                        • <strong>Ihram:</strong> Frauen in ihrer Periode können den Ihram-Zustand betreten, die Niyyah fassen und die Talbiyah sprechen.<br>
+                        • <strong>Tawaf:</strong> Sie dürfen den <strong>Tawaf erst nach der rituellen Reinigung (Ghusl) vollziehen</strong>. Während dieser Zeit führen sie jedoch den Aufenthalt (Waqfah) in Arafat, die Steinigung der Säulen und andere Pflichten fort.<br>
+                        • <strong>Sa'y:</strong> Da der Sa'y auf den Tawaf folgt, kann dieser ebenfalls erst nach der Reinigung und dem Tawaf vollzogen werden.<br>
+                        • <strong>Abschieds-Tawaf (Tawaf al-Wada):</strong> Frauen, die ihre Periode bis zur Abreise nicht beendet haben, sind vom Abschieds-Tawaf befreit.
+                    </p>
+                </details>
+
+                <details style="background: var(--card-bg); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden;">
+                    <summary style="padding: 18px 25px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--text-color);">
+                        Was ist der Unterschied zwischen Hajj und Umrah?
+                        <span style="color: var(--primary-color);">+</span>
+                    </summary>
+                    <p style="padding: 20px 25px; color: var(--text-light); border-top: 1px solid var(--border-color);">
+                        <strong>Zeitraum:</strong> Die Umrah kann zu jeder Zeit des Jahres vollzogen werden. Die Hajj hingegen findet ausschließlich an den festgelegten Tagen des Monats Dhu l-Hijjah (9. bis 13. Tag) statt.<br><br>
+                        <strong>Säulen (Arkan):</strong> Die Umrah besteht aus Ihram, Tawaf und Sa'y. Die Hajj beinhaltet darüber hinaus den <strong>Aufenthalt in Arafat (Waqfah)</strong>, die Übernachtung in Muzdalifah/Mina, das Steinigen der Säulen und das Opfertier. Die Waqfah in Arafat gilt als die wichtigste Säule der Hajj.
+                    </p>
+                </details>
+
+                <details style="background: var(--card-bg); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden;">
+                    <summary style="padding: 18px 25px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--text-color);">
+                        Welche Kleidungsregeln gelten für Frauen im Ihram?
+                        <span style="color: var(--primary-color);">+</span>
+                    </summary>
+                    <p style="padding: 20px 25px; color: var(--text-light); border-top: 1px solid var(--border-color);">
+                        Nach islamisch-rechtlichen Bestimmungen beachten Frauen folgende Punkte:<br><br>
+                        • <strong>Kopftuchpflicht:</strong> Frauen müssen im Ihram ihr Haar vollständig mit einem blickdichten Kopftuch (Hijab) bedecken.<br>
+                        • <strong>Freies Gesicht:</strong> Das Gesicht darf während des Ihrams nicht durch Schleier (Niqab) verdeckt werden. Auch das Tragen von Handschuhen ist im Ihram <strong>nicht erlaubt</strong>. Hände und Gesicht bleiben frei.<br>
+                        • <strong>Kleidung:</strong> Es gibt keine Farbvorgaben (auch schwarze Kleidung ist erlaubt). Wichtig ist, dass die Kleidung weit, schlicht, unauffällig und nicht transparent ist.
+                    </p>
+                </details>
+
+                <details style="background: var(--card-bg); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden;">
+                    <summary style="padding: 18px 25px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--text-color);">
+                        Wie lange dauert der Vollzug der Umrah?
+                        <span style="color: var(--primary-color);">+</span>
+                    </summary>
+                    <p style="padding: 20px 25px; color: var(--text-light); border-top: 1px solid var(--border-color);">
+                        <strong>Die gottesdienstliche Handlung:</strong> Rein rituell lassen sich die Pflichten der Umrah (Tawaf und Sa'y) in wenigen Stunden vollziehen.<br><br>
+                        <strong>Reiseplanung:</strong> Aufgrund von logistischen Gegebenheiten, der spirituellen Vorbereitung und Flügen wird für eine Umrah-Reise meist ein Aufenthalt von 7 bis 10 Tagen empfohlen.
+                    </p>
+                </details>
+
+                <details style="background: var(--card-bg); margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden;">
+                    <summary style="padding: 18px 25px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--text-color);">
+                        Wie wird die Ihram-Kleidung erworben und getragen?
+                        <span style="color: var(--primary-color);">+</span>
+                    </summary>
+                    <p style="padding: 20px 25px; color: var(--text-light); border-top: 1px solid var(--border-color);">
+                        • <strong>Für Männer:</strong> Die Kleidung besteht aus zwei weißen, ungenähten Tüchern: dem Untertuch (Izar) und dem Obertuch (Rida). Diese können vor der Abreise oder an den Miqat-Stationen erworben werden.<br><br>
+                        • <strong>Für Frauen:</strong> Es gibt keine vorgeschriebene Spezialkleidung. Frauen tragen ihre reguläre, islamkonforme, weite Kleidung zusammen mit dem Kopftuch.
+                    </p>
+                </details>
+
+            </div>
+        </section>
+    </div>
+
+    <footer id="iletisim" style="background: var(--card-bg); border-top: 1px solid var(--border-color); padding: 60px 0 30px; text-align: center; margin-top: 80px;">
+        <div class="container footer-content">
+            <div class="footer-arabic" style="font-family: 'Scheherazade New', serif; font-size: 1.8rem; color: var(--primary-color); margin-bottom: 15px; direction: rtl;">رَبِّ زِدْنِي عِلْمًا</div>
+            <p style="margin-bottom: 30px; color: var(--text-light);">"Oh Allah, mehre mein Wissen."</p>
+            <p class="copyright" style="font-size: 0.85rem; color: var(--text-light); opacity: 0.8;">© <span id="current-year"></span> Eslem Nur Çetin. Alle Rechte vorbehalten.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.7; color: var(--text-light);">Dieser Leitfaden basiert auf den Quellen des Präsidiums für religiöse Angelegenheiten (Diyanet).</p>
+        </div>
+    </footer>
+
+    <script>
+        const allSteps = document.querySelectorAll('.step-card');
+        let currentStepIndex = 0; // Array index tabanlı (0, 1, 2...)
+        let ibadetTuru = 'umre';
+        
+        const progressBar = document.getElementById('progressBar');
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const btnUmre = document.getElementById('btnUmre');
+        const btnHac = document.getElementById('btnHac');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            setupStepButtons();
+            updateProgress();
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            checkSavedStep();
+            setIbadet('umre'); // Varsayılan
+        });
+
+        function setIbadet(tur) {
+    ibadetTuru = tur;
+    if (tur === 'umre') {
+        btnUmre.classList.add('active');
+        btnHac.classList.remove('active');
+    } else {
+        btnHac.classList.add('active');
+        btnUmre.classList.remove('active');
+    }
+
+    const hacAdimlari = document.querySelectorAll('[data-only-hac="true"]');
+    if (tur === 'umre') {
+        hacAdimlari.forEach(adim => adim.style.display = 'none');
+        const sichtbareSchritte = getVisibleSteps();
+        if (currentStepIndex >= sichtbareSchritte.length) {
+            currentStepIndex = 0;
+        }
+    } else {
+        hacAdimlari.forEach(adim => adim.style.display = 'block');
+        const sichtbareSchritte = getVisibleSteps();
+        if (currentStepIndex >= sichtbareSchritte.length) {
+            currentStepIndex = 0;
+        }
+    }
+    
+    localStorage.setItem('ibadetTuru', tur);
+    renderCurrentStep();
+    setupStepButtons();
+    updateProgress();
+}
+        function getVisibleSteps() {
+    return Array.from(allSteps).filter(step => step.style.display !== 'none');
+}
+
+function renderCurrentStep() {
+    const visibleSteps = getVisibleSteps();
+    
+    allSteps.forEach(step => step.classList.remove('active'));
+    
+    if (currentStepIndex < 0 || currentStepIndex >= visibleSteps.length) {
+        currentStepIndex = 0;
+    }
+
+    const targetStep = visibleSteps[currentStepIndex];
+    targetStep.classList.add('active');
+    targetStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    updateStepIndicators(visibleSteps.length);
+}
+
+function updateStepIndicators(total) {
+    for (let i = 1; i <= total; i++) {
+        const indicator = document.getElementById(`stepIndicator${i}`);
+        if (indicator) indicator.innerHTML = `Schritt ${i} / ${total}`;
+    }
+}
+
+function setupStepButtons() {
+    const visibleSteps = getVisibleSteps();
+    
+    visibleSteps.forEach((step, index) => {
+        const nextBtn = step.querySelector('.next-btn');
+        const prevBtn = step.querySelector('.prev-btn');
+        
+        if (nextBtn) {
+            nextBtn.onclick = () => {
+                if (index < visibleSteps.length - 1) {
+                    currentStepIndex++;
+                    renderCurrentStep();
+                    setupStepButtons();
+                    updateProgress();
+                } else {
+                    nextBtn.disabled = true;
+                    nextBtn.innerHTML = 'Abgeschlossen <i class="fas fa-check"></i>';
+                }
+            };
+
+            if (index === visibleSteps.length - 1) {
+                nextBtn.disabled = true;
+                nextBtn.innerHTML = 'Abgeschlossen <i class="fas fa-check"></i>';
+            } else {
+                nextBtn.disabled = false;
+                nextBtn.innerHTML = 'Weiter <i class="fas fa-arrow-right"></i>';
+            }
+        }
+
+        if (prevBtn) {
+            prevBtn.onclick = () => {
+                if (index > 0) {
+                    currentStepIndex--;
+                    renderCurrentStep();
+                    setupStepButtons();
+                    updateProgress();
+                }
+            };
+            prevBtn.disabled = (index === 0);
+        }
+    });
+}
+
+function changeStep(stepIndex) {
+    const visibleSteps = getVisibleSteps();
+    if (stepIndex < 1 || stepIndex > visibleSteps.length) return;
+
+    currentStepIndex = stepIndex - 1;
+    renderCurrentStep();
+    updateProgress();
+    setupStepButtons();
+    localStorage.setItem('hajjUmrahStep', stepIndex);
+}
+
+function updateProgress() {
+    const visibleSteps = getVisibleSteps();
+    if (visibleSteps.length > 1) {
+        const pct = ((currentStepIndex) / (visibleSteps.length - 1)) * 100;
+        progressBar.style.width = pct + '%';
+    } else {
+        progressBar.style.width = '100%';
+    }
+}
+
+function checkSavedStep() {
+    const savedIbadet = localStorage.getItem('ibadetTuru');
+    const savedStep = localStorage.getItem('hajjUmrahStep');
+    
+    if (savedIbadet) {
+        setIbadet(savedIbadet);
+    }
+    
+    if (savedStep && parseInt(savedStep) > 1) {
+        changeStep(parseInt(savedStep));
+    }
+}
+
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+function updateThemeIcon(theme) {
+    themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+}
+
+themeToggle.addEventListener('click', () => {
+    const curr = document.documentElement.getAttribute('data-theme');
+    const newT = curr === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newT);
+    localStorage.setItem('theme', newT);
+    updateThemeIcon(newT);
+});
+
+function toggleMenu() {
+    navLinks.classList.toggle('active');
+    const icon = hamburger.querySelector('i');
+    if (navLinks.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+}
+
+document.querySelectorAll('.nav-links a').forEach(l => l.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    hamburger.querySelector('i').className = 'fas fa-bars';
+}));
+    </script>
+</body>
+</html>
