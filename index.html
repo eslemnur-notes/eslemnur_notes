@@ -299,7 +299,48 @@
             strong { -webkit-font-smoothing: subpixel-antialiased; text-rendering: optimizeLegibility; font-weight: 500;}
         }
       
-     
+    /* --- Dil Seçici Dropdown --- */
+    .lang-dropdown { 
+        position: relative; 
+        display: inline-block; 
+    }
+
+    .lang-dropdown-menu { 
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        right: 0; 
+        background: var(--card-bg); 
+        border: 1px solid var(--border-color); 
+        border-radius: 10px; 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+        min-width: 120px; 
+        z-index: 1001; 
+        margin-top: 8px; 
+        overflow: hidden; 
+    }
+
+    .lang-dropdown.active .lang-dropdown-menu { 
+        display: block; 
+    }
+
+    .lang-dropdown-menu a { 
+        display: block; 
+        padding: 12px 20px; 
+        color: var(--text-color); 
+        text-decoration: none; 
+        transition: all 0.3s ease; 
+        font-size: 0.9rem; 
+    }
+
+    .lang-dropdown-menu a:hover { 
+        background: var(--note-bg); 
+        color: var(--primary-color); 
+    }
+
+    .lang-dropdown-menu a:first-child { 
+        border-bottom: 1px solid var(--border-color); 
+    } 
 
     </style>
 </head>
@@ -311,10 +352,24 @@
             <nav>
                 <a href="#" class="logo"><span>بسم الله</span> Eslem Nur Çetin</a>
                <div class="nav-controls">
-                <a id="langToggle" href="de.html" class="lang-toggle" aria-label="Dili Değiştir / Sprache ändern" role="button">DE</a>
-                <button id="themeToggle" class="theme-toggle" aria-label="Temayı Değiştir"><i class="fas fa-moon" aria-hidden="true"></i></button>
-                <button class="hamburger" onclick="toggleMenu()" aria-label="Menüyü Aç">☰</button>
-                </div>
+    <!-- Dil Toggle Butonu -->
+    <div class="lang-dropdown" id="langDropdown">
+        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Dili Değiştir" style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; font-family: 'Inter', sans-serif;">
+            TR
+        </button>
+        <div class="lang-dropdown-menu">
+            <a href="index.html">Türkçe</a>
+            <a href="en.html">İngilizce</a>
+            <a href="de.html">Almanca</a>
+        </div>
+    </div>
+    
+    <!-- Tema Toggle -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Temayı Değiştir"><i class="fas fa-moon" aria-hidden="true"></i></button>
+    
+    <!-- Hamburger Menü -->
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menüyü Aç">☰</button>
+</div>
                 <div class="nav-links" id="navLinks">
                     <a href="#about" id="nav-about">Hakkımda</a>
                     <a href="#skills" id="nav-skills">Yetenekler</a>
@@ -937,6 +992,19 @@ document.querySelectorAll('.nav-links a').forEach(link => {
             const yearSpan = document.getElementById("current-year");
             if (yearSpan) yearSpan.textContent = new Date().getFullYear();
         }
+        // --- DİL MENÜSÜ TOGGLE ---
+        function toggleLangMenu() {
+            const langDropdown = document.getElementById('langDropdown');
+            langDropdown.classList.toggle('active');
+        }
+
+        // Menü dışına tıklanınca kapat
+        window.addEventListener('click', function(e) {
+            const langDropdown = document.getElementById('langDropdown');
+            if (!langDropdown.contains(e.target)) {
+                langDropdown.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
